@@ -30,10 +30,10 @@ export function ComplianceTicker() {
           <span className="h-0.5 w-0.5 rounded-full bg-amber-300" aria-hidden />
           {compliance.badge}
         </span>
-        <div className="relative min-h-[1.85rem] min-w-0 flex-1 overflow-hidden py-0.5 sm:min-h-0 sm:py-0">
-          <div className="compliance-marquee-track flex w-max items-center">
-            <div className="flex shrink-0 items-center pr-10">{block}</div>
-            <div className="flex shrink-0 items-center pr-10" aria-hidden="true">
+        <div className="relative min-h-[1.85rem] min-w-0 flex-1 overflow-hidden bg-red-900 py-0.5 sm:min-h-0 sm:py-0">
+          <div className="compliance-marquee-track flex w-max items-center bg-red-900">
+            <div className="flex shrink-0 items-center bg-red-900 pr-8 sm:pr-10">{block}</div>
+            <div className="flex shrink-0 items-center bg-red-900 pr-8 sm:pr-10" aria-hidden="true">
               {block}
             </div>
           </div>

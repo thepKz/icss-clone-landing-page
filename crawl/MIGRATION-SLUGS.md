@@ -51,7 +51,27 @@ Cập nhật: khi thêm bài mới, giữ **một** cột slug canonical trong a
 
 ---
 
-## 4. Checklist redirect (cho Alex)
+## 4. Checklist redirect (Alex)
 
-- [ ] Sau go-live: map từng URL production `/articles/{slug-cũ}` cần giữ traffic → slug trong bảng mục 2 hoặc bài app mục 1.
-- [ ] Riêng Chrome: xử lý cặp `google-chrome-145-ba-lo-hong-high` vs `phat-hien-nhieu-lo-hong-bao-mat-tren-google-chrome-cve-2026-3536-cve-2026-3545` để tránh nội dung trùng hoặc 404.
+- [x] Map URL production `/articles/{slug-cũ}` → slug canonical: **`lib/legacy-redirects.ts`** (merge vào `next.config.ts`).
+- [x] Cặp Chrome prod: `google-phat-hanh-chrome-145-va-3-lo-hong-high-doanh-nghiep-can-cap-nhat-khan-cap` và `phat-hien-nhieu-lo-hong-bao-mat-tren-google-chrome-cve-2026-3536-cve-2026-3545` → `/articles/google-chrome-145-ba-lo-hong-high`.
+
+### 4.1 Bảng 301 đã bật (tóm tắt)
+
+| Nguồn (path prod) | Đích (app) | Ghi chú |
+|-------------------|------------|---------|
+| `/articles/google-phat-hanh-chrome-145-va-3-lo-hong-high-doanh-nghiep-can-cap-nhat-khan-cap` | `/articles/google-chrome-145-ba-lo-hong-high` | Tiêu đề prod vs slug app |
+| `/articles/phat-hien-nhieu-lo-hong-bao-mat-tren-google-chrome-cve-2026-3536-cve-2026-3545` | `/articles/google-chrome-145-ba-lo-hong-high` | Khớp mục 3 (Chrome CVE) |
+| 8 slug mục 3 (Mozilla, VMware, Valkey, CISA/Dell, Ivanti, Microsoft DLP, NHNN thông tư) | Xem `legacyArticleRedirects` | VMware → bài thực trạng VN; Valkey → `/articles`; v.v. |
+| `/articles/cuoc-dua-song-ma-chatgpt-vs-gemini-...` | `/articles/threat-landscape-ai-vs-ai` | Prod có, app đổi slug |
+| `/articles/xu-huong-thue-ngoai-dich-vu-soc-...` | `/articles/soc-la-gi-trung-tam-dieu-hanh-...` | Prod có, app đổi slug |
+| `/articles/ics-chinh-thuc-hop-tac-toan-dien-cung-efgh-...` | `/doi-tac` | Tin hợp tác → trang đối tác |
+
+**Lưu ý:** 8 bài mục 3 vẫn **chưa có** `crawl/articles/*.md` — Ben có thể bổ sung nội dung sau; 301 giữ traffic/SEO trong lúc chờ.
+
+---
+
+## 5. PDF Gurucul (A5 tuỳ chọn)
+
+- Path legacy: `/AI%20SOC/Gurucul%20Workshop%20Walkthrough.pdf`
+- **Đã cấu hình:** redirect **302** tới `https://www.icss.com.vn/AI%20SOC/Gurucul%20Workshop%20Walkthrough.pdf` (không mirror file trong `public/`). Khi có bản host tại site mới, thay `destination` hoặc đặt file dưới `public/docs/` và đổi redirect nội bộ.

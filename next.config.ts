@@ -1,4 +1,8 @@
 import type { NextConfig } from "next";
+import {
+  legacyArticleRedirects,
+  legacyAssetRedirects,
+} from "./lib/legacy-redirects";
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -20,6 +24,8 @@ const nextConfig: NextConfig = {
         destination: "/lien-he",
         permanent: true,
       },
+      ...legacyArticleRedirects,
+      ...legacyAssetRedirects,
     ];
   },
   images: {

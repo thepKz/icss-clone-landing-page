@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
-const spring = { type: "spring" as const, stiffness: 200, damping: 24 };
+const spring = { type: "spring" as const, stiffness: 200, damping: 26 };
 
 const fieldClass =
-  "rounded-xl border border-white/10 bg-white/75 px-4 py-3 text-sm text-zinc-900 outline-none shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] placeholder:text-zinc-500 focus:border-teal-600/45 focus:ring-2 focus:ring-teal-600/20 dark:border-white/10 dark:bg-zinc-950/40 dark:text-zinc-100 dark:placeholder:text-zinc-600 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:focus:border-teal-400/40 dark:focus:ring-teal-400/20";
+  "w-full min-h-[44px] rounded-xl border border-zinc-200/90 bg-white px-4 py-3 text-sm text-zinc-900 outline-none shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] transition-[border-color,box-shadow] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] placeholder:text-zinc-400 focus:border-teal-700/50 focus:ring-2 focus:ring-teal-600/18 dark:border-white/[0.12] dark:bg-zinc-950/85 dark:text-zinc-100 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:placeholder:text-zinc-500 dark:focus:border-teal-400/45 dark:focus:ring-teal-400/18";
 
-const labelClass = "text-sm font-medium text-zinc-800 dark:text-zinc-300";
+const labelClass =
+  "text-sm font-medium text-zinc-800 dark:text-zinc-200";
 
 function validateEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -39,11 +41,10 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-[2rem] bg-black/5 p-1.5 ring-1 ring-black/5 dark:bg-white/5 dark:ring-white/10">
+    <div className="rounded-[2rem] bg-zinc-200/40 p-1.5 ring-1 ring-zinc-300/60 dark:bg-white/[0.04] dark:ring-white/10">
       <motion.form
         onSubmit={submit}
-        className="rounded-[calc(2rem-0.375rem)] border border-white/10 bg-white/95 p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] md:p-10 dark:border-white/[0.08] dark:bg-zinc-900/35 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
-        layout
+        className="rounded-[calc(2rem-0.375rem)] border border-zinc-200/90 bg-white p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)] md:p-10 dark:border-white/[0.08] dark:bg-zinc-900/70 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
         transition={spring}
       >
         <div className="grid gap-6">
@@ -103,7 +104,7 @@ export function ContactForm() {
             placeholder="0707 806 860"
             autoComplete="tel"
           />
-          <p className="text-xs text-zinc-500 dark:text-zinc-600">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
             Tuỳ chọn — giúp ICS phản hồi nhanh hơn.
           </p>
         </div>
@@ -131,17 +132,24 @@ export function ContactForm() {
         </div>
 
       {status === "success" ? (
-        <p className="mt-6 rounded-xl border border-teal-600/30 bg-teal-600/10 px-4 py-3 text-sm text-teal-950 dark:border-teal-400/25 dark:bg-teal-400/10 dark:text-teal-100">
+        <p className="mt-6 rounded-xl border border-teal-600/35 bg-teal-50 px-4 py-3 text-sm text-teal-950 dark:border-teal-400/30 dark:bg-teal-950/50 dark:text-teal-100">
           Đã ghi nhận yêu cầu. Đội ICS sẽ liên hệ trong giờ làm việc.
         </p>
       ) : null}
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-8 w-full rounded-full border border-teal-800/55 bg-teal-800 py-3.5 text-sm font-semibold text-zinc-50 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-teal-900 hover:bg-teal-900 disabled:cursor-not-allowed disabled:opacity-60 active:translate-y-px active:scale-[0.99] dark:border-teal-400/40 dark:bg-teal-400/15 dark:text-teal-50 dark:hover:border-teal-300/55 dark:hover:bg-teal-400/22 md:w-auto md:px-10"
+        className="mt-8 w-full rounded-full bg-teal-800 py-3.5 text-sm font-semibold text-white transition-[transform,opacity,background-color,border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-900 disabled:cursor-not-allowed disabled:opacity-60 active:translate-y-px active:scale-[0.99] dark:bg-teal-500 dark:text-zinc-950 dark:hover:bg-teal-400 md:w-auto md:min-w-[200px] md:px-10"
       >
         {status === "loading" ? "Đang gửi…" : "Gửi liên hệ"}
       </button>
+      <p className="mt-6 text-center text-xs leading-relaxed text-zinc-500 dark:text-zinc-400 md:text-left">
+        Gửi biểu mẫu đồng nghĩa bạn đã xem{" "}
+        <Link href="/chinh-sach-bao-mat" className="font-medium text-teal-800 underline-offset-2 hover:underline dark:text-cyan-300">
+          chính sách xử lý dữ liệu
+        </Link>
+        .
+      </p>
       </motion.form>
     </div>
   );

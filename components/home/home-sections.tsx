@@ -26,12 +26,13 @@ function ArrowIcon({ className = "h-4 w-4" }: { className?: string }) {
 export function HomeHero() {
   return (
     <section className="relative flex min-h-[100dvh] flex-col overflow-x-hidden overflow-y-visible bg-white pt-24 dark:bg-zinc-950 md:pt-28">
-      <SilkBackground opacity={0.5} />
+      <SilkBackground opacity={0.2} />
       <div
         className="pointer-events-none absolute inset-0 z-0 bg-white/38 dark:bg-transparent"
         aria-hidden
       />
-      <div className="relative z-[1] mx-auto grid w-full max-w-[1400px] flex-1 grid-cols-1 content-center gap-10 px-4 pb-10 md:grid-cols-12 md:items-stretch md:gap-x-10 md:gap-y-8 md:px-8 md:pb-14">
+      <div className="relative z-[1] flex min-h-0 min-w-0 flex-1 flex-col">
+        <div className="mx-auto grid min-h-0 w-full max-w-[1400px] flex-1 grid-cols-1 content-center gap-10 px-4 pb-6 md:grid-cols-12 md:items-stretch md:gap-x-10 md:gap-y-8 md:px-8 md:pb-8">
         <p
           className="pointer-events-none absolute bottom-[18%] right-[4%] z-0 hidden select-none font-light leading-none tracking-[-0.04em] text-stone-400/15 dark:text-white/5 md:block md:text-[clamp(4rem,12vw,9rem)]"
           aria-hidden
@@ -131,8 +132,9 @@ export function HomeHero() {
             </div>
           </Reveal>
         </div>
+        </div>
       </div>
-      <div className="relative z-0 mt-auto w-full shrink-0">
+      <div className="relative z-[4] w-full shrink-0">
         <ComplianceTicker />
       </div>
     </section>

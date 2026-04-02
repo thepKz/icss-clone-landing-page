@@ -20,7 +20,7 @@ Tài liệu phối hợp song song trên repo **icss-web**. Tham chiếu route v
 | A2 | Bổ sung redirect còn thiếu (nếu prod có URL mới) | `next.config.ts` | Ví dụ PDF path, shortlink |
 | A3 | Thêm `app/sitemap.ts` + `app/robots.ts` (hoặc tương đương App Router) | `app/sitemap.ts`, `app/robots.ts` | Liệt kê route thật + bài viết sau khi Ben ổn định slug |
 | A4 | Chiến lược slug bài viết: một nguồn truth | `content/articles.ts` + `generateStaticParams` | Phối hợp Ben: không tự đổi copy nội dung |
-| A5 | (Tuỳ chọn) Mirror PDF Gurucul | `public/docs/...` hoặc redirect tuyệt đối | Map từ path trong `discovered-routes.json` |
+| A5 | (Tuỳ chọn) Mirror PDF Gurucul | `public/docs/...` hoặc redirect tuyệt đối | **Đã làm:** 302 legacy path → file trên `www.icss.com.vn` (`legacyAssetRedirects`). Mirror vào `public/docs/` vẫn có thể bổ sung sau. |
 | A6 | Đảm bảo build pass sau thay đổi route | `npm run build` | CI-ready |
 
 **Tránh:** chỉnh sắc đẹp layout, animation — chuyển Cường.
@@ -80,7 +80,8 @@ Hoặc song song: Alex A1/A6, Ben B2/body, Cường C4/C6 trên nhánh khác fil
 ## Checklist nhanh theo vai
 
 - [x] Alex: sitemap + robots + build xanh (`app/sitemap.ts`, `app/robots.ts`, `lib/site-canonical.ts`, `lib/indexed-routes.ts`; chạy lại `discover:routes` khi đổi menu prod)
-- [ ] Ben: articles đủ + legal pages + hoat-dong/khach-hang quyết định
+- [x] **Ben:** B1–B5 + B8 hoàn tất trên repo. Chi tiết: `crawl/MIGRATION-SLUGS.md` + `content/articles.ts` (**16** bài live: 4 chỉ-app + 12 từ `crawl/articles/`). **8 slug** mục 3 vẫn chưa có file crawl — **Ben** mở rộng `articles` + archive khi có nội dung; **Alex** đã bật **301** prod→canonical trong `lib/legacy-redirects.ts` + **A5** PDF Gurucul (302 → `www.icss.com.vn`, không mirror `public/`). B6/B7 cố ý chưa làm.
+- [x] **Alex:** redirect map + PDF legacy (xem `MIGRATION-SLUGS` §4–5); `npm run build` xanh sau thay đổi.
 - [x] Cường: nav/footer + home `/#doi-tac` + articles UI + ticker/hero alert + motion guardrails cơ bản (xem chat: **C4** trang sản phẩm/giải pháp chỉ ở mức baseline có sẵn nếu chưa polish sâu)
 
 ---

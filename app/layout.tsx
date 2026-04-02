@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { ScrollToTopButton, ScrollToTopOnRoute } from "@/components/scroll-to-top";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -56,6 +57,8 @@ export default function RootLayout({
           {themeBootScript}
         </Script>
         <ThemeProvider>
+          <ScrollToTopOnRoute />
+          <ScrollToTopButton />
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-cyan-500/20 focus:px-4 focus:py-2 focus:text-sm focus:text-zinc-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-cyan-600/50 dark:focus:bg-cyan-400/20 dark:focus:text-zinc-50 dark:focus:outline-cyan-400/60"

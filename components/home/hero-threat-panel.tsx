@@ -28,9 +28,9 @@ const detailStaggerChild = {
   },
 };
 
-/** Chỉ mũi tên — tương phản rõ trên cả popup và card tối */
+/** Chỉ mũi tên — mobile giữ vùng chạm tối thiểu; desktop gọn */
 const arrowNavClassName =
-  "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-stone-300/85 bg-white text-stone-800 shadow-[0_1px_0_rgba(255,255,255,0.7)] transition-[transform,background-color,border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-50 hover:border-stone-400/90 active:scale-[0.96] dark:border-zinc-500/80 dark:bg-zinc-800 dark:text-zinc-50 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] dark:hover:border-zinc-400/70 dark:hover:bg-zinc-700";
+  "flex h-7 w-7 max-md:min-h-[44px] max-md:min-w-[44px] shrink-0 items-center justify-center rounded-md border border-stone-300/85 bg-white text-stone-800 shadow-[0_1px_0_rgba(255,255,255,0.7)] transition-[transform,background-color,border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-50 hover:border-stone-400/90 active:scale-[0.96] dark:border-zinc-500/80 dark:bg-zinc-800 dark:text-zinc-50 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] dark:hover:border-zinc-400/70 dark:hover:bg-zinc-700";
 
 function defaultAlertIndex(alerts: typeof home.heroSecurityAlerts) {
   const idx = alerts.findIndex((a) => a.source.includes("GitLab"));
@@ -100,28 +100,28 @@ function ThreatDetailBlocks({
           variants={detailStaggerParent}
         >
           {a.isNew ? (
-            <motion.div variants={detailStaggerChild} className="flex flex-wrap items-center gap-2 py-2.5 first:pt-0">
+            <motion.div variants={detailStaggerChild} className="flex flex-wrap items-center gap-2 py-2 first:pt-0">
               <span className="h-4 w-0.5 shrink-0 rounded-full bg-red-600 dark:bg-red-400" aria-hidden />
               <span className="text-[8px] font-bold uppercase tracking-[0.16em] text-red-800 dark:text-red-200">Tin mới</span>
               <span className="font-mono text-[9px] tabular-nums text-stone-600 dark:text-zinc-400">{a.date}</span>
             </motion.div>
           ) : null}
 
-          <motion.div variants={detailStaggerChild} className="py-3">
+          <motion.div variants={detailStaggerChild} className="py-2">
             <p className="break-words text-[9px] font-medium uppercase leading-snug tracking-[0.08em] text-stone-500 dark:text-zinc-400">
               Nguồn
             </p>
             <p className="mt-1 break-words text-[12px] font-medium leading-snug text-stone-800 dark:text-zinc-200">{a.source}</p>
           </motion.div>
 
-          <motion.div variants={detailStaggerChild} className="py-3">
+          <motion.div variants={detailStaggerChild} className="py-2">
             <p className="break-words text-[12px] font-normal leading-relaxed tracking-tight text-stone-900 dark:text-zinc-100 sm:text-[13px]">
               {a.summary}
             </p>
           </motion.div>
 
           {"cves" in a && a.cves && a.cves.length > 0 ? (
-            <motion.div variants={detailStaggerChild} className="flex flex-wrap gap-1.5 py-3" aria-label="Mã CVE">
+            <motion.div variants={detailStaggerChild} className="flex flex-wrap gap-1.5 py-2" aria-label="Mã CVE">
               {a.cves.map((id) => (
                 <span
                   key={id}
@@ -133,12 +133,12 @@ function ThreatDetailBlocks({
             </motion.div>
           ) : null}
 
-          <motion.div variants={detailStaggerChild} className="py-3">
+          <motion.div variants={detailStaggerChild} className="py-2">
             <p className="text-[8px] font-semibold uppercase tracking-[0.14em] text-stone-500 dark:text-zinc-500">Ảnh hưởng</p>
             <p className="mt-1.5 break-words text-[12px] font-medium leading-relaxed text-stone-900 dark:text-zinc-100">{a.impact}</p>
           </motion.div>
 
-          <motion.div variants={detailStaggerChild} className="border-l-2 border-orange-400/45 py-3 pl-3 dark:border-orange-400/35">
+          <motion.div variants={detailStaggerChild} className="border-l-2 border-orange-400/45 py-2 pl-2.5 dark:border-orange-400/35">
             <div className="flex gap-2.5">
               <Lightning className="mt-0.5 h-4 w-4 shrink-0 text-orange-700 dark:text-orange-300" weight="bold" aria-hidden />
               <div className="min-w-0 flex-1">
@@ -176,20 +176,25 @@ function ThreatNavRows({
     if (stopClickBubble) e.stopPropagation();
   };
   return (
-    <div className="border-t border-stone-200/75 bg-stone-50/80 dark:border-zinc-700/50 dark:bg-zinc-950/50">
-      <div className="flex items-center justify-between gap-3 px-3 py-2.5 sm:px-4">
-        <button type="button" onClick={(e) => { wrap(e); prev(); }} aria-label="Tin trước" className={arrowNavClassName}>
-          <CaretLeft className="h-4 w-4" weight="bold" aria-hidden />
-        </button>
-        <span className="min-w-0 truncate text-center font-mono text-[10px] tabular-nums text-stone-700 dark:text-zinc-300">
-          {i + 1} / {n}
-        </span>
-        <button type="button" onClick={(e) => { wrap(e); next(); }} aria-label="Tin sau" className={arrowNavClassName}>
-          <CaretRight className="h-4 w-4" weight="bold" aria-hidden />
-        </button>
-      </div>
-      <div className="flex justify-end border-t border-stone-200/60 px-3 py-2 dark:border-zinc-700/45 sm:px-4">
-        {articlesLink}
+    <div className="border-t border-stone-200/75 bg-stone-50/90 dark:border-zinc-700/50 dark:bg-zinc-900/85">
+      <div className="flex items-center justify-between gap-2 px-2 py-1 sm:px-2.5">
+        <div className="flex min-w-0 items-center gap-1">
+          <button type="button" onClick={(e) => { wrap(e); prev(); }} aria-label="Tin trước" className={arrowNavClassName}>
+            <CaretLeft className="h-3.5 w-3.5" weight="bold" aria-hidden />
+          </button>
+          <span className="min-w-[2.75rem] shrink-0 text-center font-mono text-[9px] tabular-nums tracking-tight text-stone-700 dark:text-zinc-300">
+            {i + 1}/{n}
+          </span>
+          <button type="button" onClick={(e) => { wrap(e); next(); }} aria-label="Tin sau" className={arrowNavClassName}>
+            <CaretRight className="h-3.5 w-3.5" weight="bold" aria-hidden />
+          </button>
+        </div>
+        <div
+          className="shrink-0"
+          {...(stopClickBubble ? { onClick: (e: React.MouseEvent) => e.stopPropagation() } : {})}
+        >
+          {articlesLink}
+        </div>
       </div>
     </div>
   );
@@ -248,14 +253,14 @@ export function HeroThreatPanel() {
   const articlesCta = (
     <Link
       href="/articles"
-      className="inline-flex shrink-0 rounded-full border border-teal-800/35 bg-teal-800 px-3.5 py-1.5 text-center text-[10px] font-bold text-white transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-900 active:scale-[0.98] dark:border-teal-500/40 dark:bg-teal-600 dark:text-teal-950 dark:hover:bg-teal-400"
+      className="inline-flex min-h-0 shrink-0 items-center rounded-full border border-teal-800/35 bg-teal-800 px-2.5 py-0.5 text-center text-[9px] font-bold leading-none text-white transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-900 active:scale-[0.98] max-md:min-h-9 max-md:px-3 max-md:py-1.5 max-md:text-[10px] dark:border-teal-500/40 dark:bg-teal-600 dark:text-teal-950 dark:hover:bg-teal-400"
     >
       Xem thêm
     </Link>
   );
 
   const flyoutScroll = (
-    <div className="max-h-[min(52dvh,440px)] min-h-0 overflow-y-auto overscroll-contain px-3 py-3 sm:px-4">
+    <div className="max-h-[min(52dvh,440px)] min-h-0 overflow-y-auto overscroll-contain px-2 py-1.5 sm:px-2.5 sm:py-2">
       <ThreatDetailBlocks a={a} i={i} reduceMotion={reduceMotion} />
     </div>
   );
@@ -267,52 +272,54 @@ export function HeroThreatPanel() {
       onMouseEnter={() => setDockHover(true)}
       onMouseLeave={() => setDockHover(false)}
     >
-      <div className="pointer-events-auto overflow-hidden rounded-2xl border border-stone-200/55 bg-white/95 shadow-[0_12px_40px_-24px_rgba(28,25,23,0.12)] dark:border-zinc-600/40 dark:bg-zinc-900/94 dark:shadow-[0_16px_44px_-28px_rgba(0,0,0,0.42)]">
-        <div className="relative px-4 pb-3 pt-4 md:px-5 md:pb-3.5 md:pt-5" role="region" aria-label="Tin cảnh báo bảo mật">
-          <div className="flex min-w-0 gap-3">
+      <div className="pointer-events-auto overflow-hidden rounded-xl border border-stone-200/55 bg-white/95 shadow-[0_12px_40px_-24px_rgba(28,25,23,0.12)] dark:border-zinc-600/40 dark:bg-zinc-900/94 dark:shadow-[0_16px_44px_-28px_rgba(0,0,0,0.42)]">
+        <div className="relative overflow-hidden px-2.5 pb-1.5 pt-2 md:px-3 md:pb-2 md:pt-2.5" role="region" aria-label="Tin cảnh báo bảo mật">
+          <div className="flex min-w-0 gap-1.5 md:gap-2">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={i}
-                className="min-w-0 flex-1"
+                className="min-w-0 flex-1 overflow-hidden"
                 initial={reduceMotion ? false : { opacity: 0, x: 12 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={reduceMotion ? undefined : { opacity: 0, x: -10 }}
                 transition={reduceMotion ? { duration: 0.08 } : springSlide}
               >
-                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-2 md:gap-x-3">
-                  <span className="flex min-w-0 items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-stone-500 dark:text-zinc-400">
+                <div className="flex min-h-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 md:gap-x-2">
+                  <span className="flex min-w-0 max-w-full items-center gap-1 text-[8px] font-bold uppercase tracking-[0.12em] text-stone-500 dark:text-zinc-400 md:text-[9px] md:tracking-[0.14em]">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400 ring-2 ring-amber-400/35" aria-hidden />
                     <span className="truncate">Cảnh báo bảo mật</span>
                   </span>
                   {a.isNew ? <NewBadge /> : null}
                   <SeverityBadge severity={a.severity} label={a.severityLabel} />
-                  <span className="shrink-0 font-mono tabular-nums text-[10px] text-stone-600 dark:text-zinc-300">{a.date}</span>
+                  <span className="shrink-0 font-mono tabular-nums text-[9px] text-stone-600 dark:text-zinc-300 md:text-[10px]">{a.date}</span>
                 </div>
-                <h3 className="mt-3 break-words text-[13px] font-semibold leading-snug tracking-tight text-stone-900 dark:text-white sm:text-sm">
-                  {a.headline}
-                </h3>
-                <p className="mt-2 line-clamp-2 break-words text-[11px] leading-relaxed text-stone-600 dark:text-zinc-300 md:line-clamp-2">
-                  {a.remediation}
-                </p>
+                <div className="mt-1.5 min-h-0 md:min-h-[4.5rem]">
+                  <h3 className="wrap-break-word line-clamp-2 text-[12px] font-semibold leading-snug tracking-tight text-stone-900 dark:text-white sm:text-[13px]">
+                    {a.headline}
+                  </h3>
+                  <p className="mt-1 line-clamp-2 wrap-break-word text-[10px] leading-snug text-stone-600 dark:text-zinc-300 md:text-[11px]">
+                    {a.remediation}
+                  </p>
+                </div>
               </motion.div>
             </AnimatePresence>
             <div className="hidden shrink-0 md:block">
               <span
-                className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-stone-200/70 bg-stone-50/90 text-stone-500 dark:border-zinc-600/70 dark:bg-zinc-800/60 dark:text-zinc-400"
+                className="inline-flex h-6 w-6 items-center justify-center rounded-md border border-stone-200/70 bg-stone-50/90 text-stone-500 dark:border-zinc-600/70 dark:bg-zinc-800/60 dark:text-zinc-400"
                 title="Di chuột vào vùng tin để xem phân tích"
               >
-                <Scan className="h-4 w-4" weight="bold" aria-hidden />
+                <Scan className="h-3 w-3" weight="bold" aria-hidden />
               </span>
             </div>
           </div>
 
-          <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+          <div className="mt-1.5 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
             <div className={`min-w-0 flex-1 ${mobileDetailOpen ? "hidden md:block" : ""}`}>
               <ThreatNavRows i={i} n={n} prev={prev} next={next} articlesLink={articlesCta} />
             </div>
             <button
               type="button"
-              className="flex w-full shrink-0 items-center justify-center gap-1.5 rounded-lg border border-stone-200/80 bg-stone-50/95 py-2 text-[10px] font-semibold text-stone-700 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-100 active:scale-[0.99] dark:border-zinc-600 dark:bg-zinc-800/80 dark:text-zinc-200 dark:hover:bg-zinc-800 sm:w-auto md:hidden"
+              className="flex w-full shrink-0 items-center justify-center gap-1 rounded-lg border border-stone-200/80 bg-stone-50/95 py-1 text-[10px] font-semibold text-stone-700 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-100 active:scale-[0.99] dark:border-zinc-600 dark:bg-zinc-800/80 dark:text-zinc-200 dark:hover:bg-zinc-800 sm:w-auto md:hidden"
               aria-expanded={mobileDetailOpen}
               aria-controls="hero-threat-mobile-detail"
               id="hero-threat-mobile-trigger"
@@ -357,7 +364,7 @@ export function HeroThreatPanel() {
         role="region"
         aria-label="Chi tiết cảnh báo khi di chuột"
       >
-        <div className="pointer-events-auto overflow-hidden rounded-2xl border border-stone-200/60 bg-white shadow-[0_20px_50px_-28px_rgba(0,0,0,0.18)] dark:border-zinc-500/50 dark:bg-zinc-900 dark:shadow-[0_24px_56px_-30px_rgba(0,0,0,0.65)]">
+        <div className="pointer-events-auto overflow-hidden rounded-xl border border-stone-200/60 bg-white shadow-[0_20px_50px_-28px_rgba(0,0,0,0.18)] dark:border-zinc-500/50 dark:bg-zinc-900 dark:shadow-[0_24px_56px_-30px_rgba(0,0,0,0.65)]">
           {flyoutScroll}
         </div>
       </div>
