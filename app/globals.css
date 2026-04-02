@@ -1,26 +1,230 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+html.dark {
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #2dd4bf;
+  --accent-muted: rgba(45, 212, 191, 0.14);
+  --border-subtle: rgba(244, 244, 245, 0.08);
+  --ring-focus: rgba(45, 212, 191, 0.42);
+}
+
+html.light {
+  --background: #f4f4f5;
+  --foreground: #18181b;
+  --muted: #52525b;
+  --accent: #0e7490;
+  --accent-muted: rgba(14, 116, 144, 0.12);
+  --border-subtle: rgba(24, 24, 27, 0.1);
+  --ring-focus: rgba(14, 116, 144, 0.35);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+  --font-sans: var(--font-be-vietnam);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-be-vietnam), system-ui, sans-serif;
+}
+
+@keyframes compliance-marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.compliance-marquee-track {
+  animation: compliance-marquee 48s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .compliance-marquee-track {
+    animation: none;
+    transform: none;
+  }
+}
+
+::selection {
+  background: var(--accent-muted);
+  color: var(--foreground);
+}
+
+/* Fixed grain — pointer-events none */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+html.light body::before {
+  opacity: 0.028;
+}
+
+/* Hero section 1 — isometric mesh plane (3D-style, transform-only animation) */
+.hero-iso-plane {
+  transform: translate(-50%, -50%) rotateX(60deg) rotateZ(21deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  background-image:
+    linear-gradient(rgba(13, 148, 136, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 148, 136, 0.2) 1px, transparent 1px),
+    linear-gradient(rgba(120, 113, 108, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 113, 108, 0.12) 1px, transparent 1px);
+  background-size:
+    52px 52px,
+    52px 52px,
+    52px 52px,
+    52px 52px;
+  background-position:
+    0 0,
+    0 0,
+    26px 26px,
+    26px 26px;
+  /* Wider solid core + fade only at rim — old stops (22%→78%) left most of the grid in soft fade = “mờ” */
+  mask-image: radial-gradient(
+    ellipse 68% 56% at 50% 40%,
+    black 0%,
+    black 48%,
+    rgba(0, 0, 0, 0.45) 72%,
+    transparent 96%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 68% 56% at 50% 40%,
+    black 0%,
+    black 48%,
+    rgba(0, 0, 0, 0.45) 72%,
+    transparent 96%
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-iso-plane {
+    animation: hero-iso-drift 32s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+    will-change: transform;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-iso-plane {
+    will-change: auto;
+  }
+}
+
+@keyframes hero-iso-drift {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotateX(56deg) rotateZ(14deg) scale(1);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotateX(63deg) rotateZ(28deg) scale(1.03);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotateX(59deg) rotateZ(10deg) scale(1.015);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotateX(64deg) rotateZ(22deg) scale(1.025);
+  }
+}
+
+/* Moving sheen — lighter touch than soft-light so wireframe stays readable */
+.hero-3d-shimmer {
+  background: linear-gradient(
+    125deg,
+    transparent 36%,
+    rgba(255, 255, 255, 0.12) 48%,
+    rgba(13, 148, 136, 0.07) 52%,
+    transparent 64%
+  );
+  background-size: 240% 240%;
+  mix-blend-mode: overlay;
+}
+
+/* Wireframe cluster — slow drift so motion reads on the hero */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-3d-svg-wrap {
+    transform-origin: 70% 80%;
+    animation: hero-3d-svg-drift 24s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+    will-change: transform;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-3d-svg-wrap {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+@keyframes hero-3d-svg-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-10px, -6px) rotate(0.55deg);
+  }
+  66% {
+    transform: translate(8px, 8px) rotate(-0.45deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-3d-shimmer {
+    animation: hero-3d-shimmer 16s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-3d-shimmer {
+    animation: none;
+  }
+}
+
+@keyframes hero-3d-shimmer {
+  0%,
+  100% {
+    background-position: 8% 32%;
+  }
+  50% {
+    background-position: 92% 68%;
+  }
+}
+
+.dark .hero-3d-shimmer {
+  background: linear-gradient(
+    125deg,
+    transparent 38%,
+    rgba(45, 212, 191, 0.09) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    transparent 68%
+  );
+  background-size: 240% 240%;
+  mix-blend-mode: overlay;
 }
