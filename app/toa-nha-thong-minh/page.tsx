@@ -32,20 +32,20 @@ export default function SmartBuildingPage() {
       </section>
 
       <SectionShell>
-        <div className="grid items-start gap-12 md:grid-cols-2 md:[&>div:first-child]:order-2">
-          <Reveal x={20}>
+        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <Reveal x={0} className="order-2 lg:order-2 lg:col-span-5">
             <div className={`relative aspect-[4/3] ${ps.imageFrame}`}>
               <Image
                 src={picsum("ics-building-hero", 960, 720, { blur: 1 })}
                 alt="Tòa nhà thông minh và IoT"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 45vw"
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 priority
               />
             </div>
           </Reveal>
-          <Reveal delay={0.06} x={-20}>
+          <Reveal delay={0.06} x={0} className="order-1 lg:order-1 lg:col-span-7">
             <ul className="space-y-4">
               {smartBuilding.bullets.map((b) => (
                 <li
@@ -62,7 +62,7 @@ export default function SmartBuildingPage() {
             <p className="mt-10 text-sm leading-relaxed text-zinc-600 dark:text-zinc-500">
               {smartBuilding.closing}
             </p>
-            <Link href="/lien-he" className={`mt-8 ${ps.ctaPill}`}>
+            <Link href="/lien-he" className={`mt-8 ${ps.ctaPill} inline-flex min-h-11 items-center`}>
               Trao đổi kiến trúc
             </Link>
           </Reveal>

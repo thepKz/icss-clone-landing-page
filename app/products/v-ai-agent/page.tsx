@@ -30,8 +30,8 @@ export default function VAiAgentPage() {
       </section>
 
       <SectionShell>
-        <div className="grid gap-12 md:grid-cols-2 md:items-start">
-          <Reveal>
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+          <Reveal className="lg:col-span-7">
             <p className="text-base leading-relaxed text-muted">{productVAi.body}</p>
             <ul className="mt-8 space-y-3">
               {productVAi.highlights.map((h) => (
@@ -42,21 +42,26 @@ export default function VAiAgentPage() {
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={0.08} x={16}>
+          <Reveal delay={0.06} x={0} className="lg:col-span-5">
             <div className={`relative aspect-[4/3] ${ps.imageFrame}`}>
               <Image
                 src={picsum("ics-v-ai-agent", 900, 675)}
                 alt="Giao tiếp in-app với AI"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 45vw"
+                sizes="(max-width: 1024px) 100vw, 40vw"
               />
             </div>
           </Reveal>
         </div>
-        <Link href="/lien-he" className={`mt-12 ${ps.ctaPill}`}>
-          Đăng ký demo
-        </Link>
+        <div className="mt-12 flex flex-wrap gap-3">
+          <Link href="/lien-he" className={`${ps.ctaPill} min-h-11 items-center`}>
+            Đăng ký demo
+          </Link>
+          <Link href="/products/ai-soc" className={`${ps.ghostOutline} inline-flex min-h-11 items-center`}>
+            Xem AI SOC
+          </Link>
+        </div>
       </SectionShell>
     </>
   );

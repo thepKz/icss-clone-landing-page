@@ -32,8 +32,8 @@ export default function SmartFactoryPage() {
       </section>
 
       <SectionShell>
-        <div className="grid items-start gap-12 md:grid-cols-2">
-          <Reveal>
+        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <Reveal className="lg:col-span-7">
             <ul className="space-y-4">
               {smartFactory.bullets.map((b) => (
                 <li
@@ -51,27 +51,27 @@ export default function SmartFactoryPage() {
               {smartFactory.closing}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/lien-he" className={ps.ctaPill}>
+              <Link href="/lien-he" className={`${ps.ctaPill} inline-flex min-h-11 items-center`}>
                 Đặt lịch tư vấn
               </Link>
               <a
                 href="https://smartdashboard.vn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={ps.ghostOutline}
+                className={`${ps.ghostOutline} inline-flex min-h-11 items-center`}
               >
                 Smart Dashboard
               </a>
             </div>
           </Reveal>
-          <Reveal delay={0.08} x={20}>
+          <Reveal delay={0.06} x={0} className="lg:col-span-5">
             <div className={`relative aspect-[4/3] ${ps.imageFrame}`}>
               <Image
                 src={picsum("ics-factory-hero", 960, 720)}
                 alt="Giám sát nhà máy thông minh"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 45vw"
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 priority
               />
             </div>
