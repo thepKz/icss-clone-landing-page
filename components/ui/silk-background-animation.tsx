@@ -24,7 +24,7 @@ function clamp01(n: number) {
 
 const SILK_DARK = {
   base: [238, 240, 245] as const,
-  overlayAlpha: 0.3,
+  overlayAlpha: 0.22,
 };
 
 export const Component = ({
@@ -202,7 +202,7 @@ export const Component = ({
         style={{
           opacity: effectiveOpacity,
           background:
-            "linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.38) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.22) 100%)",
         }}
       />
     </div>

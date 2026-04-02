@@ -41,10 +41,10 @@ function NavLink({
   return (
     <Link
       href={item.href}
-      className={`relative z-0 shrink-0 rounded-full px-2 py-1.5 text-[13px] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:px-2.5 xl:px-3 xl:text-sm ${className} ${
+      className={`relative z-0 shrink-0 rounded-full px-2 py-1.5 text-[13px] transition-[background-color,box-shadow,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:px-2.5 xl:px-3 xl:text-sm ${className} ${
         solid
-          ? "text-zinc-700 hover:bg-zinc-100/90 dark:text-zinc-200 dark:hover:bg-white/5"
-          : "text-zinc-800 hover:bg-zinc-900/6 dark:text-zinc-100/90 dark:hover:bg-white/10"
+          ? "text-zinc-700 hover:bg-zinc-950 hover:text-white hover:shadow-[0_12px_30px_-16px_rgba(0,0,0,0.45)] dark:text-zinc-200 dark:hover:bg-teal-400 dark:hover:text-teal-950 dark:hover:shadow-[0_14px_34px_-18px_rgba(45,212,191,0.20)]"
+          : "text-zinc-800 hover:bg-zinc-950 hover:text-white hover:shadow-[0_12px_30px_-16px_rgba(0,0,0,0.45)] dark:text-zinc-100/90 dark:hover:bg-teal-400 dark:hover:text-teal-950 dark:hover:shadow-[0_14px_34px_-18px_rgba(45,212,191,0.20)]"
       }`}
     >
       {item.label}
@@ -293,7 +293,7 @@ export function SiteHeader() {
         className={`mx-auto mt-2 flex max-w-[1400px] items-center justify-between gap-3 overflow-visible rounded-xl border px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] md:px-7 md:py-4 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${
           solid
             ? "border-zinc-200/85 bg-white/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_14px_36px_-18px_rgba(15,23,42,0.14)] dark:border-white/12 dark:bg-zinc-950/86 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_42px_-22px_rgba(0,0,0,0.48)]"
-            : "border-zinc-200/55 bg-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_10px_36px_-16px_rgba(15,23,42,0.09)] dark:border-white/8 dark:bg-zinc-950/62 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_14px_40px_-20px_rgba(0,0,0,0.42)]"
+            : "border-transparent bg-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_10px_36px_-16px_rgba(15,23,42,0.09)] dark:border-transparent dark:bg-zinc-950/62 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_14px_40px_-20px_rgba(0,0,0,0.42)]"
         }`}
       >
         <Link
@@ -324,10 +324,10 @@ export function SiteHeader() {
             />
             <Link
               href="/#doi-tac"
-              className={`shrink-0 rounded-full px-2 py-1.5 text-[13px] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:px-2.5 xl:px-3 xl:text-sm ${
+              className={`shrink-0 rounded-full px-2 py-1.5 text-[13px] transition-[background-color,box-shadow,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:px-2.5 xl:px-3 xl:text-sm ${
                 solid
-                  ? "text-zinc-700 hover:bg-zinc-100/90 dark:text-zinc-200 dark:hover:bg-white/5"
-                  : "text-zinc-800 hover:bg-zinc-900/6 dark:text-zinc-100/90 dark:hover:bg-white/10"
+                  ? "text-zinc-700 hover:bg-zinc-950 hover:text-white hover:shadow-[0_12px_30px_-16px_rgba(0,0,0,0.45)] dark:text-zinc-200 dark:hover:bg-teal-400 dark:hover:text-teal-950 dark:hover:shadow-[0_14px_34px_-18px_rgba(45,212,191,0.20)]"
+                  : "text-zinc-800 hover:bg-zinc-950 hover:text-white hover:shadow-[0_12px_30px_-16px_rgba(0,0,0,0.45)] dark:text-zinc-100/90 dark:hover:bg-teal-400 dark:hover:text-teal-950 dark:hover:shadow-[0_14px_34px_-18px_rgba(45,212,191,0.20)]"
               }`}
             >
               Đối tác

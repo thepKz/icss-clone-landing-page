@@ -208,12 +208,6 @@ export function SiteFooter() {
                 className={`${linkMuted} whitespace-nowrap`}
               />
             ))}
-            <Link href="/lien-he" className={`${linkMuted} whitespace-nowrap`}>
-              Chính sách bảo mật
-            </Link>
-            <Link href="/lien-he" className={`${linkMuted} whitespace-nowrap`}>
-              Điều khoản sử dụng
-            </Link>
           </nav>
         </div>
       </div>

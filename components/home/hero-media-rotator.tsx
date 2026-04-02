@@ -53,7 +53,7 @@ export function HeroMediaRotator({ alt, className = "" }: HeroMediaRotatorProps)
           sizes="(max-width: 768px) 100vw, 60vw"
           priority
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-teal-950/75 via-zinc-950/25 to-teal-900/10" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/28 via-stone-800/10 to-transparent dark:from-teal-950/75 dark:via-zinc-950/25 dark:to-teal-900/10" />
         <div
           className="pointer-events-none absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5"
           aria-hidden
@@ -90,7 +90,7 @@ export function HeroMediaRotator({ alt, className = "" }: HeroMediaRotatorProps)
           />
         </motion.div>
       </AnimatePresence>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-teal-950/75 via-zinc-950/25 to-teal-900/10" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/28 via-stone-800/10 to-transparent dark:from-teal-950/75 dark:via-zinc-950/25 dark:to-teal-900/10" />
       <div
         className="pointer-events-none absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5"
         aria-hidden
