@@ -5,6 +5,7 @@ import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SITE_CANONICAL_ORIGIN } from "@/lib/site-canonical";
 import { THEME_STORAGE_KEY } from "@/lib/theme-constants";
 
 const themeBootScript = `(function(){try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");var r=document.documentElement;r.classList.remove("light","dark");r.classList.add(t==="light"?"light":"dark");}catch(e){document.documentElement.classList.add("dark");}})();`;
@@ -22,7 +23,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.icss.com.vn"),
+  metadataBase: new URL(SITE_CANONICAL_ORIGIN),
   title: {
     default: "ICS — An ninh mạng quốc tế",
     template: "%s | ICS",
