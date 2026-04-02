@@ -28,9 +28,9 @@ const detailStaggerChild = {
   },
 };
 
-/** Chỉ mũi tên — mobile giữ vùng chạm tối thiểu; desktop gọn */
-const arrowNavClassName =
-  "flex h-7 w-7 max-md:min-h-[44px] max-md:min-w-[44px] shrink-0 items-center justify-center rounded-md border border-stone-300/85 bg-white text-stone-800 shadow-[0_1px_0_rgba(255,255,255,0.7)] transition-[transform,background-color,border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-50 hover:border-stone-400/90 active:scale-[0.96] dark:border-zinc-500/80 dark:bg-zinc-800 dark:text-zinc-50 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] dark:hover:border-zinc-400/70 dark:hover:bg-zinc-700";
+/** Nút prev/next — phẳng, cùng nền với card */
+const threatNavArrowClass =
+  "flex h-8 w-8 max-md:min-h-[44px] max-md:min-w-[44px] shrink-0 items-center justify-center rounded-md text-stone-600 transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-100/90 hover:text-stone-900 active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-zinc-400 dark:hover:bg-zinc-800/90 dark:hover:text-white dark:focus-visible:ring-teal-500/35 dark:focus-visible:ring-offset-zinc-950";
 
 function defaultAlertIndex(alerts: typeof home.heroSecurityAlerts) {
   const idx = alerts.findIndex((a) => a.source.includes("GitLab"));
@@ -176,16 +176,39 @@ function ThreatNavRows({
     if (stopClickBubble) e.stopPropagation();
   };
   return (
-    <div className="border-t border-stone-200/75 bg-stone-50/90 dark:border-zinc-700/50 dark:bg-zinc-900/85">
-      <div className="flex items-center justify-between gap-2 px-2 py-1 sm:px-2.5">
-        <div className="flex min-w-0 items-center gap-1">
-          <button type="button" onClick={(e) => { wrap(e); prev(); }} aria-label="Tin trước" className={arrowNavClassName}>
+    <div className="border-t border-stone-200/55 dark:border-zinc-700/45">
+      <div className="flex flex-wrap items-center gap-2 px-3 py-2 sm:gap-3 sm:px-4 sm:py-2.5">
+        <div className="flex min-w-0 items-center gap-0.5">
+          <button
+            type="button"
+            onClick={(e) => {
+              wrap(e);
+              prev();
+            }}
+            aria-label="Tin trước"
+            className={threatNavArrowClass}
+          >
             <CaretLeft className="h-3.5 w-3.5" weight="bold" aria-hidden />
           </button>
-          <span className="min-w-[2.75rem] shrink-0 text-center font-mono text-[9px] tabular-nums tracking-tight text-stone-700 dark:text-zinc-300">
-            {i + 1}/{n}
+          <span
+            className="min-w-[2.75rem] shrink-0 px-1 text-center font-mono text-[9px] font-medium tabular-nums tracking-tight text-stone-500 dark:text-zinc-400"
+            aria-live="polite"
+          >
+            <span className="text-stone-800 dark:text-zinc-200">{i + 1}</span>
+            <span className="mx-0.5 text-stone-300 dark:text-zinc-600" aria-hidden>
+              /
+            </span>
+            <span>{n}</span>
           </span>
-          <button type="button" onClick={(e) => { wrap(e); next(); }} aria-label="Tin sau" className={arrowNavClassName}>
+          <button
+            type="button"
+            onClick={(e) => {
+              wrap(e);
+              next();
+            }}
+            aria-label="Tin sau"
+            className={threatNavArrowClass}
+          >
             <CaretRight className="h-3.5 w-3.5" weight="bold" aria-hidden />
           </button>
         </div>
@@ -253,9 +276,10 @@ export function HeroThreatPanel() {
   const articlesCta = (
     <Link
       href="/articles"
-      className="inline-flex min-h-0 shrink-0 items-center rounded-full border border-teal-800/35 bg-teal-800 px-2.5 py-0.5 text-center text-[9px] font-bold leading-none text-white transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-900 active:scale-[0.98] max-md:min-h-9 max-md:px-3 max-md:py-1.5 max-md:text-[10px] dark:border-teal-500/40 dark:bg-teal-600 dark:text-teal-950 dark:hover:bg-teal-400"
+      className="inline-flex min-h-0 shrink-0 items-center gap-1 rounded-md px-2 py-1.5 text-[9px] font-semibold leading-none tracking-tight text-stone-700 transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-100/90 hover:text-stone-900 active:scale-[0.98] max-md:min-h-10 max-md:px-2.5 max-md:py-2 max-md:text-[10px] dark:text-zinc-300 dark:hover:bg-zinc-800/90 dark:hover:text-white"
     >
-      Xem thêm
+      <span>Xem thêm</span>
+      <CaretRight className="h-3 w-3 shrink-0" weight="bold" aria-hidden />
     </Link>
   );
 
@@ -272,9 +296,11 @@ export function HeroThreatPanel() {
       onMouseEnter={() => setDockHover(true)}
       onMouseLeave={() => setDockHover(false)}
     >
-      <div className="pointer-events-auto overflow-hidden rounded-xl border border-stone-200/55 bg-white/95 shadow-[0_12px_40px_-24px_rgba(28,25,23,0.12)] dark:border-zinc-600/40 dark:bg-zinc-900/94 dark:shadow-[0_16px_44px_-28px_rgba(0,0,0,0.42)]">
-        <div className="relative overflow-hidden px-2.5 pb-1.5 pt-2 md:px-3 md:pb-2 md:pt-2.5" role="region" aria-label="Tin cảnh báo bảo mật">
-          <div className="flex min-w-0 gap-1.5 md:gap-2">
+      <div
+        className="pointer-events-auto overflow-hidden rounded-lg border border-stone-200/55 bg-white/98 shadow-[0_10px_32px_-22px_rgba(28,25,23,0.12)] transition-[border-color,box-shadow] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] dark:border-zinc-700/40 dark:bg-zinc-950/98 dark:shadow-[0_16px_40px_-26px_rgba(0,0,0,0.48)] md:group-hover/panel:border-stone-300/75 md:group-hover/panel:shadow-[0_14px_40px_-22px_rgba(28,25,23,0.14)] dark:md:group-hover/panel:border-zinc-600/55 dark:md:group-hover/panel:shadow-[0_20px_48px_-24px_rgba(0,0,0,0.55)]"
+      >
+        <div className="relative overflow-hidden px-3 pb-2 pt-3 md:px-4 md:pb-3 md:pt-4" role="region" aria-label="Tin cảnh báo bảo mật">
+          <div className="flex min-w-0 items-start gap-2 md:gap-2.5">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={i}
@@ -284,42 +310,44 @@ export function HeroThreatPanel() {
                 exit={reduceMotion ? undefined : { opacity: 0, x: -10 }}
                 transition={reduceMotion ? { duration: 0.08 } : springSlide}
               >
-                <div className="flex min-h-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 md:gap-x-2">
+                <div className="flex min-h-[2.85rem] flex-wrap content-center items-center gap-x-1.5 gap-y-1 md:min-h-[2.65rem] md:gap-x-2">
                   <span className="flex min-w-0 max-w-full items-center gap-1 text-[8px] font-bold uppercase tracking-[0.12em] text-stone-500 dark:text-zinc-400 md:text-[9px] md:tracking-[0.14em]">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400 ring-2 ring-amber-400/35" aria-hidden />
                     <span className="truncate">Cảnh báo bảo mật</span>
                   </span>
                   {a.isNew ? <NewBadge /> : null}
                   <SeverityBadge severity={a.severity} label={a.severityLabel} />
-                  <span className="shrink-0 font-mono tabular-nums text-[9px] text-stone-600 dark:text-zinc-300 md:text-[10px]">{a.date}</span>
+                  <span className="shrink-0 font-mono tabular-nums text-[9px] font-semibold text-stone-700 dark:text-zinc-200 md:text-[10px]">{a.date}</span>
                 </div>
-                <div className="mt-1.5 min-h-0 md:min-h-[4.5rem]">
-                  <h3 className="wrap-break-word line-clamp-2 text-[12px] font-semibold leading-snug tracking-tight text-stone-900 dark:text-white sm:text-[13px]">
+                <p className="mt-1 flex min-h-[1rem] flex-wrap items-baseline gap-x-1.5 text-[9px] font-mono leading-snug tracking-tight text-stone-500 dark:text-zinc-400">
+                  <span className="sr-only">Nguồn: </span>
+                  <span className="min-w-0 max-w-full truncate text-stone-700 dark:text-zinc-200">{a.source}</span>
+                </p>
+                <div className="mt-2 md:mt-2.5">
+                  <h3 className="wrap-break-word line-clamp-3 text-[13px] font-semibold leading-snug tracking-tight text-stone-900 dark:text-white sm:text-[14px] md:text-[15px] md:leading-[1.32]">
                     {a.headline}
                   </h3>
-                  <p className="mt-1 line-clamp-2 wrap-break-word text-[10px] leading-snug text-stone-600 dark:text-zinc-300 md:text-[11px]">
-                    {a.remediation}
-                  </p>
+                  <p className="sr-only">{a.summary}</p>
                 </div>
               </motion.div>
             </AnimatePresence>
             <div className="hidden shrink-0 md:block">
               <span
-                className="inline-flex h-6 w-6 items-center justify-center rounded-md border border-stone-200/70 bg-stone-50/90 text-stone-500 dark:border-zinc-600/70 dark:bg-zinc-800/60 dark:text-zinc-400"
-                title="Di chuột vào vùng tin để xem phân tích"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-stone-200/60 bg-stone-50/90 text-stone-500 dark:border-zinc-600/50 dark:bg-zinc-900/75 dark:text-zinc-400"
+                title="Di chuột vào vùng tin để xem tóm tắt và phân tích đầy đủ"
               >
-                <Scan className="h-3 w-3" weight="bold" aria-hidden />
+                <Scan className="h-3.5 w-3.5" weight="bold" aria-hidden />
               </span>
             </div>
           </div>
 
-          <div className="mt-1.5 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+          <div className="mt-2.5 flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between md:mt-3">
             <div className={`min-w-0 flex-1 ${mobileDetailOpen ? "hidden md:block" : ""}`}>
               <ThreatNavRows i={i} n={n} prev={prev} next={next} articlesLink={articlesCta} />
             </div>
             <button
               type="button"
-              className="flex w-full shrink-0 items-center justify-center gap-1 rounded-lg border border-stone-200/80 bg-stone-50/95 py-1 text-[10px] font-semibold text-stone-700 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-100 active:scale-[0.99] dark:border-zinc-600 dark:bg-zinc-800/80 dark:text-zinc-200 dark:hover:bg-zinc-800 sm:w-auto md:hidden"
+              className="flex w-full shrink-0 items-center justify-center gap-1 rounded-md border border-stone-200/60 bg-stone-50/95 py-1.5 text-[10px] font-semibold text-stone-700 transition-[background-color,border-color,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-stone-300/70 hover:bg-stone-100/90 active:scale-[0.99] dark:border-zinc-600/55 dark:bg-zinc-800/80 dark:text-zinc-200 dark:hover:border-zinc-500/50 dark:hover:bg-zinc-800 sm:w-auto md:hidden"
               aria-expanded={mobileDetailOpen}
               aria-controls="hero-threat-mobile-detail"
               id="hero-threat-mobile-trigger"
@@ -364,7 +392,7 @@ export function HeroThreatPanel() {
         role="region"
         aria-label="Chi tiết cảnh báo khi di chuột"
       >
-        <div className="pointer-events-auto overflow-hidden rounded-xl border border-stone-200/60 bg-white shadow-[0_20px_50px_-28px_rgba(0,0,0,0.18)] dark:border-zinc-500/50 dark:bg-zinc-900 dark:shadow-[0_24px_56px_-30px_rgba(0,0,0,0.65)]">
+        <div className="pointer-events-auto overflow-hidden rounded-lg border border-stone-200/55 bg-white/98 shadow-[0_18px_44px_-24px_rgba(28,25,23,0.16)] transition-[border-color,box-shadow] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] dark:border-zinc-700/45 dark:bg-zinc-950/98 dark:shadow-[0_24px_52px_-26px_rgba(0,0,0,0.58)] md:group-hover/panel:border-stone-300/80 md:group-hover/panel:shadow-[0_22px_52px_-22px_rgba(28,25,23,0.18)] dark:md:group-hover/panel:border-zinc-600/55 dark:md:group-hover/panel:shadow-[0_28px_60px_-24px_rgba(0,0,0,0.62)]">
           {flyoutScroll}
         </div>
       </div>

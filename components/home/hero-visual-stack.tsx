@@ -42,19 +42,14 @@ export function HeroVisualStack({ media, metaLine, panel, className }: HeroVisua
   }
 
   return (
-    <motion.div
-      className={className}
-      variants={containerVariants}
-      initial="hidden"
-      animate="show"
-    >
+    <motion.div className={className} variants={containerVariants} initial="hidden" animate="show">
       <motion.div variants={itemVariants} className="w-full">
         {media}
       </motion.div>
       <motion.div variants={itemVariants} className="w-full">
         {metaLine}
       </motion.div>
-      <motion.div variants={itemVariants} className="relative z-[3] w-full overflow-visible">
+      <motion.div variants={itemVariants} className="relative z-3 w-full min-w-0 overflow-visible">
         {panel}
       </motion.div>
     </motion.div>

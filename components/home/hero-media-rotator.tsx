@@ -44,16 +44,17 @@ export function HeroMediaRotator({ alt, className = "" }: HeroMediaRotatorProps)
 
   if (reduceMotion) {
     return (
-      <div className={`relative aspect-[4/3] w-full md:aspect-auto md:min-h-[420px] ${className}`}>
+      <div className={`relative aspect-[4/3] w-full md:aspect-auto md:min-h-[460px] lg:min-h-[500px] ${className}`}>
         <Image
           src={heroMediaFrameUrl(0, 1400, 933)}
           alt={alt}
           fill
-          className="object-cover"
+          className="object-cover saturate-[0.88]"
           sizes="(max-width: 768px) 100vw, 60vw"
           priority
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/28 via-stone-800/10 to-transparent dark:from-teal-950/75 dark:via-zinc-950/25 dark:to-teal-900/10" />
+        <div className="pointer-events-none absolute inset-0 bg-teal-950/[0.22] mix-blend-multiply dark:bg-teal-950/[0.38]" aria-hidden />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/32 via-cyan-950/[0.08] to-teal-900/[0.05] dark:from-teal-950/80 dark:via-slate-950/35 dark:to-cyan-950/15" />
         <div
           className="pointer-events-none absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5"
           aria-hidden
@@ -70,7 +71,7 @@ export function HeroMediaRotator({ alt, className = "" }: HeroMediaRotatorProps)
   }
 
   return (
-    <div className={`relative aspect-[4/3] w-full md:aspect-auto md:min-h-[420px] ${className}`}>
+    <div className={`relative aspect-[4/3] w-full md:aspect-auto md:min-h-[460px] lg:min-h-[500px] ${className}`}>
       <AnimatePresence mode="sync">
         <motion.div
           key={HERO_MEDIA_FRAMES[active].seed}
@@ -84,13 +85,14 @@ export function HeroMediaRotator({ alt, className = "" }: HeroMediaRotatorProps)
             src={heroMediaFrameUrl(active, 1400, 933)}
             alt={alt}
             fill
-            className="object-cover"
+            className="object-cover saturate-[0.88]"
             sizes="(max-width: 768px) 100vw, 60vw"
             priority={active === 0}
           />
         </motion.div>
       </AnimatePresence>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/28 via-stone-800/10 to-transparent dark:from-teal-950/75 dark:via-zinc-950/25 dark:to-teal-900/10" />
+      <div className="pointer-events-none absolute inset-0 bg-teal-950/[0.22] mix-blend-multiply dark:bg-teal-950/[0.38]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/32 via-cyan-950/[0.08] to-teal-900/[0.05] dark:from-teal-950/80 dark:via-slate-950/35 dark:to-cyan-950/15" />
       <div
         className="pointer-events-none absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5"
         aria-hidden

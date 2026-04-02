@@ -31,22 +31,25 @@ export default function ArticlesIndexPage() {
       </section>
 
       <SectionShell>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-8">
+        <div className="flex w-full min-w-0 flex-col gap-10 md:gap-12">
           {featured ? (
-            <Reveal className="lg:col-span-7" delay={0}>
-              <article className={ps.articleCard}>
-                <Link href={`/articles/${featured.slug}`} className="flex h-full flex-col lg:min-h-[320px] lg:flex-row lg:items-stretch">
-                  <div className="relative aspect-[16/9] lg:aspect-auto lg:w-[56%] lg:shrink-0 lg:min-h-[280px]">
+            <Reveal className="w-full min-w-0" delay={0}>
+              <article className={`${ps.articleCard} w-full min-w-0`}>
+                <Link
+                  href={`/articles/${featured.slug}`}
+                  className="flex h-full min-w-0 flex-col md:min-h-[280px] md:flex-row md:items-stretch"
+                >
+                  <div className="relative aspect-video min-h-0 w-full shrink-0 md:aspect-auto md:w-[52%] md:max-w-none md:min-h-[240px]">
                     <Image
                       src={picsum(`ics-article-${featured.slug}`, 960, 540)}
                       alt={featured.title}
                       fill
-                      className="object-cover transition-opacity duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-95 lg:rounded-l-[2rem]"
-                      sizes="(max-width: 1024px) 100vw, 56vw"
+                      className="object-cover transition-opacity duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-95 md:rounded-l-[2rem]"
+                      sizes="(max-width: 768px) 100vw, 52vw"
                       priority
                     />
                   </div>
-                  <div className="flex flex-1 flex-col p-6 md:p-8">
+                  <div className="flex min-w-0 flex-1 flex-col p-6 md:p-8">
                     <time className="font-mono text-xs tabular-nums text-muted">
                       {featured.date} · {featured.readMinutes} phút đọc
                     </time>
@@ -63,21 +66,24 @@ export default function ArticlesIndexPage() {
             </Reveal>
           ) : null}
 
-          <div className="grid grid-cols-1 gap-8 lg:col-span-5">
+          <div className="grid w-full min-w-0 grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 md:gap-x-10">
             {rest.map((a, idx) => (
-              <Reveal key={a.slug} delay={Math.min(0.025 * (idx + 1), 0.2)}>
-                <article className={ps.articleCard}>
-                  <Link href={`/articles/${a.slug}`} className="flex h-full flex-col md:flex-row md:items-stretch">
-                    <div className="relative aspect-[16/9] md:aspect-auto md:w-[44%] md:shrink-0 md:min-h-[200px]">
+              <Reveal key={a.slug} className="min-w-0" delay={Math.min(0.025 * (idx + 1), 0.2)}>
+                <article className={`${ps.articleCard} h-full min-w-0`}>
+                  <Link
+                    href={`/articles/${a.slug}`}
+                    className="flex h-full min-w-0 flex-col sm:flex-row sm:items-stretch"
+                  >
+                    <div className="relative aspect-video w-full shrink-0 sm:aspect-auto sm:w-[42%] sm:min-h-[180px]">
                       <Image
                         src={picsum(`ics-article-${a.slug}`, 720, 400)}
                         alt={a.title}
                         fill
-                        className="object-cover transition-opacity duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-95 md:rounded-l-[2rem]"
-                        sizes="(max-width: 768px) 100vw, 22vw"
+                        className="object-cover transition-opacity duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-95 sm:rounded-l-[2rem]"
+                        sizes="(max-width: 640px) 100vw, 40vw"
                       />
                     </div>
-                    <div className="flex flex-1 flex-col p-6">
+                    <div className="flex min-w-0 flex-1 flex-col p-5 sm:p-6">
                       <time className="font-mono text-xs tabular-nums text-muted">
                         {a.date} · {a.readMinutes} phút đọc
                       </time>
@@ -85,7 +91,7 @@ export default function ArticlesIndexPage() {
                         {a.title}
                       </h2>
                       <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{a.excerpt}</p>
-                      <span className="mt-6 text-sm font-medium text-accent">Đọc tiếp</span>
+                      <span className="mt-5 text-sm font-medium text-accent sm:mt-6">Đọc tiếp</span>
                     </div>
                   </Link>
                 </article>

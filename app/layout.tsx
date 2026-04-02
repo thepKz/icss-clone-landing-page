@@ -50,7 +50,7 @@ export default function RootLayout({
     <html
       lang="vi"
       suppressHydrationWarning
-      className={`${beVietnam.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`dark ${beVietnam.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="relative flex min-h-full flex-col bg-background font-sans text-foreground">
         <Script id="ics-theme-boot" strategy="beforeInteractive">

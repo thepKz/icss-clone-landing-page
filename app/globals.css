@@ -3,7 +3,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant light (&:where(.light, .light *));
 
-html.dark {
+/* Mặc định dark (trước script / khi chưa có .light) */
+html.dark,
+html:not(.light) {
   --background: #09090b;
   --foreground: #f4f4f5;
   --muted: #a1a1aa;
@@ -43,10 +45,15 @@ html.light {
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
   --scrollbar-track: rgba(255, 255, 255, 0.04);
   --scrollbar-thumb: rgba(45, 212, 191, 0.38);
   --scrollbar-thumb-hover: rgba(45, 212, 191, 0.55);
   --scrollbar-corner: transparent;
+}
+
+html.light {
+  color-scheme: light;
 }
 
 @media (prefers-reduced-motion: reduce) {

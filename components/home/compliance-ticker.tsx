@@ -21,7 +21,7 @@ export function ComplianceTicker() {
 
   return (
     <div
-      className="relative border-t border-red-800/35 bg-red-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:border-red-800/45 dark:bg-red-900 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+      className="relative z-10 w-full border-t border-red-800/35 bg-red-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:border-red-800/45 dark:bg-red-900 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
       role="region"
       aria-label="Thông báo pháp lý"
     >

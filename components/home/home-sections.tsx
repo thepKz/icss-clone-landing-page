@@ -6,8 +6,10 @@ import { picsum } from "@/lib/picsum";
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/section-shell";
 import { ComplianceTicker } from "./compliance-ticker";
+import { HomeStatsBento } from "./home-stats-bento";
 import { HeroMediaRotator } from "./hero-media-rotator";
 import { HeroThreatPanel } from "./hero-threat-panel";
+import { HeroVisualStack } from "./hero-visual-stack";
 import SilkBackground from "@/components/ui/silk-background-animation";
 
 function ArrowIcon({ className = "h-4 w-4" }: { className?: string }) {
@@ -25,24 +27,28 @@ function ArrowIcon({ className = "h-4 w-4" }: { className?: string }) {
 
 export function HomeHero() {
   return (
-    <section className="relative flex min-h-[100dvh] flex-col overflow-x-hidden overflow-y-visible bg-white pt-24 dark:bg-zinc-950 md:pt-28">
-      <SilkBackground opacity={0.2} />
+    <section className="relative flex min-h-[min(92dvh,860px)]  flex-col gap-4 overflow-x-hidden overflow-y-visible bg-white pt-24 dark:bg-zinc-950 md:gap-5 md:pt-28 lg:gap-6">
+      <SilkBackground opacity={0.11} />
       <div
-        className="pointer-events-none absolute inset-0 z-0 bg-white/38 dark:bg-transparent"
+        className="pointer-events-none absolute inset-0 z-0 bg-white/42 dark:bg-transparent"
         aria-hidden
       />
       <div className="relative z-[1] flex min-h-0 min-w-0 flex-1 flex-col">
-        <div className="mx-auto grid min-h-0 w-full max-w-[1400px] flex-1 grid-cols-1 content-center gap-10 px-4 pb-6 md:grid-cols-12 md:items-stretch md:gap-x-10 md:gap-y-8 md:px-8 md:pb-8">
+        <div className="mx-auto grid min-h-0 w-full max-w-[1400px] flex-1 grid-cols-1 content-center gap-10 px-4 pb-8 md:grid-cols-12 md:items-stretch md:gap-x-8 md:gap-y-10 md:px-6 md:pb-12 lg:gap-x-10 lg:px-8 lg:pb-14">
         <p
-          className="pointer-events-none absolute bottom-[18%] right-[4%] z-0 hidden select-none font-light leading-none tracking-[-0.04em] text-stone-400/15 dark:text-white/5 md:block md:text-[clamp(4rem,12vw,9rem)]"
+          className="pointer-events-none absolute bottom-[18%] right-[4%] z-0 hidden select-none font-light leading-none tracking-[-0.04em] text-stone-400/[0.09] dark:text-white/[0.035] md:block md:text-[clamp(4rem,12vw,9rem)]"
           aria-hidden
         >
           ICS
         </p>
-        <div className="relative z-[2] order-2 min-w-0 md:order-none md:col-span-5 md:border-r md:border-stone-300/90 md:pr-10 dark:md:border-zinc-700/90 lg:pt-2">
-          <div className="min-w-0">
+        <div className="relative z-[2] order-2 min-w-0 md:order-none md:col-span-5 md:pr-6 lg:pr-8 lg:pt-1">
+          <span
+            className="pointer-events-none absolute top-[14%] right-0 z-0 hidden h-[58%] w-px bg-gradient-to-b from-transparent via-stone-300/75 to-transparent dark:via-zinc-600/70 md:block"
+            aria-hidden
+          />
+          <div className="min-w-0 md:max-w-[min(100%,54ch)]">
           <Reveal eager>
-            <div className="flex flex-wrap items-end gap-x-4 gap-y-2 border-b border-stone-400/55 pb-5 dark:border-zinc-600/80">
+            <div className="flex flex-wrap items-end gap-x-4 gap-y-2 border-b border-stone-400/55 pb-5 dark:border-zinc-600/80 md:mr-10 md:w-[min(100%,42ch)] md:-translate-x-1 lg:mr-16 lg:-translate-x-2">
               <span className="rounded-sm bg-teal-900/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white dark:bg-teal-600/90 dark:text-teal-950">
                 {home.hero.featuredPill}
               </span>
@@ -54,89 +60,102 @@ export function HomeHero() {
           </Reveal>
           <Reveal eager delay={0.05} className="mt-7 md:mt-10">
             <h1 className="max-w-[min(100%,22rem)] text-pretty font-bold tracking-tight text-stone-900 dark:text-white sm:max-w-none">
-              <span className="block text-[1.875rem] leading-[1.1] sm:text-[2.25rem] md:text-[2.65rem] md:leading-[1.06] lg:text-[3.05rem] lg:leading-[1.04]">
+              <span className="block text-[1.875rem] leading-[1.1] sm:text-[2.25rem] md:pl-6 md:text-[2.65rem] md:leading-[1.06] lg:pl-9 lg:text-[3.05rem] lg:leading-[1.04]">
                 {home.hero.titleLead}
               </span>
-              <span className="mt-2 block text-[1.5rem] font-semibold leading-[1.12] text-teal-800 sm:text-[1.75rem] md:mt-2.5 md:text-[2rem] lg:text-[2.25rem] dark:text-teal-400">
+              <span className="mt-2 block text-[1.5rem] font-semibold leading-[1.12] text-teal-800 sm:text-[1.75rem] md:mt-2.5 md:pl-14 md:text-[2rem] lg:pl-[4.75rem] lg:text-[2.25rem] dark:text-teal-400">
                 {home.hero.titleAccent}
               </span>
             </h1>
           </Reveal>
           <Reveal eager delay={0.1} className="mt-6 md:mt-8">
-            <p className="max-w-[min(52ch,100%)] border-l-[3px] border-teal-800/85 pl-4 text-pretty text-base font-medium leading-[1.65] text-stone-800 dark:border-teal-500/70 dark:font-medium dark:text-zinc-200 md:text-lg md:leading-relaxed">
+            <p className="max-w-[min(48ch,100%)] border-l-[3px] border-teal-800/85 py-0.5 pl-4 text-pretty text-base font-medium leading-[1.65] text-stone-800 dark:border-teal-500/70 dark:font-medium dark:text-zinc-200 md:ml-7 md:pl-5 md:text-lg md:leading-relaxed lg:ml-10 lg:max-w-[min(46ch,100%)]">
               {home.hero.tagline}
             </p>
           </Reveal>
-          <Reveal eager delay={0.14} className="mt-9 flex flex-wrap items-center gap-4 md:mt-12">
+          <Reveal eager delay={0.14} className="mt-9 flex flex-wrap items-center gap-4 md:mt-11 md:pl-3 lg:mt-12 lg:pl-5">
             <Link
               href={home.hero.ctaPrimary.href}
-              className="group inline-flex min-h-[44px] items-center gap-3 rounded-xl bg-teal-900 px-6 py-2.5 text-sm font-semibold tracking-tight text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_10px_28px_-12px_rgba(19,78,74,0.22)] ring-1 ring-teal-950/40 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-950 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_32px_-12px_rgba(19,78,74,0.26)] active:translate-y-px active:scale-[0.99] dark:bg-teal-600 dark:text-teal-950 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_10px_28px_-12px_rgba(45,212,191,0.14)] dark:ring-teal-800/50 dark:hover:bg-teal-400"
+              className="group inline-flex min-h-[44px] items-center gap-3 rounded-full bg-teal-900 px-6 py-3 text-sm font-semibold tracking-tight text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_10px_28px_-12px_rgba(19,78,74,0.22)] ring-1 ring-teal-950/40 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-950 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_32px_-12px_rgba(19,78,74,0.26)] active:translate-y-px active:scale-[0.99] dark:bg-teal-600 dark:text-teal-950 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_10px_28px_-12px_rgba(45,212,191,0.14)] dark:ring-teal-800/50 dark:hover:bg-teal-400"
             >
               {home.hero.ctaPrimary.label}
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/20 bg-white/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 dark:border-teal-950/25 dark:bg-teal-950/15 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105 dark:border-teal-950/25 dark:bg-teal-950/15 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
                 <ArrowIcon className="h-3.5 w-3.5" />
               </span>
             </Link>
             <Link
               href={home.hero.ctaSecondary.href}
-              className="group/secondary inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-stone-400/65 bg-white/55 px-5 py-2.5 text-sm font-semibold tracking-tight text-stone-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-teal-800/40 hover:bg-white/85 hover:text-teal-900 active:translate-y-px active:scale-[0.99] dark:border-zinc-500/45 dark:bg-zinc-900/45 dark:text-zinc-100 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:hover:border-teal-500/45 dark:hover:bg-zinc-900/70 dark:hover:text-teal-200"
+              className="group/secondary inline-flex min-h-[44px] items-center gap-2 rounded-full border border-stone-400/65 bg-white/55 px-5 py-2.5 text-sm font-semibold tracking-tight text-stone-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-teal-800/40 hover:bg-white/85 hover:text-teal-900 active:translate-y-px active:scale-[0.99] dark:border-zinc-500/45 dark:bg-zinc-900/45 dark:text-zinc-100 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:hover:border-teal-500/45 dark:hover:bg-zinc-900/70 dark:hover:text-teal-200"
             >
               {home.hero.ctaSecondary.label}
-              <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/secondary:translate-x-0.5" />
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-stone-300/70 bg-stone-50/90 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/secondary:border-teal-800/35 group-hover/secondary:bg-white dark:border-zinc-600/80 dark:bg-zinc-800/60 dark:group-hover/secondary:border-teal-500/40">
+                <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/secondary:translate-x-0.5 group-hover/secondary:-translate-y-px" />
+              </span>
             </Link>
           </Reveal>
-          <Reveal eager delay={0.18} className="mt-10 border-t border-stone-300/90 pt-6 dark:border-zinc-700/90 md:mt-12 md:pt-7">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-600 dark:text-zinc-400">
+          <Reveal eager delay={0.18} className="mt-10 border-t border-stone-300/90 pt-6 dark:border-zinc-700/90 md:mt-12 md:border-t-0 md:pt-0 lg:mt-14">
+            <div className="md:border-t md:border-stone-300/90 md:pt-7 md:dark:border-zinc-700/90 md:pl-2 lg:pl-4">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-600 dark:text-zinc-400 md:pl-5 lg:pl-7">
               Cam kết vận hành
             </p>
             <ul
-              className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-stone-300/80 dark:sm:divide-zinc-700/90"
+              className="mt-4 grid grid-cols-1 gap-4 sm:gap-y-5 md:mt-5 md:grid-cols-3 md:gap-x-0 md:gap-y-0"
               aria-label="Thông tin cam kết ICS"
             >
               {home.hero.trustChips.map((chip, idx) => (
                 <li
                   key={chip.label}
-                  className="sm:min-w-0 sm:px-4 sm:first:pl-0 sm:last:pr-0"
+                  className={
+                    idx === 0
+                      ? "md:min-w-0 md:pr-6 lg:pr-8"
+                      : "md:min-w-0 md:border-l md:border-stone-300/75 md:pl-8 md:pr-3 md:dark:border-zinc-600/70 lg:pl-9 lg:pr-4"
+                  }
                 >
-                  <p className="font-mono text-lg font-semibold tabular-nums tracking-tight text-teal-900 sm:text-xl dark:text-teal-400">
+                  <p
+                    className={`font-mono text-lg font-semibold tabular-nums tracking-tight text-teal-900 sm:text-xl dark:text-teal-400 ${idx === 2 ? "md:whitespace-nowrap" : ""}`}
+                  >
                     {chip.value}
                   </p>
                   <p className="mt-1 max-w-[20ch] text-[13px] leading-snug text-stone-700 dark:text-zinc-300">
                     {chip.label}
                   </p>
                   {idx < home.hero.trustChips.length - 1 ? (
-                    <span className="mt-3 block h-px w-full bg-stone-200/90 sm:hidden dark:bg-zinc-700/80" aria-hidden />
+                    <span className="mt-3 block h-px w-full bg-stone-200/90 md:hidden dark:bg-zinc-700/80" aria-hidden />
                   ) : null}
                 </li>
               ))}
             </ul>
+            </div>
           </Reveal>
           </div>
         </div>
-        <div className="relative z-[1] order-1 flex min-h-0 min-w-0 overflow-visible md:order-none md:col-span-7 md:col-start-6 md:pt-2">
-          <Reveal
-            eager
-            className="relative flex w-full flex-col overflow-visible"
-            delay={0.08}
-            x={0}
-            y={0}
-          >
-            <div className="relative overflow-hidden rounded-lg border border-stone-200/80 shadow-[0_14px_44px_-38px_rgba(28,25,23,0.14)] dark:border-white/10 dark:shadow-[0_18px_48px_-40px_rgba(0,0,0,0.38)]">
-              <HeroMediaRotator alt="SOC, giám sát an ninh mạng và vận hành hệ thống" />
-            </div>
-            <p className="mt-2 hidden text-right font-mono text-[9px] tracking-[0.2em] text-zinc-950 uppercase md:block dark:text-white">
-              Giám sát · SOC · Vận hành
-            </p>
-            <div className="relative z-[3] mt-5 w-full overflow-visible md:mt-6">
-              <HeroThreatPanel />
-            </div>
-          </Reveal>
+        <div className="relative z-[1] order-1 hidden min-h-0 min-w-0 overflow-visible md:order-none md:col-span-7 md:col-start-6 md:flex md:pt-1 lg:pt-2">
+          <HeroVisualStack
+            className="relative flex w-full min-w-0 flex-col gap-0 overflow-visible md:gap-2 md:pl-3 lg:pl-5"
+            media={
+              <div className="w-full md:w-[min(100%,calc(100%+1.25rem))] md:max-w-none md:self-end lg:w-[min(100%,calc(100%+2.25rem))]">
+                <div className="rounded-[1.65rem] bg-stone-200/30 p-1.5 ring-1 ring-stone-300/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.42)] dark:bg-zinc-800/45 dark:ring-white/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                  <div className="overflow-hidden rounded-[calc(1.65rem-6px)] border border-stone-200/85 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_16px_48px_-36px_rgba(28,25,23,0.18)] dark:border-white/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_52px_-38px_rgba(0,0,0,0.45)]">
+                    <HeroMediaRotator alt="SOC, giám sát an ninh mạng và vận hành hệ thống" />
+                  </div>
+                </div>
+              </div>
+            }
+            metaLine={
+              <p className="mt-3 hidden pr-8 text-right font-mono text-[9px] tracking-[0.22em] text-zinc-950 uppercase md:block dark:text-zinc-200">
+                Giám sát · SOC · Vận hành
+              </p>
+            }
+            panel={
+              <div className="relative z-[2] mt-5 w-full md:mt-8 md:w-full md:max-w-none md:self-stretch md:pl-0 md:pr-2 lg:mt-9 lg:pr-4">
+                <HeroThreatPanel />
+              </div>
+            }
+          />
         </div>
         </div>
       </div>
-      <div className="relative z-[4] w-full shrink-0">
-        <ComplianceTicker />
-      </div>
+      <ComplianceTicker />
     </section>
   );
 }
@@ -145,44 +164,14 @@ export function HomeStats() {
   return (
     <SectionShell
       id="doi-tac"
-      className="scroll-mt-28 border-t border-zinc-200/80 bg-white dark:border-white/[0.06] dark:bg-zinc-950/40"
+      className="scroll-mt-28 border-t border-zinc-200/80 bg-gradient-to-b from-zinc-50/90 via-white to-white dark:border-white/[0.06] dark:from-zinc-950 dark:via-zinc-950 dark:to-zinc-950/80"
     >
-      <div className="border-b border-zinc-200/90 pb-10 dark:border-white/[0.08] md:pb-12">
-        <Reveal>
-          <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-500">
-            {home.stats.eyebrow}
-          </p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-3xl">
-            {home.stats.title}
-          </h2>
-          <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-zinc-500">
-            {home.stats.subtitle}
-          </p>
-        </Reveal>
-      </div>
-      <div className="mt-0 lg:flex lg:items-start lg:justify-between">
-        {home.stats.items.map((item, idx) => (
-          <Reveal
-            key={item.label}
-            delay={0.05 * idx}
-            className={
-              idx > 0
-                ? "mt-10 border-t border-zinc-200/90 pt-10 dark:border-white/[0.08] lg:mt-0 lg:w-0 lg:flex-1 lg:border-l lg:border-t-0 lg:border-zinc-200/90 lg:px-10 lg:pt-12 lg:pb-2 dark:lg:border-white/[0.08]"
-                : "pt-10 lg:w-0 lg:flex-1 lg:px-0 lg:pr-10 lg:pt-12 lg:pb-2"
-            }
-          >
-            <p className="text-[11px] font-medium uppercase tracking-wider text-zinc-500">
-              {item.label}
-            </p>
-            <p className="mt-3 text-3xl font-semibold tabular-nums tracking-tight text-foreground md:text-[2.35rem] md:leading-none">
-              {item.value}
-            </p>
-            <p className="mt-3 max-w-[28ch] text-sm leading-relaxed text-zinc-500">
-              {item.hint}
-            </p>
-          </Reveal>
-        ))}
-      </div>
+      <HomeStatsBento
+        eyebrow={home.stats.eyebrow}
+        title={home.stats.title}
+        subtitle={home.stats.subtitle}
+        items={home.stats.items}
+      />
     </SectionShell>
   );
 }
@@ -488,3 +477,5 @@ export function HomeNewsTeaser() {
     </SectionShell>
   );
 }
+
+export { ComplianceTicker } from "./compliance-ticker";
