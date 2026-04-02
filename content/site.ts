@@ -39,9 +39,13 @@ export const navFooterSolutions: NavItem[] = [
 
 export const navFooterMeta: NavItem[] = [
   { href: "/gioi-thieu", label: "Giới thiệu về ICS" },
+  { href: "/khach-hang", label: "Khách hàng" },
+  { href: "/hoat-dong-xa-hoi", label: "Hoạt động xã hội" },
   { href: "/articles", label: "Tin tức" },
   { href: "/lien-he", label: "Liên hệ" },
   { href: "/tuyen-dung", label: "Tuyển dụng" },
+  { href: "/chinh-sach-bao-mat", label: "Chính sách bảo mật" },
+  { href: "/dieu-khoan", label: "Điều khoản sử dụng" },
 ];
 
 export const navPrimary: NavItem[] = [
@@ -79,9 +83,24 @@ export const navMegaAbout: NavMegaItem[] = [
     description: "Về công ty ICS và định hướng phát triển",
   },
   {
-    href: "/gioi-thieu",
+    href: "/khach-hang",
     label: "Khách hàng",
-    description: "Khách hàng và lĩnh vực phục vụ",
+    description: "Lĩnh vực phục vụ và phạm vi triển khai",
+  },
+  {
+    href: "/hoat-dong-xa-hoi",
+    label: "Hoạt động xã hội",
+    description: "Chia sẻ tri thức và đồng hành cộng đồng an toàn số",
+  },
+  {
+    href: "/chinh-sach-bao-mat",
+    label: "Chính sách bảo mật",
+    description: "Minh bạch cách xử lý thông tin khi bạn liên hệ và truy cập website",
+  },
+  {
+    href: "/dieu-khoan",
+    label: "Điều khoản sử dụng",
+    description: "Điều kiện sử dụng nội dung và kênh thông tin chính thức của ICS",
   },
 ];
 
@@ -424,6 +443,150 @@ export const contactPage = {
   title: "Liên hệ",
   subtitle:
     "Đội ngũ ICS phản hồi các yêu cầu tư vấn giải pháp, hợp tác và báo chí trong giờ làm việc.",
+};
+
+export const corporateHoatDongXaHoi = {
+  title: "Hoạt động xã hội",
+  description:
+    "Chương trình chia sẻ tri thức, đào tạo và đồng hành cộng đồng doanh nghiệp về an ninh mạng.",
+  intro:
+    "ICS duy trì các hoạt động nhằm nâng cao nhận thức, bồi dưỡng nguồn lực và hỗ trợ tổ chức Việt Nam chủ động phòng vệ trước rủi ro số.",
+  initiatives: [
+    {
+      title: "Workshop và hội thảo chuyên đề",
+      body:
+        "Cập nhật threat landscape, khung pháp lý và kỹ thuật cụ thể theo ngành, phù hợp đội CISO, IT và lãnh đạo vận hành.",
+    },
+    {
+      title: "Đồng hành giáo dục và nghề nghiệp",
+      body:
+        "Chia sẻ kinh nghiệm thực chiến từ SOC, kiểm thử và kiến trúc Zero Trust cho sinh viên và chuyên gia đầu nghề.",
+    },
+    {
+      title: "Hợp tác cộng đồng bảo mật",
+      body:
+        "Phối hợp sự kiện kỹ thuật và diễn đàn trao đổi có quy trình, hướng tới môi trường chia sẻ có trách nhiệm.",
+    },
+  ],
+  note:
+    "Lịch chi tiết từng chương trình được cập nhật theo từng đợt hợp tác; vui lòng liên hệ để phối hợp truyền thông hoặc đồng tổ chức.",
+};
+
+export const corporateKhachHang = {
+  title: "Khách hàng",
+  description:
+    "ICS phục vụ doanh nghiệp có hệ thống trọng yếu: tài chính, sản xuất, hạ tầng số và tổ chức có yêu cầu tuân thủ cao.",
+  intro:
+    "Chúng tôi triển khai SOC, bảo vệ ứng dụng, endpoint và không gian OT/IT với phạm vi hợp đồng rõ ràng, báo cáo định kỳ và đội vận hành hỗ trợ theo cam kết từng dự án.",
+  segments: [
+    {
+      title: "Ngân hàng và dịch vụ tài chính",
+      body:
+        "Giám sát liên tục, ứng phó sự cố và tư vấn tuân thủ phù hợp mức độ nhạy cảm của luồng dữ liệu và giao dịch.",
+    },
+    {
+      title: "Sản xuất và hạ tầng trọng yếu",
+      body:
+        "Bảo vệ nhà máy thông minh, liên thông OT/IT và giảm thời gian gián đoạn do sự cố an ninh.",
+    },
+    {
+      title: "Tổ chức đa chi nhánh",
+      body:
+        "Kiến trúc thống nhất cho tòa nhà thông minh, endpoint và đám mây, với một đầu mối điều phối cảnh báo.",
+    },
+  ],
+  proofLine:
+    "Mục tiêu vận hành và số liệu minh họa nằm tại phần tóm tắt trên trang chủ; hồ sơ năng lực chi tiết có thể được chia sẻ sau buổi làm việc đầu tiên.",
+};
+
+export const legalPrivacy = {
+  title: "Chính sách bảo mật",
+  description:
+    "Cách ICS thu thập, sử dụng và bảo vệ thông tin khi bạn tương tác với website và các kênh liên lạc chính thức.",
+  updated: "Cập nhật minh họa: tháng 4/2026",
+  sections: [
+    {
+      heading: "Phạm vi áp dụng",
+      paragraphs: [
+        "Chính sách này mô tả thông lệ đối với thông tin do bạn cung cấp qua biểu mẫu liên hệ, email, điện thoại hoặc các kênh do ICS quản lý (website, mạng xã hội chính thức).",
+        "Nội dung mang tính tóm tắt nhằm minh bạch với khách truy cập; điều khoản cụ thể trong hợp đồng dịch vụ (nếu có) được ưu tiên áp dụng cho dữ liệu phát sinh từ hợp đồng đó.",
+      ],
+    },
+    {
+      heading: "Dữ liệu có thể xử lý",
+      paragraphs: [
+        "Thông tin nhận diện liên hệ (họ tên, chức danh, đơn vị), thông tin liên lạc (email, số điện thoại), nội dung tin nhắn hoặc tệp bạn đính kèm khi được mời gửi.",
+        "Dữ liệu kỹ thuật cơ bản do trình duyệt gửi (ví dụ địa chỉ IP rút gọn, loại thiết bị) để vận hành bảo mật website và chống lạm dụng.",
+      ],
+    },
+    {
+      heading: "Mục đích sử dụng",
+      paragraphs: [
+        "Trả lời yêu cầu tư vấn, báo giá, hợp tác và tuyển dụng.",
+        "Cải thiện nội dung website, đo lường ẩn danh mức độ quan tâm (khi bật công cụ phân tích và tuân thủ thông báo cookie).",
+        "Tuân thủ nghĩa vụ pháp lý có thể áp dụng đối với nhà cung cấp dịch vụ an ninh mạng tại Việt Nam.",
+      ],
+    },
+    {
+      heading: "Lưu trữ và bảo vệ",
+      paragraphs: [
+        "Thời gian lưu giữ phụ thuộc mục đích xử lý và yêu cầu lưu trữ hồ sơ sau khi chốt tư vấn hoặc ký kết hợp đồng.",
+        "ICS áp dụng biện pháp tổ chức và kỹ thuật phù hợp để hạn chế truy cập trái phép, mất mát hoặc thay đổi dữ liệu.",
+      ],
+    },
+    {
+      heading: "Chia sẻ với bên thứ ba",
+      paragraphs: [
+        "Chúng tôi không bán dữ liệu cá nhân. Thông tin có thể được chia sẻ với nhà cung cấp hạ tầng (hosting, email) hoặc đối tác triển khai trong phạm vi cần thiết và có cam kết bảo mật.",
+      ],
+    },
+    {
+      heading: "Quyền của bạn",
+      paragraphs: [
+        "Bạn có thể yêu cầu truy cập, chỉnh sửa hoặc ngừng xử lý trong phạm vi pháp luật cho phép bằng cách liên hệ qua email hoặc địa chỉ công bố trên trang Liên hệ.",
+      ],
+    },
+  ],
+};
+
+export const legalTerms = {
+  title: "Điều khoản sử dụng",
+  description:
+    "Điều kiện bạn đồng ý khi truy cập website ICS và sử dụng nội dung được công bố tại đây.",
+  updated: "Cập nhật minh họa: tháng 4/2026",
+  sections: [
+    {
+      heading: "Chấp nhận điều khoản",
+      paragraphs: [
+        "Việc sử dụng website đồng nghĩa bạn đọc và chấp nhận các điều khoản dưới đây. Nếu không đồng ý, vui lòng ngừng truy cập.",
+      ],
+    },
+    {
+      heading: "Nội dung và bản quyền",
+      paragraphs: [
+        "Văn bản, hình ảnh, nhãn hiệu và sắp xếp hiển thị thuộc quyền sở hữu của ICS hoặc được cấp phép sử dụng. Không sao chép cho mục đích thương mại nếu chưa có văn bản cho phép.",
+      ],
+    },
+    {
+      heading: "Miễn trừ trách nhiệm",
+      paragraphs: [
+        "Thông tin trên website nhằm mục đích giới thiệu và giáo dục tổng quát, không thay cho tư vấn pháp lý, kiểm thử hoặc khẳng định mức độ an toàn của một hệ thống cụ thể.",
+        "ICS không chịu trách nhiệm đối với thiệt hại gián tiếp phát sinh từ việc bạn dựa vào nội dung công khai mà không qua xác nhận bằng hợp đồng dịch vụ.",
+      ],
+    },
+    {
+      heading: "Liên kết ngoài",
+      paragraphs: [
+        "Website có thể dẫn tới trang của đối tác hoặc tổ chức thứ ba. ICS không kiểm soát nội dung đó; bạn chịu trách nhiệm khi tiếp tục truy cập.",
+      ],
+    },
+    {
+      heading: "Thay đổi điều khoản",
+      paragraphs: [
+        "ICS có thể chỉnh sửa điều khoản để phản ánh thay đổi pháp lý hoặc vận hành. Phiên bản đăng tải tại trang này là phiên bản hiện hành.",
+      ],
+    },
+  ],
 };
 
 export const smartFactory = {
