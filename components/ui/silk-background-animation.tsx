@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useTheme } from "@/components/theme-provider";
 
 type SilkBackgroundAnimationProps = {
@@ -22,6 +22,11 @@ function clamp01(n: number) {
   return Math.max(0, Math.min(1, n));
 }
 
+const SILK_DARK = {
+  base: [238, 240, 245] as const,
+  overlayAlpha: 0.3,
+};
+
 export const Component = ({
   className = "",
   opacity = 1.0,
@@ -31,27 +36,11 @@ export const Component = ({
   const theme = useTheme().theme;
   const isDark = theme === "dark";
 
-  // Nếu muốn giảm/biến đổi opacity tùy theme thì chỉnh chỗ này
-  // Light cần thấy được texture (nhưng vẫn không được "xám"), dark giữ lại silk.
+  // Light: trắng tinh — không phủ silk; Dark: dùng full prop.
   const effectiveOpacity = isDark ? opacity : 0;
 
   // step càng nhỏ = họa tiết càng mịn (CPU sẽ tăng)
   const step = 3;
-
-  const colors = useMemo(() => {
-    // Dark: silk càng sáng thì nhìn nổi, light: silk càng tối thì đỡ chói
-    const dark = {
-      base: [238, 240, 245] as const,     // RGB chính trên dark mode
-      overlayAlpha: 0.22,                 // alpha lớp overlay radial (độ mờ)
-    };
-    const light = {
-      // Light mode: silk read as subtle ink (đừng làm nền bị nâng xám)
-      base: [10, 12, 14] as const,
-      overlayAlpha: 0.05,
-    };
-    // => Muốn chỉnh màu thì đổi các giá trị này
-    return theme === "dark" ? dark : light;
-  }, [theme]);
 
   useEffect(() => {
     if (!isDark) return;
@@ -95,24 +84,20 @@ export const Component = ({
       const w = canvas.width;
       const h = canvas.height;
 
-      // Clear first; for light mode we avoid painting a near-white base
-      // to prevent washing-out / "xám" look.
       ctx.clearRect(0, 0, w, h);
-      if (theme === "dark") {
-        const grad = ctx.createLinearGradient(0, 0, w, h);
-        grad.addColorStop(0, "rgba(7,7,10,1)");
-        grad.addColorStop(0.5, "rgba(20,20,24,1)");
-        grad.addColorStop(1, "rgba(7,7,10,1)");
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, w, h);
-      }
+      const grad = ctx.createLinearGradient(0, 0, w, h);
+      grad.addColorStop(0, "rgba(7,7,10,1)");
+      grad.addColorStop(0.5, "rgba(20,20,24,1)");
+      grad.addColorStop(1, "rgba(7,7,10,1)");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
 
       // === Các biến động chính cho silk pattern ===
       const img = ctx.createImageData(w, h);
       const data = img.data;
-      const baseR = colors.base[0];
-      const baseG = colors.base[1];
-      const baseB = colors.base[2];
+      const baseR = SILK_DARK.base[0];
+      const baseG = SILK_DARK.base[1];
+      const baseB = SILK_DARK.base[2];
 
       // TỐC ĐỘ & BIÊN ĐỘ (hiệu ứng động, đổi được)
       const speed = 0.02;         // Tốc độ animation
@@ -143,12 +128,7 @@ export const Component = ({
           const rnd = noise(x / w, y / h);
           const intensity = clamp01(pattern - (rnd / 15.0) * noiseIntensity);
 
-          // Contrast tuning:
-          // - dark: keep near-black base (micro-contrast)
-          // - light: keep subtle dark ink (paper-like)
-          const c = clamp01(
-            theme === "dark" ? 0.06 + intensity * 0.22 : 0.06 + intensity * 0.18
-          );
+          const c = clamp01(0.06 + intensity * 0.24);
 
           const r = Math.floor(baseR * c);
           const g = Math.floor(baseG * c);
@@ -181,8 +161,8 @@ export const Component = ({
         h / 2,
         Math.max(w, h) / 2
       );
-      overlay.addColorStop(0, `rgba(0,0,0,${theme === "dark" ? 0.08 : 0.01})`);
-      overlay.addColorStop(1, `rgba(0,0,0,${colors.overlayAlpha})`);
+      overlay.addColorStop(0, "rgba(0,0,0,0.1)");
+      overlay.addColorStop(1, `rgba(0,0,0,${SILK_DARK.overlayAlpha})`);
       ctx.fillStyle = overlay;
       ctx.fillRect(0, 0, w, h);
 
@@ -197,27 +177,19 @@ export const Component = ({
       window.removeEventListener("resize", resize);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [colors.base, colors.overlayAlpha, step, theme, isDark]);
+  }, [step, isDark]);
 
   if (!isDark) {
-    // Light mode: trắng tinh, tắt hoàn toàn silk canvas để không bị "xám/nhạt".
     return (
       <div
         className={`pointer-events-none absolute inset-0 z-0 overflow-hidden ${className}`}
         aria-hidden="true"
-        style={{ background: "#ffffff" }}
       />
     );
   }
 
   return (
     <div className={`pointer-events-none absolute inset-0 z-0 overflow-hidden ${className}`}>
-      {/* 
-        Tùy chỉnh style/opacity ở <canvas> và overlay:
-        - opacity (truyền vào prop hoặc chỉnh trực tiếp)
-        - background radial overlay phía dưới gradient
-        - muốn thêm/bớt lớp, chỉnh phía dưới
-      */}
       <canvas
         ref={canvasRef}
         className="h-full w-full"
@@ -230,9 +202,7 @@ export const Component = ({
         style={{
           opacity: effectiveOpacity,
           background:
-            theme === "dark"
-              ? "linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0) 38%, rgba(0,0,0,0.35) 100%)"
-              : "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.10) 70%, rgba(0,0,0,0.16) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.38) 100%)",
         }}
       />
     </div>

@@ -43,7 +43,7 @@ export function SiteFooter() {
   const telHotline = `tel:${company.hotline.replace(/\./g, "")}`;
 
   return (
-    <footer className="relative border-t border-stone-300/80 bg-[#F0EFEC] text-stone-900 dark:border-white/[0.08] dark:bg-zinc-950 dark:text-zinc-100">
+    <footer className="relative border-t border-stone-300/80 bg-white text-stone-900 dark:border-white/[0.08] dark:bg-zinc-950 dark:text-zinc-100">
       <div className="mx-auto max-w-[1400px] px-4 py-16 md:px-8 md:py-20">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-x-16 lg:gap-y-12">
           <div className="flex flex-col justify-between gap-10 lg:col-span-5">

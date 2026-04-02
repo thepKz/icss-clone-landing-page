@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "crawl:icss": "node scripts/crawl-icss.mjs",
+    "discover:routes": "node scripts/discover-icss-routes.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -22,6 +24,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "playwright": "^1.59.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

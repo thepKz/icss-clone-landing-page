@@ -40,11 +40,7 @@ function SeverityBadge({ severity, label }: { severity: AlertSeverity; label: st
 
 function NewBadge() {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-red-950/40 bg-red-700 px-2.5 py-1 text-[11px] font-bold uppercase leading-none tracking-wider text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] dark:border-red-900/55 dark:bg-red-800">
-      <span className="relative flex h-2 w-2 shrink-0" aria-hidden>
-        <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-35 motion-safe:animate-ping" />
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-      </span>
+    <span className="rounded border border-red-800/35 bg-red-800/10 px-1.5 py-px text-[9px] font-bold uppercase tracking-wider text-red-800 dark:border-red-500/40 dark:bg-red-950/35 dark:text-red-200">
       Mới
     </span>
   );
@@ -89,32 +85,23 @@ export function HeroThreatPanel() {
       >
         <div className="absolute inset-0 rounded-lg bg-[radial-gradient(650px_circle_at_18%_0%,rgba(20,184,166,0.26),transparent_60%),radial-gradient(520px_circle_at_80%_110%,rgba(13,148,136,0.16),transparent_56%)] blur-2xl opacity-100 dark:bg-[radial-gradient(650px_circle_at_18%_0%,rgba(45,212,191,0.26),transparent_60%),radial-gradient(520px_circle_at_80%_110%,rgba(20,184,166,0.18),transparent_56%)]" />
       </div>
-      <div className="flex flex-col gap-3 border-b border-stone-200/85 px-3 py-2.5 dark:border-zinc-700/85 sm:px-4 md:flex-row md:items-center md:gap-4 md:py-3">
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
-            <span className="rounded-md border border-teal-800/22 bg-teal-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-teal-900 dark:border-teal-500/28 dark:bg-teal-950/55 dark:text-teal-200">
-              Tin ATTT
-            </span>
-            {a.isNew ? <NewBadge /> : null}
+      <div className="relative border-b border-stone-200/85 px-3 py-3 dark:border-zinc-700/85 sm:px-4 sm:py-3.5">
+        <div className="min-w-0 md:pr-28">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <SeverityBadge severity={a.severity} label={a.severityLabel} />
+            {a.isNew ? <NewBadge /> : null}
+            <span className="font-mono tabular-nums text-[10px] text-stone-600 dark:text-zinc-400">{a.date}</span>
           </div>
           <h3
             className={`mt-2 text-[13px] font-semibold leading-snug tracking-tight text-stone-900 dark:text-white sm:text-sm ${
-              expanded ? "line-clamp-none" : "line-clamp-2 md:line-clamp-1"
+              expanded ? "line-clamp-none" : "line-clamp-3 md:line-clamp-2"
             }`}
           >
             {a.headline}
           </h3>
-          <div className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[10px] text-stone-600 dark:text-zinc-400">
-            <span className="font-mono tabular-nums text-stone-700 dark:text-zinc-300">{a.date}</span>
-            <span className="text-stone-400 dark:text-zinc-600" aria-hidden>
-              |
-            </span>
-            <span className="min-w-0 truncate font-medium">{a.source}</span>
-          </div>
         </div>
 
-        <div className="flex shrink-0 flex-wrap items-center gap-1 border-t border-stone-200/80 pt-3 dark:border-zinc-700/80 md:border-t-0 md:pt-0 md:border-l md:pl-4 md:border-stone-200/80 dark:md:border-zinc-700/80">
+        <div className="mt-3 flex max-w-full flex-wrap items-center gap-1 border-t border-stone-200/75 pt-3 dark:border-zinc-700/75 md:mt-0 md:absolute md:right-2.5 md:top-2.5 md:border-0 md:pt-0 md:opacity-0 md:pointer-events-none md:transition-opacity md:duration-500 md:ease-[cubic-bezier(0.32,0.72,0,1)] md:group-hover:pointer-events-auto md:group-hover:opacity-100 md:group-focus-within:pointer-events-auto md:group-focus-within:opacity-100">
           <button
             type="button"
             onClick={(e) => {
@@ -158,7 +145,7 @@ export function HeroThreatPanel() {
           <Link
             href="/articles"
             onClick={(e) => e.stopPropagation()}
-            className="ml-0.5 shrink-0 rounded-full border border-teal-800/25 bg-teal-800 px-2.5 py-1 text-center text-[9px] font-bold text-white transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-900/90 active:scale-[0.98] dark:border-teal-500/40 dark:bg-teal-600 dark:text-teal-950 dark:hover:bg-teal-400"
+            className="ml-0.5 shrink-0 rounded-full border border-teal-800/30 bg-teal-800/95 px-2.5 py-1 text-center text-[9px] font-bold text-white transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-900/90 active:scale-[0.98] dark:border-teal-500/40 dark:bg-teal-600 dark:text-teal-950 dark:hover:bg-teal-400"
           >
             Xem thêm
           </Link>
@@ -195,7 +182,10 @@ export function HeroThreatPanel() {
       >
         <div className="min-h-0 overflow-hidden">
           <div className="border-t border-stone-200/90 px-3 py-3 dark:border-zinc-700/90 sm:px-4">
-            <div className="rounded-lg border border-stone-200/80 bg-stone-50/90 px-2.5 py-2 dark:border-zinc-600/80 dark:bg-zinc-800/40">
+            <p className="text-[10px] font-medium text-stone-500 dark:text-zinc-500">
+              Nguồn: <span className="text-stone-700 dark:text-zinc-300">{a.source}</span>
+            </p>
+            <div className="mt-2.5 rounded-lg border border-stone-200/80 bg-stone-50/90 px-2.5 py-2 dark:border-zinc-600/80 dark:bg-zinc-800/40">
               <p className="text-[11px] leading-relaxed text-stone-700 dark:text-zinc-300">{a.summary}</p>
             </div>
 

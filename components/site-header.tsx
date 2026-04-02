@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CaretDown, List, X } from "@phosphor-icons/react";
 import {
@@ -18,25 +17,17 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 const spring = { type: "spring" as const, stiffness: 320, damping: 28 };
 
-function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
+const megaPanelEase = [0.32, 0.72, 0, 1] as const;
 
-function megaItemActive(pathname: string, item: NavMegaItem) {
-  if (item.external) return false;
-  const h = item.href;
-  if (h === "/") return pathname === "/";
-  return pathname === h || pathname.startsWith(`${h}/`);
-}
+const megaPanelEnter = {
+  duration: 0.2,
+  ease: megaPanelEase,
+};
 
-function megaGroupActive(pathname: string, items: NavMegaItem[]) {
-  return items.some((i) => megaItemActive(pathname, i));
-}
-
-function pathStartsWith(pathname: string, prefix: string) {
-  return pathname === prefix || pathname.startsWith(`${prefix}/`);
-}
+const megaPanelExit = {
+  duration: 0.14,
+  ease: megaPanelEase,
+};
 
 function NavLink({
   item,
@@ -47,17 +38,13 @@ function NavLink({
   solid: boolean;
   className?: string;
 }) {
-  const pathname = usePathname();
-  const active = isActive(pathname, item.href);
   return (
     <Link
       href={item.href}
-      className={`rounded-full px-2.5 py-1.5 text-[13px] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] xl:px-3 xl:text-sm ${className} ${
-        active
-          ? "bg-zinc-950 font-semibold text-white shadow-[0_12px_30px_-16px_rgba(0,0,0,0.45)] dark:bg-teal-400 dark:text-teal-950 dark:shadow-[0_14px_34px_-18px_rgba(45,212,191,0.20)]"
-          : solid
-            ? "text-zinc-700 hover:bg-zinc-100/90 dark:text-zinc-200 dark:hover:bg-white/5"
-            : "text-zinc-800 hover:bg-zinc-900/6 dark:text-zinc-100/90 dark:hover:bg-white/10"
+      className={`relative z-0 shrink-0 rounded-full px-2 py-1.5 text-[13px] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:px-2.5 xl:px-3 xl:text-sm ${className} ${
+        solid
+          ? "text-zinc-700 hover:bg-zinc-100/90 dark:text-zinc-200 dark:hover:bg-white/5"
+          : "text-zinc-800 hover:bg-zinc-900/6 dark:text-zinc-100/90 dark:hover:bg-white/10"
       }`}
     >
       {item.label}
@@ -108,7 +95,6 @@ function NavMega({
   id,
   label,
   items,
-  activePrefixes,
   menuOpen,
   setMenuOpen,
   solid,
@@ -116,26 +102,46 @@ function NavMega({
   id: string;
   label: string;
   items: NavMegaItem[];
-  activePrefixes: string[];
   menuOpen: string | null;
-  setMenuOpen: (v: string | null) => void;
+  setMenuOpen: Dispatch<SetStateAction<string | null>>;
   solid: boolean;
 }) {
   const open = menuOpen === id;
-  const active = activePrefixes.some((prefix) => pathStartsWith(usePathname(), prefix));
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearCloseTimer = () => {
+    if (!closeTimeoutRef.current) return;
+    clearTimeout(closeTimeoutRef.current);
+    closeTimeoutRef.current = null;
+  };
+
+  useEffect(() => {
+    return () => clearCloseTimer();
+  }, []);
 
   return (
     <div
-      className="relative"
-      onMouseEnter={() => setMenuOpen(id)}
-      onMouseLeave={() => setMenuOpen(null)}
+      className="relative z-[55] shrink-0"
+      onMouseEnter={() => {
+        clearCloseTimer();
+        setMenuOpen(id);
+      }}
+      onMouseLeave={() => {
+        clearCloseTimer();
+        closeTimeoutRef.current = setTimeout(() => {
+          setMenuOpen((current) => (current === id ? null : current));
+        }, 200);
+      }}
     >
       <button
         type="button"
-        onClick={() => setMenuOpen(open ? null : id)}
-        className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[13px] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] xl:px-3 xl:text-sm ${
-          open || active
-            ? "bg-zinc-950 font-semibold text-white shadow-[0_12px_30px_-16px_rgba(0,0,0,0.45)] dark:bg-teal-400 dark:text-teal-950 dark:shadow-[0_14px_34px_-18px_rgba(45,212,191,0.20)]"
+        onClick={() => {
+          clearCloseTimer();
+          setMenuOpen(open ? null : id);
+        }}
+        className={`inline-flex items-center gap-1 rounded-full px-2 py-1.5 text-[13px] font-semibold transition-[background-color,box-shadow,color,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:px-2.5 xl:px-3 xl:text-sm ${
+          open
+            ? "bg-zinc-950 text-white shadow-[0_12px_30px_-16px_rgba(0,0,0,0.45)] dark:bg-teal-400 dark:text-teal-950 dark:shadow-[0_14px_34px_-18px_rgba(45,212,191,0.20)]"
             : solid
               ? "text-zinc-700 hover:bg-zinc-100/90 dark:text-zinc-200 dark:hover:bg-white/5"
               : "text-zinc-800 hover:bg-zinc-900/6 dark:text-zinc-100/90 dark:hover:bg-white/10"
@@ -146,33 +152,53 @@ function NavMega({
       >
         {label}
         <CaretDown
-          className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+          className={`h-3.5 w-3.5 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
             open ? "-rotate-180" : ""
           }`}
           weight="bold"
           aria-hidden
         />
       </button>
-      <div
-        id={`nav-panel-${id}`}
-        className={`absolute left-0 top-full z-60 -mt-1 w-[min(calc(100vw-2rem),22rem)] pt-2 transition-[opacity,visibility] duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] lg:w-[min(100vw-4rem,26rem)] ${
-          open
-            ? "visible opacity-100"
-            : "pointer-events-none invisible opacity-0"
-        }`}
-        role="region"
-        aria-label={label}
-      >
-        <div className="rounded-2xl border border-zinc-200/95 bg-white p-2 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.2)] dark:border-white/10 dark:bg-zinc-950 dark:shadow-[0_24px_56px_-12px_rgba(0,0,0,0.55)]">
-          <ul className="max-h-[min(70dvh,28rem)] space-y-0.5 overflow-y-auto overscroll-contain py-0.5">
-            {items.map((item) => (
-              <li key={`${item.href}-${item.label}`}>
-                <MegaLink item={item} onPick={() => setMenuOpen(null)} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            key={`nav-panel-${id}`}
+            id={`nav-panel-${id}`}
+            className="absolute left-0 top-full z-[60] w-[min(calc(100vw-2rem),22rem)] pt-2 lg:w-[min(100vw-4rem,26rem)]"
+            style={{ transformOrigin: "0 0", willChange: "transform, opacity" }}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0, transition: megaPanelEnter }}
+            exit={{
+              opacity: 0,
+              y: 4,
+              pointerEvents: "none",
+              transition: megaPanelExit,
+            }}
+            onMouseEnter={() => {
+              clearCloseTimer();
+              setMenuOpen(id);
+            }}
+            onMouseLeave={() => {
+              clearCloseTimer();
+              closeTimeoutRef.current = setTimeout(() => {
+                setMenuOpen((current) => (current === id ? null : current));
+              }, 200);
+            }}
+            role="region"
+            aria-label={label}
+          >
+            <div className="rounded-2xl border border-zinc-200/80 bg-white/92 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.75),0_20px_50px_-14px_rgba(15,23,42,0.18)] backdrop-blur-xl dark:border-white/12 dark:bg-zinc-950/90 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_56px_-14px_rgba(0,0,0,0.5)] dark:backdrop-blur-xl">
+              <ul className="max-h-[min(70dvh,28rem)] space-y-0.5 overflow-y-auto overscroll-contain py-0.5">
+                {items.map((item) => (
+                  <li key={`${item.href}-${item.label}`}>
+                    <MegaLink item={item} onPick={() => setMenuOpen(null)} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }
@@ -207,7 +233,6 @@ const mobileItemVariants = {
 };
 
 export function SiteHeader() {
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState<string | null>(null);
@@ -257,23 +282,18 @@ export function SiteHeader() {
     };
   }, [menuOpen]);
 
-  useEffect(() => {
-    setOpen(false);
-    setMenuOpen(null);
-  }, [pathname]);
-
   const solid = scrolled || open;
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50"
+      className="fixed inset-x-0 top-0 z-50 overflow-visible"
       ref={headerRef}
     >
       <div
-        className={`mx-auto mt-2 flex max-w-[1400px] items-center justify-between gap-3 rounded-none border px-4 py-4 md:px-8 transition-[background,backdrop-filter,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`mx-auto mt-2 flex max-w-[1400px] items-center justify-between gap-3 overflow-visible rounded-xl border px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] md:px-7 md:py-4 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${
           solid
-            ? "border-zinc-200/80 bg-white/90 backdrop-blur-xl shadow-[0_14px_34px_-20px_rgba(0,0,0,0.22)] dark:border-white/8 dark:bg-zinc-950/85 dark:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.55)]"
-            : "border-transparent bg-transparent backdrop-blur-0 shadow-none"
+            ? "border-zinc-200/85 bg-white/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_14px_36px_-18px_rgba(15,23,42,0.14)] dark:border-white/12 dark:bg-zinc-950/86 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_42px_-22px_rgba(0,0,0,0.48)]"
+            : "border-zinc-200/55 bg-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_10px_36px_-16px_rgba(15,23,42,0.09)] dark:border-white/8 dark:bg-zinc-950/62 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_14px_40px_-20px_rgba(0,0,0,0.42)]"
         }`}
       >
         <Link
@@ -283,56 +303,55 @@ export function SiteHeader() {
           <span className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-white">
             {company.brand}
           </span>
-          <span className="hidden text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 sm:inline">
+          <span className="hidden text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 xl:inline">
             Security
           </span>
         </Link>
 
         <nav
-          className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:flex"
+          className="hidden min-w-0 flex-1 items-center justify-center overflow-visible py-1 lg:flex"
           aria-label="Chính"
         >
-          <NavLink item={{ href: "/", label: "Trang chủ" }} solid={solid} />
-          <NavMega
-            id="about"
-            label="Về chúng tôi"
-            items={navMegaAbout}
-            activePrefixes={["/gioi-thieu"]}
-            menuOpen={menuOpen}
-            setMenuOpen={setMenuOpen}
-            solid={solid}
-          />
-          <Link
-            href="/#doi-tac"
-            className={`rounded-full px-2.5 py-1.5 text-[13px] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] xl:px-3 xl:text-sm ${
-              solid
-                ? "text-zinc-700 hover:bg-zinc-100/90 dark:text-zinc-200 dark:hover:bg-white/5"
-                : "text-zinc-800 hover:bg-zinc-900/6 dark:text-zinc-100/90 dark:hover:bg-white/10"
-            }`}
-          >
-            Đối tác
-          </Link>
-          <NavMega
-            id="consult"
-            label="Tư vấn"
-            items={navMegaConsult}
-            activePrefixes={["/toa-nha-thong-minh", "/nha-may-thong-minh"]}
-            menuOpen={menuOpen}
-            setMenuOpen={setMenuOpen}
-            solid={solid}
-          />
-          <NavMega
-            id="products"
-            label="Sản phẩm"
-            items={navMegaProducts}
-            activePrefixes={["/products"]}
-            menuOpen={menuOpen}
-            setMenuOpen={setMenuOpen}
-            solid={solid}
-          />
-          <NavLink item={{ href: "/articles", label: "Tin tức" }} solid={solid} />
-          <NavLink item={{ href: "/tuyen-dung", label: "Tuyển dụng" }} solid={solid} />
-          <NavLink item={{ href: "/lien-he", label: "Liên hệ" }} solid={solid} />
+          <div className="flex w-max items-center gap-0.5 px-3 py-0.5">
+            <NavLink item={{ href: "/", label: "Trang chủ" }} solid={solid} />
+            <NavMega
+              id="about"
+              label="Về chúng tôi"
+              items={navMegaAbout}
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
+              solid={solid}
+            />
+            <Link
+              href="/#doi-tac"
+              className={`shrink-0 rounded-full px-2 py-1.5 text-[13px] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:px-2.5 xl:px-3 xl:text-sm ${
+                solid
+                  ? "text-zinc-700 hover:bg-zinc-100/90 dark:text-zinc-200 dark:hover:bg-white/5"
+                  : "text-zinc-800 hover:bg-zinc-900/6 dark:text-zinc-100/90 dark:hover:bg-white/10"
+              }`}
+            >
+              Đối tác
+            </Link>
+            <NavMega
+              id="consult"
+              label="Tư vấn"
+              items={navMegaConsult}
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
+              solid={solid}
+            />
+            <NavMega
+              id="products"
+              label="Sản phẩm"
+              items={navMegaProducts}
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
+              solid={solid}
+            />
+            <NavLink item={{ href: "/articles", label: "Tin tức" }} solid={solid} />
+            <NavLink item={{ href: "/tuyen-dung", label: "Tuyển dụng" }} solid={solid} />
+            <NavLink item={{ href: "/lien-he", label: "Liên hệ" }} solid={solid} />
+          </div>
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">

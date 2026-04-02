@@ -14,7 +14,7 @@ html.dark {
 }
 
 html.light {
-  --background: #f4f4f5;
+  --background: #ffffff;
   --foreground: #18181b;
   --muted: #52525b;
   --accent: #0e7490;
@@ -84,7 +84,7 @@ body::before {
 }
 
 html.light body::before {
-  opacity: 0.028;
+  opacity: 0.018;
 }
 
 /* Hero section 1 — isometric mesh plane (3D-style, transform-only animation) */
