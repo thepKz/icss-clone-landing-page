@@ -3,7 +3,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
-const spring = { type: "spring" as const, stiffness: 100, damping: 20 };
+/** Tight spring: quick settle, minimal overshoot on mobile scroll reveals */
+const spring = { type: "spring" as const, stiffness: 300, damping: 40 };
 
 type RevealProps = {
   children: ReactNode;
@@ -12,19 +13,22 @@ type RevealProps = {
   y?: number;
   x?: number;
   once?: boolean;
+  /** Above-the-fold: skip enter motion to avoid layout shift on first paint */
+  eager?: boolean;
 };
 
 export function Reveal({
   children,
   className,
   delay = 0,
-  y = 20,
+  y = 12,
   x = 0,
   once = true,
+  eager = false,
 }: RevealProps) {
   const reduce = useReducedMotion();
 
-  if (reduce) {
+  if (reduce || eager) {
     return <div className={className}>{children}</div>;
   }
 

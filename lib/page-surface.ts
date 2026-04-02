@@ -43,5 +43,5 @@ export const pageSurface = {
     "bg-teal-600 ring-4 ring-zinc-100 dark:bg-cyan-400/80 dark:ring-zinc-950",
 
   articleCard:
-    "group flex h-full flex-col overflow-hidden rounded-[2rem] border border-zinc-200/90 bg-white/90 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 dark:border-white/[0.07] dark:bg-zinc-900/25",
+    "group flex h-full flex-col overflow-hidden rounded-[2rem] border border-zinc-200/90 bg-white/90 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 focus-within:ring-2 focus-within:ring-[var(--ring-focus)] focus-within:ring-offset-2 focus-within:ring-offset-[var(--background)] dark:border-white/[0.07] dark:bg-zinc-900/25",
 } as const;
