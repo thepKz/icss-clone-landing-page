@@ -6,7 +6,7 @@ import {
   Clock,
   Medal,
 } from "@phosphor-icons/react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 
 type StatItem = {
   label: string;
@@ -18,17 +18,201 @@ type HomeStatsBentoProps = {
   eyebrow: string;
   title: string;
   subtitle: string;
+  introSecondary: string;
+  introMetaLine: string;
   items: StatItem[];
 };
 
 const icons = [Buildings, Clock, ChartLine, Medal] as const;
 
 const springShow = { type: "spring" as const, stiffness: 120, damping: 22 };
+const springHover = { type: "spring" as const, stiffness: 420, damping: 28 };
+
+/** Thu nhỏ cỡ số so với trước; SLA (99,9%) nhẹ hơn một nhịp */
+function valueSizeClass(idx: number, compact: boolean): string {
+  if (compact) {
+    if (idx === 2) return "text-[1.05rem] sm:text-[1.15rem]";
+    if (idx === 3) return "text-[1.28rem] sm:text-[1.4rem]";
+    return "text-[1.15rem] sm:text-[1.28rem]";
+  }
+  if (idx === 2) return "text-[1.45rem] sm:text-[1.55rem] md:text-[1.62rem]";
+  if (idx === 3) return "text-[1.65rem] sm:text-[1.78rem] md:text-[1.92rem]";
+  return "text-[1.55rem] sm:text-[1.68rem] md:text-[1.82rem]";
+}
+
+/** Giãn khoảng cách ký tự trong số — đặc biệt “99,9%” */
+function valueTrackingClass(idx: number): string {
+  if (idx === 2) {
+    return "tracking-[0.055em] sm:tracking-[0.07em] md:tracking-[0.08em]";
+  }
+  return "tracking-[0.028em] sm:tracking-[0.038em]";
+}
+
+const fadeChild: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: springShow,
+  },
+};
+
+function tileVariants(stagger: number): Variants {
+  return {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ...springShow,
+        staggerChildren: stagger,
+        delayChildren: 0.05,
+      },
+    },
+  };
+}
+
+/** Cùng họ với card tin / editorial phía dưới trang chủ */
+const cardShell =
+  "border border-zinc-200/90 bg-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] shadow-sm dark:border-white/[0.07] dark:bg-zinc-900/25 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:shadow-none";
+
+const iconShell =
+  "flex shrink-0 items-center justify-center rounded-lg border border-zinc-300/80 bg-zinc-100/80 text-zinc-500 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-400";
+
+const valueColor =
+  "font-mono font-semibold leading-none text-zinc-900 tabular-nums dark:text-white";
+
+function StatTile({
+  item,
+  idx,
+  compact,
+  gridClass,
+  reduceMotion,
+}: {
+  item: StatItem;
+  idx: number;
+  compact: boolean;
+  gridClass: string;
+  reduceMotion: boolean;
+}) {
+  const Icon = icons[idx] ?? Buildings;
+  const vSize = valueSizeClass(idx, compact);
+  const track = valueTrackingClass(idx);
+  const tileV = tileVariants(compact ? 0.06 : 0.07);
+
+  const hoverProps = reduceMotion
+    ? {}
+    : {
+        whileHover: { y: -3 },
+        transition: springHover,
+      };
+
+  if (compact) {
+    return (
+      <motion.article
+        variants={tileV}
+        className={`group relative min-h-0 ${gridClass}`}
+        {...hoverProps}
+      >
+        <div
+          className={`relative flex h-full min-h-[112px] flex-col justify-between overflow-hidden rounded-xl p-3 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] sm:min-h-[120px] sm:rounded-xl sm:p-3.5 ${cardShell} group-hover:shadow-md dark:group-hover:shadow-[0_12px_40px_-24px_rgba(0,0,0,0.5)]`}
+        >
+          <div
+            className="pointer-events-none absolute inset-0 block opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-100 dark:hidden"
+            aria-hidden
+            style={{
+              background:
+                "radial-gradient(100% 70% at 100% 0%, rgba(0,0,0,0.05) 0%, transparent 50%)",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0 hidden opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-100 dark:block"
+            aria-hidden
+            style={{
+              background:
+                "radial-gradient(100% 70% at 100% 0%, rgba(255,255,255,0.06) 0%, transparent 50%)",
+            }}
+          />
+          <motion.div
+            variants={fadeChild}
+            className="relative flex items-start justify-between gap-2"
+          >
+            <p className="line-clamp-3 text-[8px] font-semibold uppercase leading-snug tracking-[0.14em] text-zinc-500 sm:text-[8.5px] sm:tracking-[0.15em] dark:text-zinc-400">
+              {item.label}
+            </p>
+            <span
+              className={`${iconShell} h-6 w-6 rounded-md sm:h-7 sm:w-7`}
+              aria-hidden
+            >
+              <Icon className="h-3 w-3 sm:h-3.5 sm:w-3.5" weight="regular" />
+            </span>
+          </motion.div>
+          <motion.div variants={fadeChild} className="relative mt-4">
+            <p className={`${valueColor} ${vSize} ${track}`}>{item.value}</p>
+            <p className="mt-3 max-w-[40ch] text-[10px] font-medium leading-[1.55] text-zinc-600 sm:text-[11px] sm:leading-relaxed dark:text-zinc-400">
+              {item.hint}
+            </p>
+          </motion.div>
+        </div>
+      </motion.article>
+    );
+  }
+
+  return (
+    <motion.article
+      variants={tileV}
+      className={`group relative min-h-0 ${gridClass}`}
+      {...hoverProps}
+    >
+      <div
+        className={`relative flex h-full flex-col justify-between overflow-hidden rounded-2xl p-4 transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] sm:min-h-[148px] sm:p-5 md:min-h-[156px] md:rounded-2xl md:p-5 ${cardShell} group-hover:shadow-md dark:group-hover:shadow-[0_16px_48px_-28px_rgba(0,0,0,0.55)]`}
+      >
+        <div
+          className="pointer-events-none absolute inset-0 block opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-100 dark:hidden"
+          aria-hidden
+          style={{
+            background:
+              "radial-gradient(120% 80% at 100% 0%, rgba(0,0,0,0.05) 0%, transparent 55%)",
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 hidden opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-100 dark:block"
+          aria-hidden
+          style={{
+            background:
+              "radial-gradient(120% 80% at 100% 0%, rgba(255,255,255,0.06) 0%, transparent 55%)",
+          }}
+        />
+
+        <motion.div
+          variants={fadeChild}
+          className="relative flex items-start justify-between gap-3"
+        >
+          <p className="max-w-[20ch] text-[9px] font-semibold uppercase leading-snug tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
+            {item.label}
+          </p>
+          <span className={`${iconShell} h-7 w-7`} aria-hidden>
+            <Icon className="h-3.5 w-3.5" weight="regular" />
+          </span>
+        </motion.div>
+
+        <motion.div variants={fadeChild} className="relative mt-5 md:mt-5">
+          <p className={`${valueColor} ${vSize} ${track}`}>{item.value}</p>
+          <p className="mt-3 max-w-[34ch] text-xs font-medium leading-[1.55] text-zinc-600 md:text-[0.8125rem] md:leading-[1.6] dark:text-zinc-400">
+            {item.hint}
+          </p>
+        </motion.div>
+      </div>
+    </motion.article>
+  );
+}
 
 export function HomeStatsBento({
   eyebrow,
   title,
   subtitle,
+  introSecondary,
+  introMetaLine,
   items,
 }: HomeStatsBentoProps) {
   const reduce = useReducedMotion();
@@ -37,128 +221,168 @@ export function HomeStatsBento({
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.09,
-        delayChildren: 0.06,
+        staggerChildren: 0.1,
+        delayChildren: 0.08,
       },
     },
   } as const;
 
-  const cell = {
-    hidden: { opacity: 0, y: 22 },
+  const introContainer: Variants = {
+    hidden: {},
     visible: {
-      opacity: 1,
-      y: 0,
-      transition: springShow,
+      transition: {
+        staggerChildren: 0.09,
+        delayChildren: 0.06,
+      },
     },
-  } as const;
+  };
+
+  const introChild: Variants = {
+    hidden: { opacity: 0, y: 14 },
+    visible: { opacity: 1, y: 0, transition: springShow },
+  };
+
+  const reduceMotion = reduce ?? false;
 
   return (
-    <motion.div
-      className="relative"
-      initial={reduce ? "visible" : "hidden"}
-      animate={reduce ? "visible" : undefined}
-      whileInView={reduce ? undefined : "visible"}
-      viewport={
-        reduce ? undefined : { once: true, margin: "-12% 0px", amount: 0.15 }
-      }
-      variants={container}
-    >
-      <div
-        className="pointer-events-none absolute -left-4 top-1/2 hidden h-[min(70%,420px)] w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-teal-700/35 to-transparent dark:via-teal-500/30 lg:block"
-        aria-hidden
-      />
-
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-12 lg:grid-rows-2 lg:gap-x-5 lg:gap-y-5">
+    <div className="relative">
+      <motion.div
+        className="lg:hidden grid grid-cols-2 gap-x-2.5 gap-y-2.5 sm:gap-x-3 sm:gap-y-3"
+        initial={reduceMotion ? "visible" : "hidden"}
+        animate={reduceMotion ? "visible" : undefined}
+        whileInView={reduceMotion ? undefined : "visible"}
+        viewport={
+          reduceMotion
+            ? undefined
+            : { once: true, margin: "-8% 0px", amount: 0.12 }
+        }
+        variants={container}
+      >
         <motion.header
-          variants={cell}
-          className="relative flex flex-col justify-center sm:col-span-2 lg:col-span-5 lg:row-span-2 lg:pr-4 lg:pb-4"
+          variants={introContainer}
+          className="col-span-2 px-0.5"
         >
-          <span className="inline-flex w-fit items-center rounded-full border border-zinc-200/90 bg-zinc-50/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-white/10 dark:bg-zinc-900/60 dark:text-zinc-400 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+          <motion.span
+            variants={introChild}
+            className="inline-flex w-fit items-center rounded-full border border-accent/40 bg-accent-muted px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent"
+          >
             {eyebrow}
-          </span>
-          <h2 className="mt-5 max-w-[16ch] text-pretty text-3xl font-semibold tracking-tight text-zinc-900 sm:max-w-none md:text-[2.15rem] md:leading-[1.12] dark:text-white">
+          </motion.span>
+          <motion.h2
+            variants={introChild}
+            className="mt-5 max-w-[18ch] text-pretty text-2xl font-semibold tracking-tight text-zinc-900 sm:mt-6 sm:max-w-none sm:text-3xl md:text-[2.05rem] md:leading-tight dark:text-white"
+          >
             {title}
-          </h2>
-          <p className="mt-4 max-w-[52ch] text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+          </motion.h2>
+          <motion.p
+            variants={introChild}
+            className="mt-4 max-w-[60ch] text-base leading-relaxed text-zinc-500 sm:mt-5"
+          >
             {subtitle}
-          </p>
-          <div
-            className="mt-8 h-px w-full max-w-[12rem] bg-gradient-to-r from-teal-800/50 via-zinc-300/80 to-transparent dark:from-teal-500/40 dark:via-zinc-600/50 sm:max-w-xs"
-            aria-hidden
-          />
+          </motion.p>
+          <motion.p
+            variants={introChild}
+            className="mt-4 max-w-[58ch] text-sm leading-relaxed text-zinc-500 sm:mt-5"
+          >
+            {introSecondary}
+          </motion.p>
+          <motion.div variants={introChild} className="mt-8 sm:mt-10">
+            <p className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500 sm:text-[11px]">
+              {introMetaLine}
+            </p>
+            <div
+              className="mt-4 h-px w-full max-w-xl bg-zinc-200 dark:bg-zinc-800"
+              aria-hidden
+            />
+          </motion.div>
         </motion.header>
+        {items.map((item, idx) => (
+          <StatTile
+            key={item.label}
+            item={item}
+            idx={idx}
+            compact
+            gridClass="col-span-1 min-w-0"
+            reduceMotion={reduceMotion}
+          />
+        ))}
+      </motion.div>
 
+      <motion.div
+        className="relative hidden lg:grid lg:grid-cols-12 lg:grid-rows-2 lg:gap-x-6 lg:gap-y-6"
+        initial={reduceMotion ? "visible" : "hidden"}
+        animate={reduceMotion ? "visible" : undefined}
+        whileInView={reduceMotion ? undefined : "visible"}
+        viewport={
+          reduceMotion
+            ? undefined
+            : { once: true, margin: "-12% 0px", amount: 0.15 }
+        }
+        variants={container}
+      >
+        <div
+          className="pointer-events-none absolute -left-4 top-1/2 hidden h-[min(70%,380px)] w-px -translate-y-1/2 bg-linear-to-b from-transparent via-zinc-300/70 to-transparent dark:via-zinc-600/50 lg:block"
+          aria-hidden
+        />
+        <motion.header
+          variants={introContainer}
+          className="col-span-5 row-span-2 flex flex-col justify-center pr-5 pb-2"
+        >
+            <motion.span
+              variants={introChild}
+              className="inline-flex w-fit items-center rounded-full border border-accent/40 bg-accent-muted px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent"
+            >
+              {eyebrow}
+            </motion.span>
+            <motion.h2
+              variants={introChild}
+              className="mt-5 max-w-[18ch] text-pretty text-2xl font-semibold tracking-tight text-zinc-900 sm:mt-6 sm:max-w-none sm:text-3xl md:text-[2.05rem] md:leading-tight dark:text-white"
+            >
+              {title}
+            </motion.h2>
+            <motion.p
+              variants={introChild}
+              className="mt-4 max-w-[60ch] text-base leading-relaxed text-zinc-500 sm:mt-5"
+            >
+              {subtitle}
+            </motion.p>
+            <motion.p
+              variants={introChild}
+              className="mt-4 max-w-[58ch] text-sm leading-relaxed text-zinc-500 sm:mt-5"
+            >
+              {introSecondary}
+            </motion.p>
+            <motion.div variants={introChild} className="mt-8 sm:mt-10">
+              <p className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500 sm:text-[11px]">
+                {introMetaLine}
+              </p>
+              <div
+                className="mt-4 h-px w-full max-w-xl bg-zinc-200 dark:bg-zinc-800"
+                aria-hidden
+              />
+            </motion.div>
+        </motion.header>
         {items.map((item, idx) => {
-          const Icon = icons[idx] ?? Buildings;
-          const isFirst = idx === 0;
-          const isLast = idx === items.length - 1;
           const gridClass =
             idx === 0
-              ? "sm:col-span-2 lg:col-span-3 lg:col-start-6 lg:row-start-1"
+              ? "col-span-3 col-start-6 row-start-1"
               : idx === 1
-                ? "sm:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1"
+                ? "col-span-4 col-start-9 row-start-1"
                 : idx === 2
-                  ? "sm:col-span-1 lg:col-span-4 lg:col-start-6 lg:row-start-2"
-                  : "sm:col-span-2 lg:col-span-3 lg:col-start-10 lg:row-start-2";
-
+                  ? "col-span-4 col-start-6 row-start-2"
+                  : "col-span-3 col-start-10 row-start-2";
           return (
-            <motion.article
+            <StatTile
               key={item.label}
-              variants={cell}
-              className={`group relative min-h-0 ${gridClass}`}
-            >
-              <div
-                className={`relative flex h-full flex-col justify-between overflow-hidden rounded-[1.35rem] p-5 shadow-[0_20px_50px_-38px_rgba(24,24,27,0.35)] transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] sm:min-h-[168px] sm:p-6 md:rounded-[1.5rem] md:p-7 dark:shadow-[0_24px_56px_-40px_rgba(0,0,0,0.65)] ${
-                  isFirst
-                    ? "bg-gradient-to-br from-teal-50/95 via-white to-zinc-50/90 ring-1 ring-teal-800/15 dark:from-teal-950/35 dark:via-zinc-900/70 dark:to-zinc-950/80 dark:ring-teal-500/20"
-                    : isLast
-                      ? "bg-zinc-50/95 ring-1 ring-zinc-300/80 sm:flex-row sm:items-end sm:justify-between sm:gap-6 lg:flex-col lg:items-stretch lg:justify-between dark:bg-zinc-900/40 dark:ring-white/[0.09]"
-                      : "bg-white/90 ring-1 ring-zinc-200/90 dark:bg-zinc-900/55 dark:ring-white/[0.08]"
-                } `}
-              >
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-100"
-                  aria-hidden
-                  style={{
-                    background:
-                      "radial-gradient(120% 80% at 100% 0%, rgba(19,78,74,0.06) 0%, transparent 55%)",
-                  }}
-                />
-                <div className="pointer-events-none absolute inset-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]" />
-
-                <div className="relative flex items-start justify-between gap-3">
-                  <p className="max-w-[20ch] text-[10px] font-semibold uppercase leading-snug tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
-                    {item.label}
-                  </p>
-                  <span
-                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-active:scale-[0.97] ${
-                      isFirst
-                        ? "border-teal-800/20 bg-teal-900/10 text-teal-900 dark:border-teal-400/25 dark:bg-teal-400/10 dark:text-teal-300"
-                        : "border-zinc-200/80 bg-zinc-100/80 text-zinc-600 dark:border-white/10 dark:bg-zinc-800/60 dark:text-zinc-300"
-                    }`}
-                    aria-hidden
-                  >
-                    <Icon className="h-4 w-4" weight="regular" />
-                  </span>
-                </div>
-
-                <div
-                  className={`relative mt-5 sm:mt-6 ${isLast ? "sm:mt-0 sm:text-right lg:mt-6 lg:text-left" : ""}`}
-                >
-                  <p className="font-mono text-[1.85rem] font-semibold leading-none tracking-tight text-teal-900 tabular-nums sm:text-[2.05rem] md:text-[2.25rem] dark:text-teal-400">
-                    {item.value}
-                  </p>
-                  <p
-                    className={`mt-3 max-w-[32ch] text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 ${isLast ? "sm:ml-auto sm:max-w-[36ch] lg:ml-0" : ""}`}
-                  >
-                    {item.hint}
-                  </p>
-                </div>
-              </div>
-            </motion.article>
+              item={item}
+              idx={idx}
+              compact={false}
+              gridClass={gridClass}
+              reduceMotion={reduceMotion}
+            />
           );
         })}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

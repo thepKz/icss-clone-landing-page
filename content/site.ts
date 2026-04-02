@@ -240,6 +240,9 @@ export const home = {
     title: "ICS trong con số",
     subtitle:
       "Đội ngũ và dự án phục vụ khách hàng doanh nghiệp, tài chính và hạ tầng trọng yếu.",
+    introSecondary:
+      "Số liệu phản ánh phạm vi vận hành thực tế: log tập trung, phân loại sự cố và cam kết theo từng hợp đồng.",
+    introMetaLine: "Doanh nghiệp · Tài chính · Hạ tầng trọng yếu",
     items: [
       {
         label: "Khách hàng doanh nghiệp",
@@ -270,18 +273,24 @@ export const home = {
         name: "V AI Agent",
         desc: "Nền tảng giao tiếp in-app toàn diện với AI Chatbot, tăng 40% tỷ lệ giữ chân người dùng",
         href: "/products/v-ai-agent",
+        signal:
+          "Khi bạn cần giữ người dùng trong app và giảm tải cho tổng đài — phù hợp ngân hàng số, app dịch vụ cao tần suất.",
       },
       {
         slug: "ai-soc",
         name: "AI SOC",
         desc: "Trung tâm điều hành an ninh mạng được trang bị AI tiên tiến",
         href: "/products/ai-soc",
+        signal:
+          "Ưu tiên cho CISO và đội vận hành SOC: gom nhiễu, xếp hạng cảnh báo và rút ngắn thời gian phản ứng có kiểm soát.",
       },
       {
         slug: "csa-endpoint",
         name: "CSA Endpoint",
         desc: "Giải pháp bảo mật điểm cuối và ngăn chặn mất mát dữ liệu",
         href: "/products/csa-endpoint",
+        signal:
+          "Một lớp agent cho nhiều mối đe dọa trên laptop, server và máy trạm — chính sách thống nhất, triển khai theo phạm vi rõ.",
       },
     ],
   },
@@ -294,16 +303,22 @@ export const home = {
         name: "CSA Endpoint Security",
         desc: "Bảo vệ máy 4-trong-1, phát hiện virus, ransomware, trojan với AI",
         href: "/products/csa-endpoint",
+        signal:
+          "Bước đầu tiên khi bạn cần thu hẹp cửa sổ lây nhiễm trên endpoint trước khi mở rộng SOC.",
       },
       {
         name: "Smart Factory Security",
         desc: "Bảo mật nhà máy thông minh với giám sát OT/IT tích hợp",
         href: "/nha-may-thong-minh",
+        signal:
+          "Dành cho nhà máy FDI/OEM: tách ranh giới OT/IT, log và cảnh báo đổ về một điểm quan sát.",
       },
       {
         name: "Smart Building Security",
         desc: "An ninh mạng cho tòa nhà thông minh, IoT và hệ thống BMS",
         href: "/toa-nha-thong-minh",
+        signal:
+          "BĐS và vận hành tòa nhà: IoT, BMS và truy cập từ xa nằm trong phạm vi giám sát, không để “lỗ hổng im lặng”.",
       },
     ],
   },
@@ -338,7 +353,180 @@ export const home = {
   },
 };
 
+/** Nội dung tham chiếu cấu trúc từ icss.com.vn/gioi-thieu — chỉnh sửa tại một nguồn. */
 export const about = {
+  seoDescription:
+    "ICS — tiên phong an ninh mạng tại Việt Nam: AI SOC, VietGuard, nhà máy và tòa nhà thông minh. Đội ngũ 50+ chuyên gia, cam kết vận hành 24/7.",
+  hero: {
+    eyebrow: "Giới thiệu chung",
+    titleLead: "Tiên phong trong",
+    titleAccent: "An ninh mạng",
+    subtitle:
+      "Bảo vệ hệ sinh thái số một cách an toàn, hiệu quả và bền vững.",
+    ctaPrimary: { label: "Đặt lịch tư vấn", href: "/lien-he" },
+    ctaSecondary: { label: "Giải pháp", href: "/products/ai-soc" },
+  },
+  video: {
+    title: "Khám phá ICS",
+    subtitle:
+      "Video giới thiệu sứ mệnh, tầm nhìn và các lớp giải pháp — phần embed có thể gắn URL khi ban hành chính thức.",
+    /** Gắn URL mp4 khi có; để trống = khung giữ chỗ có thiết kế. */
+    videoSrc: "",
+  },
+  narrative: {
+    legalName: "CÔNG TY CỔ PHẦN AN NINH MẠNG QUỐC TẾ – ICS",
+    body:
+      "Là đơn vị tiên phong trong lĩnh vực an ninh mạng tại Việt Nam và khu vực, chuyên cung cấp các giải pháp bảo mật toàn diện cho thời đại công nghệ số. ICS tập trung vào các giải pháp bảo mật cho nhiều lĩnh vực trọng yếu, bao gồm: bảo vệ ứng dụng, an ninh cho nhà máy thông minh, tòa nhà thông minh và đặc biệt là hệ thống điều hành trung tâm AI SOC.",
+  },
+  stats: [
+    { value: "50+", label: "Khách hàng doanh nghiệp" },
+    { value: "24/7", label: "Hỗ trợ vận hành" },
+    { value: "99,9%", label: "Uptime theo cam kết gói dịch vụ" },
+    { value: "4+", label: "Năm kinh nghiệm" },
+  ],
+  teamBand: {
+    title: "Đội ngũ chuyên nghiệp",
+    body: "Hơn 50 chuyên gia an ninh mạng với kinh nghiệm quốc tế.",
+  },
+  valuesSection: {
+    eyebrow: "Giá trị cốt lõi",
+    title: "Những nguyên tắc định hướng mọi hành động của chúng tôi",
+    items: [
+      {
+        title: "Bảo mật tối đa",
+        body: "Cam kết bảo vệ dữ liệu khách hàng ở mức cao nhất.",
+      },
+      {
+        title: "Chính xác",
+        body: "Giải pháp tùy chỉnh phù hợp với nhu cầu cụ thể.",
+      },
+      {
+        title: "Nhanh chóng",
+        body: "Triển khai và phản ứng sự cố trong thời gian thực.",
+      },
+      {
+        title: "Đội ngũ chuyên nghiệp",
+        body: "Chuyên gia hàng đầu với kinh nghiệm quốc tế.",
+      },
+      {
+        title: "Chất lượng đảm bảo",
+        body: "Tuân thủ các tiêu chuẩn bảo mật quốc tế.",
+      },
+      {
+        title: "Đổi mới liên tục",
+        body: "Cập nhật công nghệ mới nhất trong ngành.",
+      },
+    ],
+  },
+  timelineSection: {
+    eyebrow: "Hành trình phát triển",
+    title: "Những mốc son đánh dấu sự trưởng thành của ICS",
+    items: [
+      {
+        period: "3/2020",
+        title: "Thành lập công ty",
+        body: "ICS được thành lập với tầm nhìn cung cấp giải pháp an ninh mạng hàng đầu.",
+      },
+      {
+        period: "9/2021",
+        title: "Ra mắt nền tảng đào tạo",
+        body: "Khởi động nền tảng đào tạo an ninh mạng chuyên nghiệp.",
+      },
+      {
+        period: "7/2022",
+        title: "Dự án công nghệ y tế",
+        body: "Mở rộng lĩnh vực hoạt động sang công nghệ healthcare.",
+      },
+      {
+        period: "6/2023",
+        title: "Mở rộng trụ sở Hà Nội",
+        body: "Khai trương văn phòng đại diện tại thủ đô Hà Nội.",
+      },
+      {
+        period: "2/2024",
+        title: "Hợp tác đối tác quốc tế",
+        body: "Liên kết với các đối tác toàn cầu: HyperG, Oracle, Gamania.",
+      },
+      {
+        period: "3/2024",
+        title: "Ra mắt VietGuard",
+        body: "Giới thiệu VietGuard — Mobile App Security.",
+      },
+      {
+        period: "7/2024",
+        title: "Ra mắt Smartdashboard",
+        body: "Công bố Smartdashboard — nền tảng quản lý tập trung.",
+      },
+      {
+        period: "10/2025",
+        title: "Ra mắt AI SOC",
+        body: "Khởi động nền tảng AI SOC — trung tâm giám sát an ninh thông minh.",
+      },
+    ],
+  },
+  leadershipSection: {
+    eyebrow: "Đội ngũ lãnh đạo",
+    title: "Những chuyên gia dẫn dắt ICS phát triển",
+  },
+  leadership: [
+    {
+      role: "CEO",
+      name: "TS. Võ Trung Âu",
+      note: "Tổng Giám đốc",
+    },
+    {
+      role: "COO",
+      name: "Đỗ Thanh Toàn",
+      note: "Điều hành vận hành",
+    },
+    {
+      role: "CTO",
+      name: "Ths. Vũ Tam Hanh",
+      note: "Công nghệ và kiến trúc giải pháp",
+    },
+    {
+      role: "CMO",
+      name: "Ths. Đặng Lê Trung",
+      note: "Thương hiệu và phát triển thị trường",
+    },
+  ],
+  solutionsSection: {
+    eyebrow: "Giải pháp của chúng tôi",
+    title: "Sản phẩm và hướng triển khai nổi bật",
+  },
+  solutions: [
+    {
+      tag: "VietGuard",
+      title: "Vietguard — Mobile App Security",
+      body:
+        "Bảo mật tiên tiến với Zero Trust tại điểm cuối, giảm thiểu mối đe dọa mà không phụ thuộc hoàn toàn vào nhận diện mã độc cố định.",
+      href: "/products/vietguard",
+      cta: "Tìm hiểu thêm",
+    },
+    {
+      tag: "ESG",
+      title: "ESG Solutions",
+      body:
+        "Hỗ trợ doanh nghiệp phát triển bền vững với trách nhiệm môi trường, xã hội và quản trị minh bạch trong kỷ nguyên số.",
+      href: "/lien-he",
+      cta: "Trao đổi tư vấn",
+    },
+    {
+      tag: "IoT Security",
+      title: "IoT Security",
+      body:
+        "Bảo vệ mạng lưới IoT: từ cảm biến tới cloud, giảm rủi ro trong hệ sinh thái thiết bị kết nối.",
+      href: "/toa-nha-thong-minh",
+      cta: "Xem giải pháp tòa nhà",
+    },
+  ],
+  closingCta: {
+    title: "Sẵn sàng bảo vệ doanh nghiệp của bạn?",
+    body: "Liên hệ hôm nay để được tư vấn giải pháp an ninh mạng phù hợp nhất.",
+    primary: { label: "Đặt lịch tư vấn", href: "/lien-he" },
+    secondary: { label: "Tin tức", href: "/articles" },
+  },
+  /** Tương thích field cũ nếu import nơi khác */
   intro:
     "Là đơn vị tiên phong trong lĩnh vực an ninh mạng tại Việt Nam và khu vực, chuyên cung cấp các giải pháp bảo mật toàn diện cho thời đại công nghệ số. ICS tập trung vào các giải pháp bảo mật cho nhiều lĩnh vực trọng yếu, bao gồm: bảo vệ ứng dụng, an ninh cho nhà máy thông minh, tòa nhà thông minh và đặc biệt là hệ thống điều hành trung tâm AI SOC.",
   statHighlight: "Hơn 50 chuyên gia an ninh mạng với kinh nghiệm quốc tế",
@@ -359,12 +547,6 @@ export const about = {
     "Ra mắt VietGuard — Mobile App Security",
     "Công bố Smartdashboard — nền tảng quản lý tập trung",
     "Khởi động AI SOC — trung tâm giám sát an ninh thông minh",
-  ],
-  leadership: [
-    { role: "Tổng Giám đốc", name: "Võ Trung Âu", note: "CEO" },
-    { role: "COO", name: "Đang cập nhật", note: "Sẽ công bố khi có thông tin chính thức" },
-    { role: "CTO", name: "Đang cập nhật", note: "Sẽ công bố khi có thông tin chính thức" },
-    { role: "CMO", name: "Đang cập nhật", note: "Sẽ công bố khi có thông tin chính thức" },
   ],
   productFootnote: [
     "Giải pháp bảo mật điểm cuối với Zero Trust",

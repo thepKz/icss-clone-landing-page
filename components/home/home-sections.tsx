@@ -47,7 +47,7 @@ export function HomeHero() {
             aria-hidden
           />
           <div className="min-w-0 md:max-w-[min(100%,54ch)]">
-          <Reveal eager>
+          <Reveal slideFromLeft={32}>
             <div className="flex flex-wrap items-end gap-x-4 gap-y-2 border-b border-stone-400/55 pb-5 dark:border-zinc-600/80 md:mr-10 md:w-[min(100%,42ch)] md:-translate-x-1 lg:mr-16 lg:-translate-x-2">
               <span className="rounded-sm bg-teal-900/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white dark:bg-teal-600/90 dark:text-teal-950">
                 {home.hero.featuredPill}
@@ -58,7 +58,7 @@ export function HomeHero() {
               </span>
             </div>
           </Reveal>
-          <Reveal eager delay={0.05} className="mt-7 md:mt-10">
+          <Reveal slideFromLeft={32} delay={0.05} className="mt-7 md:mt-10">
             <h1 className="max-w-[min(100%,22rem)] text-pretty font-bold tracking-tight text-stone-900 dark:text-white sm:max-w-none">
               <span className="block text-[1.875rem] leading-[1.1] sm:text-[2.25rem] md:pl-6 md:text-[2.65rem] md:leading-[1.06] lg:pl-9 lg:text-[3.05rem] lg:leading-[1.04]">
                 {home.hero.titleLead}
@@ -68,12 +68,12 @@ export function HomeHero() {
               </span>
             </h1>
           </Reveal>
-          <Reveal eager delay={0.1} className="mt-6 md:mt-8">
+          <Reveal slideFromLeft={32} delay={0.1} className="mt-6 md:mt-8">
             <p className="max-w-[min(48ch,100%)] border-l-[3px] border-teal-800/85 py-0.5 pl-4 text-pretty text-base font-medium leading-[1.65] text-stone-800 dark:border-teal-500/70 dark:font-medium dark:text-zinc-200 md:ml-7 md:pl-5 md:text-lg md:leading-relaxed lg:ml-10 lg:max-w-[min(46ch,100%)]">
               {home.hero.tagline}
             </p>
           </Reveal>
-          <Reveal eager delay={0.14} className="mt-9 flex flex-wrap items-center gap-4 md:mt-11 md:pl-3 lg:mt-12 lg:pl-5">
+          <Reveal slideFromLeft={32} delay={0.14} className="mt-9 flex flex-wrap items-center gap-4 md:mt-11 md:pl-3 lg:mt-12 lg:pl-5">
             <Link
               href={home.hero.ctaPrimary.href}
               className="group inline-flex min-h-[44px] items-center gap-3 rounded-full bg-teal-900 px-6 py-3 text-sm font-semibold tracking-tight text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_10px_28px_-12px_rgba(19,78,74,0.22)] ring-1 ring-teal-950/40 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-950 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_32px_-12px_rgba(19,78,74,0.26)] active:translate-y-px active:scale-[0.99] dark:bg-teal-600 dark:text-teal-950 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_10px_28px_-12px_rgba(45,212,191,0.14)] dark:ring-teal-800/50 dark:hover:bg-teal-400"
@@ -85,15 +85,15 @@ export function HomeHero() {
             </Link>
             <Link
               href={home.hero.ctaSecondary.href}
-              className="group/secondary inline-flex min-h-[44px] items-center gap-2 rounded-full border border-stone-400/65 bg-white/55 px-5 py-2.5 text-sm font-semibold tracking-tight text-stone-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-teal-800/40 hover:bg-white/85 hover:text-teal-900 active:translate-y-px active:scale-[0.99] dark:border-zinc-500/45 dark:bg-zinc-900/45 dark:text-zinc-100 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:hover:border-teal-500/45 dark:hover:bg-zinc-900/70 dark:hover:text-teal-200"
+              className="group/secondary inline-flex min-h-[44px] items-center gap-2 rounded-full border border-stone-400/65 bg-white/55 px-5 py-2.5 text-sm font-semibold tracking-tight text-stone-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-teal-800/40 hover:bg-white/85 hover:text-teal-900 active:translate-y-px active:scale-[0.99] dark:border-zinc-500/45 dark:bg-zinc-900/45 dark:text-zinc-100 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:hover:border-zinc-300/60 dark:hover:bg-zinc-100 dark:hover:text-zinc-950"
             >
               {home.hero.ctaSecondary.label}
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-stone-300/70 bg-stone-50/90 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/secondary:border-teal-800/35 group-hover/secondary:bg-white dark:border-zinc-600/80 dark:bg-zinc-800/60 dark:group-hover/secondary:border-teal-500/40">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-stone-300/70 bg-stone-50/90 text-stone-800 transition-[transform,background-color,border-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/secondary:border-teal-800/35 group-hover/secondary:bg-white group-hover/secondary:text-teal-900 dark:border-zinc-500/70 dark:bg-zinc-800/70 dark:text-zinc-100 dark:group-hover/secondary:border-zinc-300/80 dark:group-hover/secondary:bg-zinc-50 dark:group-hover/secondary:text-zinc-950">
                 <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/secondary:translate-x-0.5 group-hover/secondary:-translate-y-px" />
               </span>
             </Link>
           </Reveal>
-          <Reveal eager delay={0.18} className="mt-10 border-t border-stone-300/90 pt-6 dark:border-zinc-700/90 md:mt-12 md:border-t-0 md:pt-0 lg:mt-14">
+          <Reveal slideFromLeft={32} delay={0.18} className="mt-10 border-t border-stone-300/90 pt-6 dark:border-zinc-700/90 md:mt-12 md:border-t-0 md:pt-0 lg:mt-14">
             <div className="md:border-t md:border-stone-300/90 md:pt-7 md:dark:border-zinc-700/90 md:pl-2 lg:pl-4">
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-600 dark:text-zinc-400 md:pl-5 lg:pl-7">
               Cam kết vận hành
@@ -164,12 +164,15 @@ export function HomeStats() {
   return (
     <SectionShell
       id="doi-tac"
-      className="scroll-mt-28 border-t border-zinc-200/80 bg-gradient-to-b from-zinc-50/90 via-white to-white dark:border-white/[0.06] dark:from-zinc-950 dark:via-zinc-950 dark:to-zinc-950/80"
+      className="scroll-mt-28 border-t border-zinc-200/80 bg-white text-zinc-900 dark:border-white/[0.06] dark:bg-transparent dark:text-zinc-100"
+      containerClassName="max-w-[1400px] mx-auto px-4 md:px-8"
     >
       <HomeStatsBento
         eyebrow={home.stats.eyebrow}
         title={home.stats.title}
         subtitle={home.stats.subtitle}
+        introSecondary={home.stats.introSecondary}
+        introMetaLine={home.stats.introMetaLine}
         items={home.stats.items}
       />
     </SectionShell>
@@ -181,6 +184,7 @@ function ProductEditorialRow({
   eyebrow,
   name,
   desc,
+  signal,
   href,
   imageSeed,
   imageGrayscale,
@@ -192,6 +196,7 @@ function ProductEditorialRow({
   eyebrow: string;
   name: string;
   desc: string;
+  signal?: string;
   href: string;
   imageSeed: string;
   imageGrayscale?: boolean;
@@ -220,14 +225,19 @@ function ProductEditorialRow({
             {name}
           </h3>
           <p className="mt-4 max-w-[52ch] text-base leading-relaxed text-zinc-500">{desc}</p>
+          {signal ? (
+            <p className="mt-5 max-w-[52ch] border-l-2 border-accent/45 bg-accent-muted/70 py-2.5 pl-4 text-sm font-medium leading-relaxed text-zinc-700 dark:border-accent/35 dark:bg-accent-muted/40 dark:text-zinc-200">
+              {signal}
+            </p>
+          ) : null}
           <Link
             href={href}
             className="group mt-8 inline-flex items-center gap-3 text-sm font-medium text-zinc-800 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-zinc-950 dark:text-zinc-200 dark:hover:text-white"
           >
-            <span className="border-b border-zinc-400/50 pb-0.5 transition-[border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-cyan-700/50 dark:border-white/25 dark:group-hover:border-cyan-400/50">
+            <span className="border-b border-zinc-400/50 pb-0.5 transition-[border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-accent/60 dark:border-white/25 dark:group-hover:border-accent/55">
               Xem chi tiết
             </span>
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300/80 bg-zinc-100/80 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-cyan-600/30 group-hover:bg-cyan-50 active:translate-y-px active:scale-[0.98] dark:border-white/10 dark:bg-white/[0.04] dark:group-hover:border-cyan-400/25 dark:group-hover:bg-cyan-400/[0.06]">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300/80 bg-zinc-100/80 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-accent/35 group-hover:bg-accent-muted active:translate-y-px active:scale-[0.98] dark:border-white/10 dark:bg-white/[0.04] dark:group-hover:border-accent/30 dark:group-hover:bg-accent-muted/80">
               <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5" />
             </span>
           </Link>
@@ -237,19 +247,21 @@ function ProductEditorialRow({
         <Reveal x={reverse ? -8 : 8} delay={0.06}>
           <Link
             href={href}
-            className="group block outline-none ring-offset-4 ring-offset-zinc-100 focus-visible:ring-2 focus-visible:ring-cyan-600/40 dark:ring-offset-zinc-950 dark:focus-visible:ring-cyan-400/40"
+            className="group block outline-none ring-offset-4 ring-offset-zinc-100 focus-visible:ring-2 focus-visible:ring-accent/40 dark:ring-offset-zinc-950 dark:focus-visible:ring-accent/45"
             aria-label={`${name}: xem chi tiết`}
           >
-            <div className="relative aspect-[16/11] w-full overflow-hidden border border-zinc-200/90 bg-zinc-100/60 shadow-[inset_0_1px_0_rgba(0,0,0,0.04)] md:aspect-[5/4] dark:border-white/[0.08] dark:bg-zinc-900/40 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <Image
-                src={picsum(imageSeed, 960, 720, {
-                  grayscale: imageGrayscale,
-                })}
-                alt=""
-                fill
-                className={`${imageClassName} transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02] group-hover:opacity-95`}
-                sizes={imageSizes}
-              />
+            <div className="rounded-[1.65rem] bg-zinc-200/45 p-1.5 ring-1 ring-zinc-200/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] dark:bg-zinc-800/35 dark:ring-white/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+              <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[calc(1.65rem-6px)] border border-zinc-200/90 bg-zinc-100/60 shadow-[inset_0_1px_0_rgba(0,0,0,0.04)] md:aspect-[5/4] dark:border-white/[0.08] dark:bg-zinc-900/40 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                <Image
+                  src={picsum(imageSeed, 960, 720, {
+                    grayscale: imageGrayscale,
+                  })}
+                  alt=""
+                  fill
+                  className={`${imageClassName} transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02] group-hover:opacity-95`}
+                  sizes={imageSizes}
+                />
+              </div>
             </div>
           </Link>
         </Reveal>
@@ -282,6 +294,7 @@ export function HomeProductsBento() {
           eyebrow="Trọng tâm triển khai"
           name={soc.name}
           desc={soc.desc}
+          signal={soc.signal}
           href={soc.href}
           imageSeed="ics-product-ai-soc"
           imageSizes="(max-width: 768px) 100vw, 50vw"
@@ -292,6 +305,7 @@ export function HomeProductsBento() {
           eyebrow="Trải nghiệm ứng dụng"
           name={agent.name}
           desc={agent.desc}
+          signal={agent.signal}
           href={agent.href}
           imageSeed={`ics-product-${agent.slug}`}
           imageSizes="(max-width: 768px) 100vw, 50vw"
@@ -302,6 +316,7 @@ export function HomeProductsBento() {
           eyebrow="Bảo vệ điểm cuối"
           name={endpoint.name}
           desc={endpoint.desc}
+          signal={endpoint.signal}
           href={endpoint.href}
           imageSeed={`ics-product-${endpoint.slug}`}
           imageGrayscale
@@ -334,15 +349,22 @@ export function HomeSolutionsZigzag() {
             }`}
           >
             <Reveal x={idx % 2 === 0 ? -12 : 12}>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-zinc-200/90 dark:border-white/[0.07]">
-                <Image
-                  src={picsum(`ics-sol-${idx}`, 800, 600, { blur: 1 })}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 45vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-zinc-950/50 to-transparent" />
+              <div className="group rounded-[2rem] bg-zinc-200/40 p-1.5 ring-1 ring-zinc-200/85 dark:bg-zinc-800/30 dark:ring-white/[0.08]">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[calc(2rem-6px)] border border-zinc-200/90 dark:border-white/[0.07]">
+                  <Image
+                    src={picsum(`ics-sol-${idx}`, 800, 600, { blur: 1 })}
+                    alt=""
+                    fill
+                    className="object-cover transition-[transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02]"
+                    sizes="(max-width: 768px) 100vw, 45vw"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-linear-to-tr from-zinc-950/55 via-transparent to-transparent dark:from-zinc-950/65" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-zinc-950/85 via-zinc-950/35 to-transparent px-5 pb-4 pt-16 dark:from-zinc-950/90">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/90">
+                      {row.name}
+                    </p>
+                  </div>
+                </div>
               </div>
             </Reveal>
             <Reveal delay={0.06} x={idx % 2 === 0 ? 12 : -12}>
@@ -355,12 +377,19 @@ export function HomeSolutionsZigzag() {
               <p className="mt-4 max-w-[55ch] text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
                 {row.desc}
               </p>
+              {row.signal ? (
+                <p className="mt-5 max-w-[55ch] border-l-2 border-accent/40 py-1 pl-4 text-sm font-medium leading-relaxed text-zinc-700 dark:border-accent/35 dark:text-zinc-300">
+                  {row.signal}
+                </p>
+              ) : null}
               <Link
                 href={row.href}
-                className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-800 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-cyan-950 dark:text-cyan-200 dark:hover:text-cyan-100"
+                className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-teal-700 dark:hover:text-teal-300"
               >
                 Chi tiết giải pháp
-                <ArrowIcon />
+                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-accent/30 bg-accent-muted/50 transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:border-accent/55 dark:bg-accent-muted/35">
+                  <ArrowIcon className="h-3.5 w-3.5" />
+                </span>
               </Link>
             </Reveal>
           </div>
@@ -394,12 +423,12 @@ export function HomeCommitments() {
               <Reveal
                 key={item.title}
                 delay={0.05 * idx}
-                className="border-b border-zinc-200/90 py-10 dark:border-white/[0.08] md:py-12"
+                className="group border-b border-zinc-200/90 py-10 transition-[background-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-zinc-50/90 dark:border-white/[0.08] dark:hover:bg-white/[0.03] md:py-12"
               >
-                <article className="grid gap-6 md:grid-cols-12 md:items-start md:gap-8">
+                <article className="grid gap-6 border-l-2 border-transparent pl-5 transition-[border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-accent/45 md:grid-cols-12 md:items-start md:gap-8 md:pl-6">
                   <div className="md:col-span-5">
                     <div className="flex items-baseline gap-3 md:block">
-                      <span className="font-mono text-[11px] tabular-nums tracking-wider text-zinc-600">
+                      <span className="font-mono text-[11px] tabular-nums tracking-wider text-zinc-500 transition-colors duration-300 group-hover:text-accent dark:text-zinc-500 dark:group-hover:text-accent">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-white md:mt-2 md:text-xl">
@@ -422,53 +451,99 @@ export function HomeCommitments() {
 
 export function HomeNewsTeaser() {
   const top = articles.slice(0, 3);
+  const nt = home.newsTeaser;
   return (
     <SectionShell className="border-t border-zinc-200/80 dark:border-white/[0.06]">
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <Reveal>
           <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-3xl">
-            {home.newsTeaser.title}
+            {nt.title}
           </h2>
           <p className="mt-3 max-w-[55ch] text-base leading-relaxed text-zinc-500">
-            {home.newsTeaser.subtitle}
+            {nt.subtitle}
           </p>
         </Reveal>
         <Reveal delay={0.08}>
           <Link
-            href={home.newsTeaser.cta.href}
-            className="inline-flex items-center gap-2 rounded-full border border-zinc-300/80 px-5 py-2.5 text-sm font-medium text-zinc-800 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-cyan-600/40 hover:text-cyan-900 dark:border-white/15 dark:text-zinc-200 dark:hover:border-cyan-400/35 dark:hover:text-cyan-100"
+            href={nt.cta.href}
+            className="inline-flex items-center gap-2 rounded-full border border-zinc-300/80 px-5 py-2.5 text-sm font-medium text-zinc-800 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-accent/45 hover:text-zinc-950 dark:border-white/15 dark:text-zinc-200 dark:hover:border-accent/40 dark:hover:text-white"
           >
-            {home.newsTeaser.cta.label}
+            {nt.cta.label}
             <ArrowIcon />
           </Link>
         </Reveal>
       </div>
-      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
         {top.map((a, idx) => (
-          <Reveal key={a.slug} delay={0.07 * idx}>
+          <Reveal
+            key={a.slug}
+            delay={0.07 * idx}
+            className={idx === 0 ? "md:col-span-2" : ""}
+          >
             <Link
               href={`/articles/${a.slug}`}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-white/80 shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 dark:border-white/[0.07] dark:bg-zinc-900/25 dark:shadow-none"
+              className={`group flex h-full overflow-hidden rounded-2xl border border-zinc-200/90 bg-white/80 shadow-sm transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:shadow-md dark:border-white/[0.07] dark:bg-zinc-900/25 dark:shadow-none dark:hover:shadow-[0_20px_50px_-28px_rgba(0,0,0,0.55)] ${
+                idx === 0
+                  ? "min-h-0 flex-col md:min-h-[220px] md:flex-row"
+                  : "flex-col"
+              }`}
             >
-              <div className="relative aspect-[16/10]">
+              <div
+                className={`relative shrink-0 overflow-hidden ${
+                  idx === 0
+                    ? "aspect-[16/10] w-full md:aspect-auto md:w-[44%] md:min-h-[220px]"
+                    : "aspect-[16/10] w-full"
+                }`}
+              >
                 <Image
                   src={picsum(`ics-news-${a.slug}`, 640, 400)}
                   alt=""
                   fill
-                  className="object-cover opacity-90 transition-opacity duration-300 group-hover:opacity-100"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover opacity-90 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02] group-hover:opacity-100"
+                  sizes={
+                    idx === 0
+                      ? "(max-width: 768px) 100vw, 50vw"
+                      : "(max-width: 768px) 100vw, 50vw"
+                  }
                 />
+                {idx === 0 ? (
+                  <div className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/25 bg-zinc-950/55 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                    Nổi bật
+                  </div>
+                ) : null}
               </div>
-              <div className="flex flex-1 flex-col p-6">
-                <time className="font-mono text-xs tabular-nums text-zinc-500">
-                  {a.date}
-                </time>
-                <h3 className="mt-2 text-base font-semibold leading-snug text-zinc-900 group-hover:text-cyan-800 dark:text-white dark:group-hover:text-cyan-100">
+              <div
+                className={`flex flex-1 flex-col justify-center ${
+                  idx === 0 ? "p-6 md:p-8" : "p-6"
+                }`}
+              >
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <time className="font-mono text-xs tabular-nums text-zinc-500">
+                    {a.date}
+                  </time>
+                  <span className="font-mono text-[11px] tabular-nums text-zinc-400">
+                    · {a.readMinutes} phút đọc
+                  </span>
+                </div>
+                <h3
+                  className={`mt-2 font-semibold leading-snug text-zinc-900 transition-colors duration-300 group-hover:text-accent dark:text-white dark:group-hover:text-teal-300 ${
+                    idx === 0
+                      ? "text-lg md:text-xl md:leading-snug"
+                      : "text-base"
+                  }`}
+                >
                   {a.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-500">
+                <p
+                  className={`mt-2 flex-1 leading-relaxed text-zinc-500 ${
+                    idx === 0 ? "line-clamp-3 text-sm md:text-base" : "text-sm"
+                  }`}
+                >
                   {a.excerpt}
                 </p>
+                <span className="mt-4 inline-flex w-fit text-xs font-semibold uppercase tracking-[0.18em] text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  Đọc bài →
+                </span>
               </div>
             </Link>
           </Reveal>
