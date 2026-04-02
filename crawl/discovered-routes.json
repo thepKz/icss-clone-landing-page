@@ -1,0 +1,96 @@
+{
+  "capturedAt": "2026-04-02T19:15:54.296Z",
+  "base": "https://icss.com.vn",
+  "pathCount": 41,
+  "paths": [
+    "/",
+    "/AI%20SOC/Gurucul%20Workshop%20Walkthrough.pdf",
+    "/ai-soc",
+    "/articles/ai-tim-lo-hong-nhanh-hon-hacker-claude-phat-hien-22-lo-hong-trong-firefox-chi-trong-2-tuan",
+    "/articles/articles-list",
+    "/articles/canh-bao-bao-mat-nhieu-lo-hong-nghiem-trong-trong-san-pham-mozilla-co-the-dan-den-rce-va-leo-thang-dac-quyen",
+    "/articles/canh-bao-bao-mat-nhieu-lo-hong-trong-san-pham-vmware-co-the-dan-den-rce-va-leo-thang-dac-quyen",
+    "/articles/canh-bao-bao-mat-valkey-phat-hien-nhieu-lo-hong-co-the-gay-tan-cong-tu-choi-dich-vu-va-bypass-co-che-bao-mat",
+    "/articles/canh-bao-nhom-hacker-trung-quoc-tan-cong-ha-tang-trong-yeu-chau-a-suot-nhieu-nam",
+    "/articles/canh-bao-ransomware-leaknet-doi-chien-thuat-tan-cong-qua-website-hop-phap-clickfix",
+    "/articles/cisa-ra-lenh-khan-3-ngay-va-lo-hong-dell-recoverpoint-bi-hacker-trung-quoc-khai-thac-nguy-co-xam-nhap-ha-tang-backup-doanh-nghiep",
+    "/articles/cuoc-dua-song-ma-chatgpt-vs-gemini-ai-dang-dan-dau-va-cai-gia-moi-truong-thuc-su",
+    "/articles/day-manh-thi-hanh-luat-an-ninh-mang-buoc-chuyen-chien-luoc-tu-chinh-sach-sang-thuc-thi",
+    "/articles/google-phat-hanh-chrome-145-va-3-lo-hong-high-doanh-nghiep-can-cap-nhat-khan-cap",
+    "/articles/ics-chinh-thuc-hop-tac-toan-dien-cung-efgh-embed-financial-group-holdings",
+    "/articles/ivanti-epmm-bi-khai-thac-dien-rong-hacker-cai-webshell-ngu-dong-nguy-co-bi-ban-quyen-truy-cap-cho-ransomware",
+    "/articles/lo-lot-du-lieu-doanh-nghiep-co-the-tra-gia-toi-5-doanh-thu",
+    "/articles/microsoft-mo-rong-kiem-soat-dlp-de-ngan-microsoft-365-copilot-xu-ly-tai-lieu-nhay-cam",
+    "/articles/microsoft-phat-hanh-ban-cap-nhat-bao-mat-dinh-ky-thang-32026",
+    "/articles/phat-hien-lo-hong-bypass-xac-thuc-trong-pac4j-jwt-cve-2026-29000",
+    "/articles/phat-hien-nhieu-lo-hong-bao-mat-tren-google-chrome-cve-2026-3536-cve-2026-3545",
+    "/articles/phat-hien-nhieu-lo-hong-bao-mat-tren-microsoft-edge-cve-2026-3536-cve-2026-3545",
+    "/articles/soc-la-gi-trung-tam-dieu-hanh-an-ninh-mang-la-chan-song-con-cua-doanh-nghiep-trong-ky-nguyen-so",
+    "/articles/thong-bao-an-ninh-mang-du-lieu-viet-nam-doi-mat-nguy-co-gia-tang-nghiem-trong",
+    "/articles/thong-tu-772025tt-nhnn-an-toan-va-bao-mat-cho-viec-cung-cap-dich-vu-truc-tuyen-trong-nganh-ngan-hang",
+    "/articles/thuc-trang-an-ninh-mang-viet-nam-20252026-bao-dong-do-cho-doanh-nghiep",
+    "/articles/ung-dung-mobile-cua-doanh-nghiep-co-the-bi-hack-chi-trong-vai-phut",
+    "/articles/xu-huong-thue-ngoai-dich-vu-soc-lua-chon-chien-luoc-cua-96-doanh-nghiep-viet",
+    "/doi-tac",
+    "/esg",
+    "/gioi-thieu",
+    "/hoat-dong-xa-hoi",
+    "/khach-hang",
+    "/lien-he",
+    "/nha-may-thong-minh",
+    "/products/ai-soc",
+    "/products/chatbot",
+    "/products/pentest-services",
+    "/products/vietguard",
+    "/toa-nha-thong-minh",
+    "/tuyen-dung"
+  ],
+  "fetchErrors": [
+    {
+      "path": "/chinh-sach-bao-mat",
+      "status": 404
+    },
+    {
+      "path": "/dieu-khoan",
+      "status": 404
+    },
+    {
+      "path": "/products/v-ai-agent",
+      "status": 404
+    },
+    {
+      "path": "/products/csa-endpoint",
+      "status": 404
+    },
+    {
+      "path": "/esg",
+      "status": 404
+    }
+  ],
+  "articleSlugs": [
+    "ai-tim-lo-hong-nhanh-hon-hacker-claude-phat-hien-22-lo-hong-trong-firefox-chi-trong-2-tuan",
+    "canh-bao-bao-mat-nhieu-lo-hong-nghiem-trong-trong-san-pham-mozilla-co-the-dan-den-rce-va-leo-thang-dac-quyen",
+    "canh-bao-bao-mat-nhieu-lo-hong-trong-san-pham-vmware-co-the-dan-den-rce-va-leo-thang-dac-quyen",
+    "canh-bao-bao-mat-valkey-phat-hien-nhieu-lo-hong-co-the-gay-tan-cong-tu-choi-dich-vu-va-bypass-co-che-bao-mat",
+    "canh-bao-nhom-hacker-trung-quoc-tan-cong-ha-tang-trong-yeu-chau-a-suot-nhieu-nam",
+    "canh-bao-ransomware-leaknet-doi-chien-thuat-tan-cong-qua-website-hop-phap-clickfix",
+    "cisa-ra-lenh-khan-3-ngay-va-lo-hong-dell-recoverpoint-bi-hacker-trung-quoc-khai-thac-nguy-co-xam-nhap-ha-tang-backup-doanh-nghiep",
+    "cuoc-dua-song-ma-chatgpt-vs-gemini-ai-dang-dan-dau-va-cai-gia-moi-truong-thuc-su",
+    "day-manh-thi-hanh-luat-an-ninh-mang-buoc-chuyen-chien-luoc-tu-chinh-sach-sang-thuc-thi",
+    "google-phat-hanh-chrome-145-va-3-lo-hong-high-doanh-nghiep-can-cap-nhat-khan-cap",
+    "ics-chinh-thuc-hop-tac-toan-dien-cung-efgh-embed-financial-group-holdings",
+    "ivanti-epmm-bi-khai-thac-dien-rong-hacker-cai-webshell-ngu-dong-nguy-co-bi-ban-quyen-truy-cap-cho-ransomware",
+    "lo-lot-du-lieu-doanh-nghiep-co-the-tra-gia-toi-5-doanh-thu",
+    "microsoft-mo-rong-kiem-soat-dlp-de-ngan-microsoft-365-copilot-xu-ly-tai-lieu-nhay-cam",
+    "microsoft-phat-hanh-ban-cap-nhat-bao-mat-dinh-ky-thang-32026",
+    "phat-hien-lo-hong-bypass-xac-thuc-trong-pac4j-jwt-cve-2026-29000",
+    "phat-hien-nhieu-lo-hong-bao-mat-tren-google-chrome-cve-2026-3536-cve-2026-3545",
+    "phat-hien-nhieu-lo-hong-bao-mat-tren-microsoft-edge-cve-2026-3536-cve-2026-3545",
+    "soc-la-gi-trung-tam-dieu-hanh-an-ninh-mang-la-chan-song-con-cua-doanh-nghiep-trong-ky-nguyen-so",
+    "thong-bao-an-ninh-mang-du-lieu-viet-nam-doi-mat-nguy-co-gia-tang-nghiem-trong",
+    "thong-tu-772025tt-nhnn-an-toan-va-bao-mat-cho-viec-cung-cap-dich-vu-truc-tuyen-trong-nganh-ngan-hang",
+    "thuc-trang-an-ninh-mang-viet-nam-20252026-bao-dong-do-cho-doanh-nghiep",
+    "ung-dung-mobile-cua-doanh-nghiep-co-the-bi-hack-chi-trong-vai-phut",
+    "xu-huong-thue-ngoai-dich-vu-soc-lua-chon-chien-luoc-cua-96-doanh-nghiep-viet"
+  ]
+}
