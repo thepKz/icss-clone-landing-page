@@ -323,7 +323,7 @@ export function SiteHeader() {
               solid={solid}
             />
             <Link
-              href="/#doi-tac"
+              href="/doi-tac"
               className={`shrink-0 rounded-full px-2 py-1.5 text-[13px] transition-[background-color,box-shadow,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] lg:px-2.5 xl:px-3 xl:text-sm ${
                 solid
                   ? "text-zinc-700 hover:bg-zinc-950 hover:text-white hover:shadow-[0_12px_30px_-16px_rgba(0,0,0,0.45)] dark:text-zinc-200 dark:hover:bg-teal-400 dark:hover:text-teal-950 dark:hover:shadow-[0_14px_34px_-18px_rgba(45,212,191,0.20)]"
@@ -433,7 +433,7 @@ export function SiteHeader() {
                   className="mt-6 border-t border-zinc-200/80 pt-6 dark:border-white/10"
                 >
                   <Link
-                    href="/#doi-tac"
+                    href="/doi-tac"
                     onClick={() => setOpen(false)}
                     className="block rounded-xl px-3 py-2.5 text-base text-zinc-800 dark:text-zinc-200"
                   >
