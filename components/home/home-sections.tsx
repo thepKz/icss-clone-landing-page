@@ -247,7 +247,7 @@ function ProductEditorialRow({
         <Reveal x={reverse ? -8 : 8} delay={0.06}>
           <Link
             href={href}
-            className="group block outline-none ring-offset-4 ring-offset-zinc-100 focus-visible:ring-2 focus-visible:ring-accent/40 dark:ring-offset-zinc-950 dark:focus-visible:ring-accent/45"
+            className="ics-product-visual-link block outline-none ring-offset-4 ring-offset-zinc-100 focus-visible:ring-2 focus-visible:ring-accent/40 dark:ring-offset-zinc-950 dark:focus-visible:ring-accent/45 [&_img]:origin-center [&_img]:transition-transform [&_img]:duration-500 [&_img]:ease-[cubic-bezier(0.33,1,0.32,1)] hover:[&_img]:scale-[1.035] [&>div>div]:transition-colors [&>div>div]:duration-[400ms] [&>div>div]:ease-[cubic-bezier(0.33,1,0.32,1)] hover:[&>div>div]:border-teal-700/22 dark:hover:[&>div>div]:border-cyan-400/28"
             aria-label={`${name}: xem chi tiết`}
           >
             <div className="rounded-[1.65rem] bg-zinc-200/45 p-1.5 ring-1 ring-zinc-200/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] dark:bg-zinc-800/35 dark:ring-white/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
@@ -258,7 +258,7 @@ function ProductEditorialRow({
                   })}
                   alt=""
                   fill
-                  className={`${imageClassName} transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02] group-hover:opacity-95`}
+                  className={`${imageClassName} scale-100`}
                   sizes={imageSizes}
                 />
               </div>
@@ -349,23 +349,32 @@ export function HomeSolutionsZigzag() {
             }`}
           >
             <Reveal x={idx % 2 === 0 ? -12 : 12}>
-              <div className="group rounded-[2rem] bg-zinc-200/40 p-1.5 ring-1 ring-zinc-200/85 dark:bg-zinc-800/30 dark:ring-white/[0.08]">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[calc(2rem-6px)] border border-zinc-200/90 dark:border-white/[0.07]">
-                  <Image
-                    src={picsum(`ics-sol-${idx}`, 800, 600, { blur: 1 })}
-                    alt=""
-                    fill
-                    className="object-cover transition-[transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02]"
-                    sizes="(max-width: 768px) 100vw, 45vw"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-linear-to-tr from-zinc-950/55 via-transparent to-transparent dark:from-zinc-950/65" />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-zinc-950/85 via-zinc-950/35 to-transparent px-5 pb-4 pt-16 dark:from-zinc-950/90">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/90">
-                      {row.name}
-                    </p>
+              <Link
+                href={row.href}
+                className="ics-sol-visual-link block outline-none ring-offset-4 ring-offset-zinc-100 focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 active:scale-[0.995] dark:ring-offset-zinc-950 dark:focus-visible:ring-accent/45 [&_img]:origin-center [&_img]:transition-transform [&_img]:duration-500 [&_img]:ease-[cubic-bezier(0.33,1,0.32,1)] hover:[&_img]:scale-[1.035] [&>div>div]:transition-colors [&>div>div]:duration-[400ms] [&>div>div]:ease-[cubic-bezier(0.33,1,0.32,1)] hover:[&>div>div]:border-teal-700/22 dark:hover:[&>div>div]:border-cyan-400/28 hover:[&_.ics-sol-vignette]:opacity-[0.62]"
+                aria-label={`${row.name}: xem giải pháp`}
+              >
+                <div className="rounded-[2rem] bg-zinc-200/40 p-1.5 ring-1 ring-zinc-200/85 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] dark:bg-zinc-800/30 dark:ring-white/[0.08] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-[calc(2rem-6px)] border border-zinc-200/90 bg-zinc-100/40 shadow-[inset_0_1px_0_rgba(0,0,0,0.04)] dark:border-white/[0.07] dark:bg-zinc-900/35 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                    <Image
+                      src={picsum(`ics-sol-${idx}`, 800, 600, { blur: 1 })}
+                      alt=""
+                      fill
+                      className="object-cover scale-100"
+                      sizes="(max-width: 768px) 100vw, 45vw"
+                    />
+                    <div
+                      className="ics-sol-vignette pointer-events-none absolute inset-0 bg-linear-to-tr from-zinc-950/55 via-transparent to-transparent opacity-100 transition-opacity duration-400 ease-[cubic-bezier(0.33,1,0.32,1)] dark:from-zinc-950/65"
+                      aria-hidden
+                    />
+                    <div className="ics-sol-bottom pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-zinc-950/85 via-zinc-950/35 to-transparent px-5 pb-4 pt-16 dark:from-zinc-950/90">
+                      <p className="ics-sol-label text-[10px] font-semibold uppercase tracking-[0.22em] text-white/90">
+                        {row.name}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </Reveal>
             <Reveal delay={0.06} x={idx % 2 === 0 ? 12 : -12}>
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">
@@ -482,7 +491,7 @@ export function HomeNewsTeaser() {
           >
             <Link
               href={`/articles/${a.slug}`}
-              className={`group flex h-full overflow-hidden rounded-2xl border border-zinc-200/90 bg-white/80 shadow-sm transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:shadow-md dark:border-white/[0.07] dark:bg-zinc-900/25 dark:shadow-none dark:hover:shadow-[0_20px_50px_-28px_rgba(0,0,0,0.55)] ${
+              className={`ics-news-card-link flex h-full overflow-hidden rounded-2xl border border-zinc-200/90 bg-white/80 shadow-sm transition-shadow duration-300 ease-[cubic-bezier(0.33,1,0.32,1)] hover:shadow-[0_12px_28px_-18px_rgba(24,24,27,0.12)] dark:border-white/[0.07] dark:bg-zinc-900/25 dark:shadow-none dark:hover:shadow-[0_16px_32px_-20px_rgba(0,0,0,0.35)] [&_img]:origin-center [&_img]:transition-transform [&_img]:duration-500 [&_img]:ease-[cubic-bezier(0.33,1,0.32,1)] hover:[&_img]:scale-[1.035] [&_h3]:transition-colors [&_h3]:duration-300 [&_h3]:ease-[cubic-bezier(0.33,1,0.32,1)] hover:[&_h3]:text-accent dark:hover:[&_h3]:text-teal-300 hover:[&_.ics-news-peek]:translate-x-0.5 hover:[&_.ics-news-peek]:opacity-100 ${
                 idx === 0
                   ? "min-h-0 flex-col md:min-h-[220px] md:flex-row"
                   : "flex-col"
@@ -499,7 +508,7 @@ export function HomeNewsTeaser() {
                   src={picsum(`ics-news-${a.slug}`, 640, 400)}
                   alt=""
                   fill
-                  className="object-cover opacity-90 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02] group-hover:opacity-100"
+                  className="object-cover"
                   sizes={
                     idx === 0
                       ? "(max-width: 768px) 100vw, 50vw"
@@ -526,7 +535,7 @@ export function HomeNewsTeaser() {
                   </span>
                 </div>
                 <h3
-                  className={`mt-2 font-semibold leading-snug text-zinc-900 transition-colors duration-300 group-hover:text-accent dark:text-white dark:group-hover:text-teal-300 ${
+                  className={`mt-2 font-semibold leading-snug text-zinc-900 dark:text-white ${
                     idx === 0
                       ? "text-lg md:text-xl md:leading-snug"
                       : "text-base"
@@ -541,7 +550,7 @@ export function HomeNewsTeaser() {
                 >
                   {a.excerpt}
                 </p>
-                <span className="mt-4 inline-flex w-fit text-xs font-semibold uppercase tracking-[0.18em] text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="ics-news-peek mt-4 inline-flex w-fit text-xs font-semibold uppercase tracking-[0.18em] text-accent opacity-0 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.33,1,0.32,1)]">
                   Đọc bài →
                 </span>
               </div>

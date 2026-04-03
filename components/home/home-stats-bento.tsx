@@ -280,12 +280,14 @@ export function HomeStatsBento({
           >
             {subtitle}
           </motion.p>
-          <motion.p
-            variants={introChild}
-            className="mt-4 max-w-[58ch] text-sm leading-relaxed text-zinc-500 sm:mt-5"
-          >
-            {introSecondary}
-          </motion.p>
+          {introSecondary.trim() ? (
+            <motion.p
+              variants={introChild}
+              className="mt-4 max-w-[58ch] text-sm leading-relaxed text-zinc-500 sm:mt-5"
+            >
+              {introSecondary}
+            </motion.p>
+          ) : null}
           <motion.div variants={introChild} className="mt-8 sm:mt-10">
             <p className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500 sm:text-[11px]">
               {introMetaLine}
@@ -346,12 +348,14 @@ export function HomeStatsBento({
             >
               {subtitle}
             </motion.p>
-            <motion.p
-              variants={introChild}
-              className="mt-4 max-w-[58ch] text-sm leading-relaxed text-zinc-500 sm:mt-5"
-            >
-              {introSecondary}
-            </motion.p>
+            {introSecondary.trim() ? (
+              <motion.p
+                variants={introChild}
+                className="mt-4 max-w-[58ch] text-sm leading-relaxed text-zinc-500 sm:mt-5"
+              >
+                {introSecondary}
+              </motion.p>
+            ) : null}
             <motion.div variants={introChild} className="mt-8 sm:mt-10">
               <p className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500 sm:text-[11px]">
                 {introMetaLine}
