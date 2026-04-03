@@ -40,6 +40,7 @@ export const navFooterSolutions: NavItem[] = [
 export const navFooterMeta: NavItem[] = [
   { href: "/gioi-thieu", label: "Giới thiệu về ICS" },
   { href: "/khach-hang", label: "Khách hàng" },
+  { href: "/doi-tac", label: "Đối tác" },
   { href: "/hoat-dong-xa-hoi", label: "Hoạt động xã hội" },
   { href: "/articles", label: "Tin tức" },
   { href: "/lien-he", label: "Liên hệ" },
@@ -240,8 +241,7 @@ export const home = {
     title: "ICS trong con số",
     subtitle:
       "Đội ngũ và dự án phục vụ khách hàng doanh nghiệp, tài chính và hạ tầng trọng yếu.",
-    introSecondary:
-      "Số liệu phản ánh phạm vi vận hành thực tế: log tập trung, phân loại sự cố và cam kết theo từng hợp đồng.",
+    introSecondary: "",
     introMetaLine: "Doanh nghiệp · Tài chính · Hạ tầng trọng yếu",
     items: [
       {
@@ -376,7 +376,7 @@ export const about = {
   narrative: {
     legalName: "CÔNG TY CỔ PHẦN AN NINH MẠNG QUỐC TẾ – ICS",
     body:
-      "Là đơn vị tiên phong trong lĩnh vực an ninh mạng tại Việt Nam và khu vực, chuyên cung cấp các giải pháp bảo mật toàn diện cho thời đại công nghệ số. ICS tập trung vào các giải pháp bảo mật cho nhiều lĩnh vực trọng yếu, bao gồm: bảo vệ ứng dụng, an ninh cho nhà máy thông minh, tòa nhà thông minh và đặc biệt là hệ thống điều hành trung tâm AI SOC.",
+      "Là đơn vị tiên phong trong lĩnh vực an ninh mạng tại Việt Nam và khu vực, chuyên cung cấp các giải pháp bảo mật toàn diện cho thời đại công nghệ số. ICS tập trung vào các giải pháp bảo mật cho nhiều lĩnh vực trọng yếu, bao gồm: Bảo vệ endpoint, bảo vệ ứng dụng, an ninh cho nhà máy thông minh, tòa nhà thông minh và đặc biệt là hệ thống điều hành trung tâm AI SOC.",
   },
   stats: [
     { value: "50+", label: "Khách hàng doanh nghiệp" },
@@ -528,7 +528,7 @@ export const about = {
   },
   /** Tương thích field cũ nếu import nơi khác */
   intro:
-    "Là đơn vị tiên phong trong lĩnh vực an ninh mạng tại Việt Nam và khu vực, chuyên cung cấp các giải pháp bảo mật toàn diện cho thời đại công nghệ số. ICS tập trung vào các giải pháp bảo mật cho nhiều lĩnh vực trọng yếu, bao gồm: bảo vệ ứng dụng, an ninh cho nhà máy thông minh, tòa nhà thông minh và đặc biệt là hệ thống điều hành trung tâm AI SOC.",
+    "Là đơn vị tiên phong trong lĩnh vực an ninh mạng tại Việt Nam và khu vực, chuyên cung cấp các giải pháp bảo mật toàn diện cho thời đại công nghệ số. ICS tập trung vào các giải pháp bảo mật cho nhiều lĩnh vực trọng yếu, bao gồm: Bảo vệ ứng dụng, an ninh cho nhà máy thông minh, tòa nhà thông minh và đặc biệt là hệ thống điều hành trung tâm AI SOC.",
   statHighlight: "Hơn 50 chuyên gia an ninh mạng với kinh nghiệm quốc tế",
   values: [
     "Cam kết bảo vệ dữ liệu khách hàng ở mức cao nhất",
@@ -557,6 +557,14 @@ export const about = {
 
 export const careers = {
   headline: "Tại sao nên gia nhập ICS?",
+  pageDescription:
+    "Tuyển dụng ICS tại Hà Nội: vị trí Marketing, Kinh doanh giải pháp công nghệ, Kỹ sư bảo mật và quản lý — AI SOC, triển khai thực chiến, lương thỏa thuận theo năng lực.",
+  heroEyebrow: "Tuyển dụng",
+  heroSub:
+    "Làm việc cùng đội kỹ thuật triển khai SOC thật, không slide deck. Hà Nội · giờ linh hoạt theo dự án · đào tạo bài bản sau onboarding.",
+  positionsSectionTitle: "Vị trí đang mở",
+  positionsSectionSub:
+    "Mỗi dòng là một nhóm làm việc cụ thể; mức và phụ cấp được trao đổi sau vòng phỏng vấn kỹ thuật.",
   reasons: [
     {
       title: "Công nghệ tiên tiến",
@@ -655,30 +663,153 @@ export const corporateHoatDongXaHoi = {
 };
 
 export const corporateKhachHang = {
-  title: "Khách hàng",
+  /** Khớp H1 trên icss.com.vn/khach-hang */
+  title: "Khách hàng của chúng tôi",
   description:
-    "ICS phục vụ doanh nghiệp có hệ thống trọng yếu: tài chính, sản xuất, hạ tầng số và tổ chức có yêu cầu tuân thủ cao.",
+    "Khách hàng ICS: ngân hàng, chính phủ, viễn thông và doanh nghiệp chuyển đổi số — an ninh mạng là nền tảng phát triển bền vững.",
+  /** Đoạn mở đầu theo nội dung công khai trên icss.com.vn/khach-hang */
   intro:
-    "Chúng tôi triển khai SOC, bảo vệ ứng dụng, endpoint và không gian OT/IT với phạm vi hợp đồng rõ ràng, báo cáo định kỳ và đội vận hành hỗ trợ theo cam kết từng dự án.",
+    "Khách hàng của chúng tôi trải rộng từ ngân hàng, chính phủ, các doanh nghiệp vừa và nhỏ đến các tập đoàn lớn, hoạt động trong nhiều ngành nghề khác nhau. Họ đang chuyển đổi số, coi an ninh mạng là nền tảng để phát triển bền vững và giữ vững lợi thế cạnh tranh trên thị trường.",
   segments: [
     {
-      title: "Ngân hàng và dịch vụ tài chính",
+      title: "Ngành tài chính",
       body:
-        "Giám sát liên tục, ứng phó sự cố và tư vấn tuân thủ phù hợp mức độ nhạy cảm của luồng dữ liệu và giao dịch.",
+        "Ngân hàng, chứng khoán và bảo hiểm — nơi dữ liệu giao dịch và yêu cầu tuân thủ đòi hỏi giám sát liên tục, ứng phó sự cố và kiến trúc an toàn phù hợp mức độ nhạy cảm.",
+      imageSeed: "ics-kh-finance-sector",
+      imageAlt: "Minh họa môi trường tài chính và giao dịch số — phạm vi khách hàng ICS",
     },
     {
-      title: "Sản xuất và hạ tầng trọng yếu",
+      title: "Chính phủ",
       body:
-        "Bảo vệ nhà máy thông minh, liên thông OT/IT và giảm thời gian gián đoạn do sự cố an ninh.",
+        "Cơ quan nhà nước và đơn vị sự nghiệp — ưu tiên tính sẵn sàng dịch vụ, bảo vệ dữ liệu công dân và đáp ứng khung pháp lý an ninh mạng trong vận hành số.",
+      imageSeed: "ics-kh-government-sector",
+      imageAlt: "Minh họa khu vực công và dịch vụ số — phạm vi khách hàng ICS",
     },
     {
-      title: "Tổ chức đa chi nhánh",
+      title: "Ngành viễn thông",
       body:
-        "Kiến trúc thống nhất cho tòa nhà thông minh, endpoint và đám mây, với một đầu mối điều phối cảnh báo.",
+        "Nhà mạng và hạ tầng kết nối — bảo vệ biên mạng, trung tâm dữ liệu và dịch vụ hạ tầng số trước các chiến dịch tấn công quy mô lớn.",
+      imageSeed: "ics-kh-telecom-sector",
+      imageAlt: "Minh họa hạ tầng kết nối và truyền thông — phạm vi khách hàng ICS",
     },
   ],
-  proofLine:
-    "Mục tiêu vận hành và số liệu minh họa nằm tại phần tóm tắt trên trang chủ; hồ sơ năng lực chi tiết có thể được chia sẻ sau buổi làm việc đầu tiên.",
+};
+
+export const corporateDoiTac = {
+  title: "Đối tác",
+  description:
+    "Chương trình đối tác ICS: liên minh công nghệ, hợp tác kinh doanh và đào tạo nhằm triển khai an ninh mạng bền vững tại Việt Nam và khu vực.",
+  heroEyebrow: "Hệ sinh thái hợp tác",
+  heroTitle: "Cùng xây dựng hệ sinh thái an ninh mạng vững mạnh",
+  intro:
+    "ICS tự hào hợp tác với đối tác công nghệ và kinh doanh hàng đầu. Chúng tôi tin sự kết hợp giữa nền tảng tiên tiến và kinh nghiệm triển khai thực tế tạo ra giải pháp phù hợp nhất cho từng khách hàng — hướng tới môi trường số an toàn, có thể kiểm soát và mở rộng.",
+  program: {
+    eyebrow: "Chương trình đối tác",
+    title: "Các cấp độ với quyền lợi và ưu đãi phù hợp",
+    subtitle:
+      "Thiết kế theo mô hình kênh và cam kết chung; chi tiết rebate, điều khoản và lộ trình đào tạo được thống nhất trong hợp đồng đối tác.",
+    tiers: [
+      {
+        name: "Platinum Partner",
+        highlights: [
+          "Hỗ trợ ưu tiên 24/7",
+          "Đào tạo chuyên sâu",
+          "Đồng hành co-marketing",
+          "Chính sách rebate ưu tiên",
+        ],
+      },
+      {
+        name: "Gold Partner",
+        highlights: [
+          "Hỗ trợ kỹ thuật theo gói",
+          "Đào tạo sản phẩm và triển khai",
+          "Hỗ trợ marketing",
+          "Rebate cạnh tranh",
+        ],
+      },
+    ],
+  },
+  tech: {
+    eyebrow: "Đối tác công nghệ",
+    title: "Nền tảng, bảo mật và hạ tầng dữ liệu",
+    body:
+      "Các đơn vị cung cấp phần mềm, giải pháp bảo mật và kiến trúc dữ liệu — phối hợp triển khai cùng đội kỹ thuật ICS.",
+    partners: [
+      {
+        name: "Gurucul",
+        body:
+          "Giải pháp UEBA, SIEM thế hệ mới và nền tảng AI-SOC; ICS là Gurucul Certified AI-SOC Strategic Partner.",
+      },
+      {
+        name: "HyperG & Oracle",
+        body:
+          "Liên minh giữa bảo mật đám mây (HyperG) và hạ tầng dữ liệu, quản trị doanh nghiệp (Oracle).",
+      },
+      {
+        name: "CyStack",
+        body: "An ninh mạng chuyên sâu về rà soát lỗ hổng và bảo mật ứng dụng.",
+      },
+      {
+        name: "VieSecurity",
+        body:
+          "Đơn vị chuyên sâu về dịch vụ và giải pháp an toàn thông tin.",
+      },
+      {
+        name: "Loca AI",
+        body: "Tập trung ứng dụng trí tuệ nhân tạo vào bài toán vận hành và sản phẩm thực tế.",
+      },
+      {
+        name: "IRTech",
+        body: "Phát triển phần mềm, outsourcing và chuyển đổi số theo yêu cầu doanh nghiệp.",
+      },
+    ],
+  },
+  business: {
+    eyebrow: "Đối tác kinh doanh",
+    title: "Thương mại, đào tạo và nhân lực",
+    body:
+      "Kênh phân phối, chăm sóc triển khai và hợp tác giáo dục — mở rộng phạm vi phục vụ khách hàng cuối.",
+    partners: [
+      {
+        name: "BlueNet",
+        body: "Nhà phân phối, đại lý dịch vụ viễn thông và mạng.",
+      },
+      {
+        name: "BitCare",
+        body: "Dịch vụ hỗ trợ, bảo trì và chăm sóc khách hàng trong lĩnh vực CNTT.",
+      },
+      {
+        name: "BigBen",
+        body: "Phân phối sản phẩm và dịch vụ giáo dục, đào tạo.",
+      },
+      {
+        name: "Đại học Thủy lợi (TLU)",
+        body: "Hợp tác nguồn nhân lực, nghiên cứu và đào tạo.",
+      },
+      {
+        name: "CTCP Học viện Công nghệ AI Việt Nam",
+        body: "Giáo dục, đào tạo và cung ứng nhân sự chuyên về AI.",
+      },
+      {
+        name: "Cathay",
+        body:
+          "Tập đoàn tài chính, bảo hiểm — khách hàng chiến lược và đối tác dịch vụ tài chính.",
+      },
+    ],
+  },
+  cta: {
+    title: "Trở thành đối tác của ICS",
+    body:
+      "Liên hệ để trao đổi mô hình hợp tác, lộ trình đào tạo và tài liệu chương trình phù hợp kênh của bạn.",
+    primary: { label: "Đăng ký hợp tác", href: "/lien-he" },
+    secondary: { label: "Tư vấn theo ngành", href: "/lien-he" },
+  },
+  certifications: [
+    "ISO 27001",
+    "Oracle Partner",
+    "Gurucul AI-SOC Partner",
+    "Verified",
+  ],
 };
 
 export const legalPrivacy = {
