@@ -67,7 +67,7 @@
 - Có video giới thiệu nhúng về sứ mệnh, tầm nhìn, giải pháp[^5]
 
 **Mô tả tổng quan:**
-> *"Là đơn vị tiên phong trong lĩnh vực an ninh mạng tại Việt Nam và khu vực, chuyên cung cấp các giải pháp bảo mật toàn diện cho thời đại công nghệ số. ICS tập trung vào các giải pháp bảo mật cho nhiều lĩnh vực trọng yếu, bao gồm: bảo vệ ứng dụng, an ninh cho nhà máy thông minh, tòa nhà thông minh và đặc biệt là hệ thống điều hành trung tâm AI SOC."*[^5]
+> *"Là đơn vị tiên phong trong lĩnh vực an ninh mạng tại Việt Nam và khu vực, chuyên cung cấp các giải pháp bảo mật toàn diện cho thời đại công nghệ số. ICS tập trung vào các giải pháp bảo mật cho nhiều lĩnh vực trọng yếu, bao gồm: Bảo vệ ứng dụng, an ninh cho nhà máy thông minh, tòa nhà thông minh và đặc biệt là hệ thống điều hành trung tâm AI SOC."*[^5]
 
 **Điểm mạnh / Số liệu:**
 - Hơn **50 chuyên gia an ninh mạng** với kinh nghiệm quốc tế[^5]
