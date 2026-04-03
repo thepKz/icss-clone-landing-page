@@ -21,7 +21,16 @@ export const metadata: Metadata = {
 const iconWrap =
   "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-teal-800 dark:bg-white/[0.06] dark:text-cyan-200/90";
 
-export default function ContactPage() {
+type ContactPageProps = {
+  searchParams: Promise<{ "vi-tri"?: string }>;
+};
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const sp = await searchParams;
+  const roleTitle = sp["vi-tri"]?.trim();
+  const prefilledMessage = roleTitle
+    ? `Ứng tuyển vị trí: ${roleTitle}`
+    : "";
   return (
     <>
       <section className={`${ps.edgeBottom} pt-28 pb-12 md:pt-32 md:pb-16`}>
@@ -175,7 +184,7 @@ export default function ContactPage() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7" id="lien-he-form">
             <Reveal delay={0.06} x={16}>
               <div className="mb-6 md:mb-8">
                 <h2 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
@@ -186,7 +195,10 @@ export default function ContactPage() {
                   thoại trong giờ làm việc.
                 </p>
               </div>
-              <ContactForm />
+              <ContactForm
+                key={roleTitle ?? "contact-default"}
+                initialMessage={prefilledMessage}
+              />
             </Reveal>
           </div>
         </div>

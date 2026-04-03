@@ -16,11 +16,16 @@ function validateEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
 
-export function ContactForm() {
+type ContactFormProps = {
+  /** Prefill (e.g. from `/lien-he?vi-tri=...` when applying from careers). */
+  initialMessage?: string;
+};
+
+export function ContactForm({ initialMessage = "" }: ContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(initialMessage);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
 
