@@ -2,6 +2,7 @@
 source: https://icss.com.vn/tuyen-dung
 captured: 2026-04-02
 note: "Nội dung lấy từ trang production sau khi render; link map sang route icss-web."
+jd_detail: "2026-04-11 — JD đầy đủ (sứ mệnh, mô tả, yêu cầu, quyền lợi, CV@icss.com.vn) đồng bộ vào content/site.ts → careers.positions[].detail. Hai vị trí NV Marketing & NV KD lấy theo copy chi tiết từ production; các vị trí còn lại bổ sung theo mô tả rút gọn trên cùng trang."
 ---
 
 # Công ty Cổ phần An ninh mạng Quốc tế - ICS

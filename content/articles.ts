@@ -3,13 +3,41 @@
  * `app/articles/[slug]/page.tsx` — `generateStaticParams` and sitemap consume this array.
  * Production slug migration / 301 map: coordinate with Ben (slug table) and `next.config.ts` redirects (Alex).
  */
+/** Inline emphasis inside a justified paragraph (teal / soft underline / mono for dates & numbers). */
+export type ArticleSegment = {
+  text: string;
+  mark?: "teal" | "soft" | "mono";
+};
+
+export type ArticleBodyBlock =
+  | { type: "paragraph"; segments: ArticleSegment[] }
+  | { type: "callout"; tone: "accent" | "neutral"; title?: string; text: string }
+  | { type: "pull"; text: string }
+  | { type: "list"; title?: string; items: string[]; marker?: "dash" | "number" };
+
+export type ArticleBodyItem = string | ArticleBodyBlock;
+
+export function isArticleBodyBlock(item: ArticleBodyItem): item is ArticleBodyBlock {
+  return typeof item === "object" && item !== null && "type" in item;
+}
+
+/** Optional hero: `square` = centered box, object-contain; `wide` = full strip, object-cover. */
+export type ArticleHero = {
+  src: string;
+  width: number;
+  height: number;
+  frame: "square" | "wide";
+};
+
 export type Article = {
   slug: string;
   title: string;
   excerpt: string;
   date: string;
   readMinutes: number;
-  body: string[];
+  /** When set, replaces picsum placeholder for this article. */
+  hero?: ArticleHero;
+  body: ArticleBodyItem[];
 };
 
 export const articles: Article[] = [
@@ -217,6 +245,121 @@ export const articles: Article[] = [
       "Doanh nghiệp vừa và nhỏ thường là mục tiêu vì bảo vệ mỏng nhưng có kết nối vào đối tác lớn. Kẻ tấn công dùng đó làm bàn đạp.",
       "Đầu tư nên chia đều: identity, endpoint, email gateway, và logging tập trung. Thiếu một trụ cột sẽ làm vô hiệu các lớp khác.",
       "Lộ trình với ICS gồm đánh giá hiện trạng, ưu tiên hóa remediation, và triển khai AI SOC để mở rộng năng lực mà không nhân đôi headcount ngay.",
+    ],
+  },
+  {
+    slug: "thong-tu-77-2025-tt-nhnn-an-toan-ngan-hang",
+    title:
+      "Thông tư 77/2025/TT-NHNN: Yêu cầu kỹ thuật và lộ trình tuân thủ cho ngân hàng số",
+    excerpt:
+      "Thông tư 77 đặt ra tiêu chuẩn mới về xác thực, giám sát và phản ứng sự cố cho dịch vụ ngân hàng trực tuyến — ICS hướng dẫn đáp ứng từng điều khoản kỹ thuật.",
+    date: "2026-03-20",
+    readMinutes: 10,
+    hero: {
+      src: "/images/articles/thongtu77.png",
+      width: 1080,
+      height: 1080,
+      frame: "square",
+    },
+    body: [
+      {
+        type: "paragraph",
+        segments: [
+          { text: "Thông tư 77/2025/TT-NHNN", mark: "teal" },
+          {
+            text: " (ban hành ngày ",
+          },
+          { text: "30/12/2025", mark: "mono" },
+          { text: ", hiệu lực từ " },
+          { text: "01/03/2026", mark: "mono" },
+          {
+            text: ") quy định về an toàn và bảo mật cho việc cung cấp dịch vụ trực tuyến trong ngành ngân hàng. Đây là bản nâng cấp toàn diện so với Thông tư 35/2016 và Thông tư 09/2020, tập trung vào ",
+          },
+          {
+            text: "ba nhóm yêu cầu: xác thực định danh, giám sát liên tục, và khả năng phản ứng sự cố có kiểm chứng",
+            mark: "soft",
+          },
+          { text: "." },
+        ],
+      },
+      {
+        type: "paragraph",
+        segments: [
+          { text: "Về xác thực và kiểm soát truy cập: " },
+          { text: "Thông tư 77", mark: "teal" },
+          {
+            text: " yêu cầu xác thực đa yếu tố (",
+          },
+          { text: "MFA", mark: "mono" },
+          {
+            text: ") cho giao dịch từ ngưỡng quy định, ",
+          },
+          { text: "UEBA", mark: "mono" },
+          {
+            text: " để cảnh báo phiên đăng nhập lạ, và mã hóa dữ liệu trong luồng giao dịch.",
+          },
+        ],
+      },
+      {
+        type: "callout",
+        tone: "accent",
+        title: "Điểm then chốt — nhật ký truy cập",
+        text: "Khoản 12 Điều 5: duy trì nhật ký truy cập đầy đủ, lưu giữ tối thiểu 3 năm và phải truy vấn được trong 4 giờ khi cơ quan thanh tra yêu cầu.",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          { text: "Về giám sát liên tục: " },
+          { text: "Điều 8", mark: "teal" },
+          {
+            text: " quy định tổ chức tín dụng triển khai phát hiện xâm nhập, giám sát sự cố ",
+          },
+          { text: "24/7", mark: "mono" },
+          {
+            text: ", và ngưỡng cảnh báo cho đăng nhập thất bại, giao dịch ngoài thông lệ, IP chưa xác minh. ",
+          },
+          { text: "AI SOC của ICS", mark: "teal" },
+          { text: " trên nền " },
+          { text: "Gurucul UEBA/SIEM", mark: "soft" },
+          {
+            text: " hỗ trợ tương quan sự kiện và xếp hạng cảnh báo, rút ngắn ",
+          },
+          { text: "MTTR", mark: "mono" },
+          { text: " theo tài liệu nhà cung cấp." },
+        ],
+      },
+      {
+        type: "pull",
+        text: "Phản ứng sự cố: IRP được kiểm tra định kỳ; thông báo NHNN trong 4 giờ từ khi phát hiện sự cố nghiêm trọng; lưu bằng chứng điều tra số theo tiêu chuẩn.",
+      },
+      {
+        type: "paragraph",
+        segments: [
+          {
+            text: "ICS hỗ trợ soạn thảo và diễn tập IRP, cùng dịch vụ ",
+          },
+          { text: "DFIR", mark: "mono" },
+          {
+            text: " (Digital Forensics & Incident Response) khi cần.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        title: "Lộ trình tuân thủ gợi ý",
+        marker: "number",
+        items: [
+          "Kiểm kê tài sản và đánh giá gap so với Thông tư 77 (2–3 tuần).",
+          "Triển khai hoặc nâng cấp logging tập trung, SIEM và MFA cho Internet Banking (4–8 tuần tùy quy mô).",
+          "Vận hành AI SOC 24/7 và xây dựng IRP theo mẫu NHNN (song song).",
+          "Diễn tập và đánh giá lần cuối trước kỳ thanh tra định kỳ.",
+        ],
+      },
+      {
+        type: "callout",
+        tone: "neutral",
+        text: "ICS có thể đồng hành cả bốn bước với đội ngũ đã triển khai thực tế tại các tổ chức tín dụng.",
+      },
     ],
   },
   {

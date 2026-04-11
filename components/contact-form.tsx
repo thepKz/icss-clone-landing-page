@@ -9,6 +9,15 @@ const spring = { type: "spring" as const, stiffness: 200, damping: 26 };
 const fieldClass =
   "w-full min-h-[44px] rounded-xl border border-zinc-200/90 bg-white px-4 py-3 text-sm text-zinc-900 outline-none shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] transition-[border-color,box-shadow] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] placeholder:text-zinc-400 focus:border-teal-700/50 focus:ring-2 focus:ring-teal-600/18 dark:border-white/[0.12] dark:bg-zinc-950/85 dark:text-zinc-100 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:placeholder:text-zinc-500 dark:focus:border-teal-400/45 dark:focus:ring-teal-400/18";
 
+const intentOptions = [
+  { value: "", label: "Chọn nhu cầu của bạn" },
+  { value: "demo-ai-soc", label: "Đặt lịch demo AI SOC" },
+  { value: "tu-van-giai-phap", label: "Tư vấn giải pháp theo ngành" },
+  { value: "bao-gia", label: "Yêu cầu báo giá" },
+  { value: "pentest", label: "Đặt lịch kiểm thử xâm nhập (Pentest)" },
+  { value: "hop-tac", label: "Hợp tác đối tác" },
+] as const;
+
 const labelClass =
   "text-sm font-medium text-zinc-800 dark:text-zinc-200";
 
@@ -17,14 +26,17 @@ function validateEmail(v: string) {
 }
 
 type ContactFormProps = {
-  /** Prefill (e.g. from `/lien-he?vi-tri=...` when applying from careers). */
+  /** Prefill message (e.g. from `/lien-he?vi-tri=...` when applying from careers). */
   initialMessage?: string;
+  /** Pre-select intent from URL `?loai=` param. */
+  initialLoai?: string;
 };
 
-export function ContactForm({ initialMessage = "" }: ContactFormProps) {
+export function ContactForm({ initialMessage = "", initialLoai = "" }: ContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [intent, setIntent] = useState(initialLoai);
   const [message, setMessage] = useState(initialMessage);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
@@ -111,6 +123,28 @@ export function ContactForm({ initialMessage = "" }: ContactFormProps) {
           />
           <p className="text-xs text-zinc-500 dark:text-zinc-400">
             Tuỳ chọn — giúp ICS phản hồi nhanh hơn.
+          </p>
+        </div>
+        <div className="grid gap-2">
+          <label htmlFor="intent" className={labelClass}>
+            Nhu cầu của bạn
+          </label>
+          <select
+            id="intent"
+            name="intent"
+            value={intent}
+            onChange={(e) => setIntent(e.target.value)}
+            className={`cursor-pointer appearance-none ${fieldClass}`}
+            aria-label="Chọn loại yêu cầu"
+          >
+            {intentOptions.map((opt) => (
+              <option key={opt.value} value={opt.value} disabled={opt.value === ""}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            Giúp đội ICS chuẩn bị thông tin phù hợp trước khi liên hệ lại.
           </p>
         </div>
         <div className="grid gap-2">

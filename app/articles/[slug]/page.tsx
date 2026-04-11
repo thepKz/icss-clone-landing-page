@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArticleBody } from "@/components/articles/article-body-renderer";
 import { articles, getArticleBySlug } from "@/content/articles";
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/section-shell";
@@ -34,7 +35,7 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
-      <article>
+      <article lang="vi">
         <header className={`${ps.edgeBottom} pt-28 pb-12 md:pt-32 md:pb-16`}>
           <div className="mx-auto max-w-[1400px] px-4 md:px-8">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14 lg:items-end">
@@ -49,7 +50,9 @@ export default async function ArticlePage({ params }: Props) {
                   <h1 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-[2.15rem] md:leading-tight">
                     {article.title}
                   </h1>
-                  <p className="mt-6 text-base leading-relaxed text-muted">{article.excerpt}</p>
+                  <p className="mt-6 text-justify hyphens-auto text-base leading-relaxed text-muted [text-align-last:left]">
+                    {article.excerpt}
+                  </p>
                 </Reveal>
               </div>
               <div className="lg:col-span-4">
@@ -79,28 +82,52 @@ export default async function ArticlePage({ params }: Props) {
 
         <SectionShell className="!py-10">
           <Reveal>
-            <div className={`relative mx-auto max-w-[900px] ${ps.imageFrame}`}>
-              <Image
-                src={picsum(`ics-article-${article.slug}-hero`, 1200, 640)}
-                alt={article.title}
-                width={1200}
-                height={640}
-                className="h-auto w-full object-cover"
-                priority
-              />
-            </div>
+            {article.hero?.frame === "square" ? (
+              <div
+                className={`relative mx-auto w-full max-w-[min(100%,560px)] ${ps.imageFrame}`}
+              >
+                <div className="relative aspect-square w-full bg-zinc-100/60 dark:bg-zinc-900/50">
+                  <Image
+                    src={article.hero.src}
+                    alt={article.title}
+                    fill
+                    className="object-contain object-center"
+                    sizes="(max-width: 768px) 100vw, 560px"
+                    priority
+                  />
+                </div>
+              </div>
+            ) : article.hero?.frame === "wide" ? (
+              <div className={`relative mx-auto max-w-[900px] ${ps.imageFrame}`}>
+                <Image
+                  src={article.hero.src}
+                  alt={article.title}
+                  width={article.hero.width}
+                  height={article.hero.height}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            ) : (
+              <div className={`relative mx-auto max-w-[900px] ${ps.imageFrame}`}>
+                <Image
+                  src={picsum(`ics-article-${article.slug}-hero`, 1200, 640)}
+                  alt={article.title}
+                  width={1200}
+                  height={640}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            )}
           </Reveal>
         </SectionShell>
 
         <SectionShell className="!pt-0">
           <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-0 lg:grid-cols-12 lg:gap-16">
             <div className="mx-auto max-w-[65ch] lg:col-span-8 lg:mx-0">
-              {article.body.map((para, i) => (
-                <Reveal key={i} delay={0.04 * i}>
-                  <p className="mb-6 text-base leading-relaxed text-foreground/90">{para}</p>
-                </Reveal>
-              ))}
-              <Reveal delay={0.12}>
+              <ArticleBody items={article.body} />
+              <Reveal delay={0.04 * article.body.length + 0.08}>
                 <Link href="/lien-he" className={`mt-4 inline-flex ${ps.ctaPill}`}>
                   Trao đổi với chuyên gia ICS
                 </Link>

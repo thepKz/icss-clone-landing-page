@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { AiSocDashboardZoom } from "@/components/products/ai-soc-dashboard-zoom";
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/section-shell";
 import { productVietguard } from "@/content/site";
@@ -31,12 +31,13 @@ export default function VietguardPage() {
           </Reveal>
           <Reveal delay={0.08} x={20}>
             <div className={`relative aspect-[16/10] ${ps.imageFrame}`}>
-              <Image
+              <AiSocDashboardZoom
                 src={picsum("ics-vietguard", 1000, 620)}
                 alt="Bảo vệ ứng dụng di động"
-                fill
-                className="object-cover"
+                width={1000}
+                height={620}
                 sizes="(max-width: 768px) 100vw, 45vw"
+                imageClassName="h-full w-full object-cover"
                 priority
               />
             </div>

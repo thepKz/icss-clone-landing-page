@@ -24,9 +24,9 @@ type TileTheme = {
  * Dark: một họ màu (zinc + cyan ICS) — không tím/vàng; nền gần solid để chữ ổn định.
  */
 const darkShell =
-  "dark:bg-zinc-900/75 dark:ring-1 dark:ring-white/12 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
+  "dark:bg-zinc-900/82 dark:ring-1 dark:ring-white/12 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
 const darkPlate =
-  "dark:border-white/10 dark:bg-zinc-950 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]";
+  "dark:border-white/12 dark:bg-zinc-950/96 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.07)]";
 
 const themes: TileTheme[] = [
   {
@@ -84,7 +84,7 @@ export function CareersReasonsBento({ reasons }: { reasons: Reason[] }) {
     {
       reason: a,
       idx: 0,
-      grid: "relative z-10 max-md:min-h-[15rem] md:col-span-7 md:row-span-2 md:row-start-1",
+      grid: "relative z-10 md:col-span-7 md:row-span-2 md:row-start-1",
       offset: "md:origin-[12%_88%] md:-translate-y-1 md:-rotate-[0.45deg]",
       outerRadius: "rounded-[2rem]",
       innerRadius: "rounded-[calc(2rem-6px)]",
@@ -110,7 +110,7 @@ export function CareersReasonsBento({ reasons }: { reasons: Reason[] }) {
 
   return (
     <motion.ul
-      className="grid grid-cols-1 gap-5 md:grid-cols-12 md:gap-x-5 md:gap-y-10 md:pb-6"
+      className="grid grid-cols-1 gap-6 sm:gap-7 md:grid-cols-12 md:gap-x-5 md:gap-y-10 md:pb-6"
       initial={reduce ? false : "hidden"}
       whileInView={reduce ? undefined : "show"}
       viewport={{ once: true, margin: "-8% 0px" }}
@@ -149,10 +149,10 @@ export function CareersReasonsBento({ reasons }: { reasons: Reason[] }) {
               >
                 {/* Ambient orb — large tile gets a bigger glow */}
                 <div
-                  className={`pointer-events-none absolute rounded-full blur-3xl ${th.orb} ${
+                  className={`pointer-events-none absolute rounded-full blur-2xl md:blur-3xl ${th.orb} ${
                     large
-                      ? "-right-24 -top-28 h-[min(72%,22rem)] w-[min(72%,22rem)] opacity-[0.55] md:-right-32 md:-top-36 dark:opacity-40"
-                      : "-right-16 -top-20 h-48 w-48 opacity-45 dark:opacity-35"
+                      ? "-right-20 -top-24 h-[min(68%,18rem)] w-[min(68%,18rem)] opacity-[0.48] max-md:blur-xl md:-right-32 md:-top-36 md:h-[min(72%,22rem)] md:w-[min(72%,22rem)] md:opacity-[0.55] dark:opacity-[0.38] md:dark:opacity-40"
+                      : "-right-14 -top-16 h-40 w-40 opacity-40 max-md:blur-xl md:-right-16 md:-top-20 md:h-48 md:w-48 md:opacity-45 dark:opacity-32 md:dark:opacity-35"
                   }`}
                   aria-hidden
                 />
@@ -165,7 +165,9 @@ export function CareersReasonsBento({ reasons }: { reasons: Reason[] }) {
 
                 <div
                   className={`relative flex h-full flex-col justify-between border-l border-transparent ${
-                    large ? "p-7 pl-6 md:p-10 md:pl-8 lg:p-12 lg:pl-10" : "p-7 pl-6 md:p-8 md:pl-7"
+                    large
+                      ? "p-6 pl-5 sm:p-7 sm:pl-6 md:p-10 md:pl-8 lg:p-12 lg:pl-10"
+                      : "p-6 pl-5 sm:p-7 sm:pl-6 md:p-8 md:pl-7"
                   }`}
                 >
                   <div className="flex items-start gap-5">
@@ -197,7 +199,7 @@ export function CareersReasonsBento({ reasons }: { reasons: Reason[] }) {
                     </div>
                   </div>
                   <p
-                    className={`relative mt-8 max-w-[52ch] leading-relaxed text-zinc-600 dark:text-zinc-400 ${
+                    className={`relative mt-6 max-w-[52ch] leading-relaxed text-zinc-600 max-md:text-[0.9375rem] dark:text-zinc-300 sm:mt-8 ${
                       large ? "text-base md:text-[1.05rem]" : "text-sm md:text-base"
                     }`}
                   >

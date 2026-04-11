@@ -300,6 +300,20 @@ export function HeroThreatPanel() {
         className="pointer-events-auto overflow-hidden rounded-lg border border-stone-200/55 bg-white/98 shadow-[0_10px_32px_-22px_rgba(28,25,23,0.12)] transition-[border-color,box-shadow] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] dark:border-zinc-700/40 dark:bg-zinc-950/98 dark:shadow-[0_16px_40px_-26px_rgba(0,0,0,0.48)] md:group-hover/panel:border-stone-300/75 md:group-hover/panel:shadow-[0_14px_40px_-22px_rgba(28,25,23,0.14)] dark:md:group-hover/panel:border-zinc-600/55 dark:md:group-hover/panel:shadow-[0_20px_48px_-24px_rgba(0,0,0,0.55)]"
       >
         <div className="relative overflow-hidden px-3 pb-2 pt-3 md:px-4 md:pb-3 md:pt-4" role="region" aria-label="Tin cảnh báo bảo mật">
+          <div className="mb-2 flex items-center justify-between gap-2 border-b border-stone-100/90 pb-2 dark:border-zinc-800/70">
+            <span className="flex items-center gap-1.5" aria-label="ICS đang theo dõi realtime">
+              <span className="relative flex h-2 w-2 shrink-0" aria-hidden>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+              </span>
+              <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+                ICS Live Monitor
+              </span>
+            </span>
+            <span className="font-mono text-[8px] font-medium uppercase tracking-[0.12em] text-stone-400 dark:text-zinc-500">
+              Realtime
+            </span>
+          </div>
           <div className="flex min-w-0 items-start gap-2 md:gap-2.5">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div

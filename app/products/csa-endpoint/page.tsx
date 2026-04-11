@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { AiSocDashboardZoom } from "@/components/products/ai-soc-dashboard-zoom";
 import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/section-shell";
 import { productCsa } from "@/content/site";
@@ -31,12 +31,13 @@ export default function CsaEndpointPage() {
             <div className="lg:col-span-7">
               <Reveal delay={0.06} x={20}>
                 <div className={`relative aspect-[16/9] ${ps.imageFrame}`}>
-                  <Image
+                  <AiSocDashboardZoom
                     src={picsum("ics-csa-endpoint", 1100, 620)}
                     alt="Bảo mật điểm cuối"
-                    fill
-                    className="object-cover"
+                    width={1100}
+                    height={620}
                     sizes="(max-width: 1024px) 100vw, 58vw"
+                    imageClassName="h-full w-full object-cover"
                     priority
                   />
                 </div>

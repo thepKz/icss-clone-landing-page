@@ -10,6 +10,7 @@ export const INDEXED_STATIC_PATHS: string[] = [
   "/articles",
   "/nha-may-thong-minh",
   "/toa-nha-thong-minh",
+  "/giai-phap-esg",
   "/doi-tac",
   "/hoat-dong-xa-hoi",
   "/khach-hang",

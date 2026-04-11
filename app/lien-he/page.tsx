@@ -22,15 +22,22 @@ const iconWrap =
   "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-teal-800 dark:bg-white/[0.06] dark:text-cyan-200/90";
 
 type ContactPageProps = {
-  searchParams: Promise<{ "vi-tri"?: string }>;
+  searchParams: Promise<{ "vi-tri"?: string; loai?: string }>;
 };
 
 export default async function ContactPage({ searchParams }: ContactPageProps) {
   const sp = await searchParams;
   const roleTitle = sp["vi-tri"]?.trim();
+  const loai = sp["loai"]?.trim();
+  const demoMeta = loai ? contactPage.demoLabels?.[loai] : undefined;
+
   const prefilledMessage = roleTitle
     ? `Ứng tuyển vị trí: ${roleTitle}`
-    : "";
+    : demoMeta?.prefill ?? "";
+
+  const pageHeading = demoMeta?.heading ?? contactPage.title;
+  const pageSubtitle = demoMeta?.subtitle ?? contactPage.subtitle;
+
   return (
     <>
       <section className={`${ps.edgeBottom} pt-28 pb-12 md:pt-32 md:pb-16`}>
@@ -40,10 +47,10 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               {company.brand}
             </p>
             <h1 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-              {contactPage.title}
+              {pageHeading}
             </h1>
             <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-muted">
-              {contactPage.subtitle}
+              {pageSubtitle}
             </p>
           </Reveal>
         </div>
@@ -188,7 +195,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             <Reveal delay={0.06} x={16}>
               <div className="mb-6 md:mb-8">
                 <h2 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
-                  Gửi yêu cầu
+                  {demoMeta ? demoMeta.heading : "Gửi yêu cầu"}
                 </h2>
                 <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-muted">
                   Điền biểu mẫu bên dưới; đội ICS sẽ phản hồi qua email hoặc điện
@@ -196,8 +203,9 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 </p>
               </div>
               <ContactForm
-                key={roleTitle ?? "contact-default"}
+                key={(roleTitle ?? loai) ?? "contact-default"}
                 initialMessage={prefilledMessage}
+                initialLoai={loai}
               />
             </Reveal>
           </div>

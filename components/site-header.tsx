@@ -61,9 +61,7 @@ function MegaLink({
 }) {
   const body = (
     <>
-      <span className="block font-semibold text-zinc-900 dark:text-zinc-50">
-        {item.label}
-      </span>
+      <span className="block font-semibold text-zinc-900 dark:text-zinc-50">{item.label}</span>
       <span className="mt-0.5 block text-[13px] leading-snug text-zinc-500 dark:text-zinc-400">
         {item.description}
       </span>

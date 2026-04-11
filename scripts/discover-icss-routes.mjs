@@ -21,6 +21,7 @@ const SEEDS = [
   "/articles/articles-list",
   "/nha-may-thong-minh",
   "/toa-nha-thong-minh",
+  "/giai-phap-esg",
   "/doi-tac",
   "/hoat-dong-xa-hoi",
   "/khach-hang",

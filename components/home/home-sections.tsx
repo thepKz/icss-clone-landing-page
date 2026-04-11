@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Package, Buildings } from "@phosphor-icons/react/ssr";
 import { articles } from "@/content/articles";
 import { home } from "@/content/site";
 import { picsum } from "@/lib/picsum";
@@ -60,10 +61,10 @@ export function HomeHero() {
           </Reveal>
           <Reveal slideFromLeft={32} delay={0.05} className="mt-7 md:mt-10">
             <h1 className="max-w-[min(100%,22rem)] text-pretty font-bold tracking-tight text-stone-900 dark:text-white sm:max-w-none">
-              <span className="block text-[1.875rem] leading-[1.1] sm:text-[2.25rem] md:pl-6 md:text-[2.65rem] md:leading-[1.06] lg:pl-9 lg:text-[3.05rem] lg:leading-[1.04]">
+              <span className="block text-[2.35rem] leading-[1.08] sm:text-[2.85rem] md:pl-6 md:text-[3.25rem] md:leading-[1.04] lg:pl-9 lg:text-[3.75rem] lg:leading-[1.02]">
                 {home.hero.titleLead}
               </span>
-              <span className="mt-2 block text-[1.5rem] font-semibold leading-[1.12] text-teal-800 sm:text-[1.75rem] md:mt-2.5 md:pl-14 md:text-[2rem] lg:pl-[4.75rem] lg:text-[2.25rem] dark:text-teal-400">
+              <span className="mt-2 block text-[1.85rem] font-semibold leading-[1.1] text-teal-800 sm:text-[2.25rem] md:mt-3 md:pl-14 md:text-[2.6rem] lg:pl-[4.75rem] lg:text-[3rem] dark:text-teal-400">
                 {home.hero.titleAccent}
               </span>
             </h1>
@@ -73,23 +74,27 @@ export function HomeHero() {
               {home.hero.tagline}
             </p>
           </Reveal>
-          <Reveal slideFromLeft={32} delay={0.14} className="mt-9 flex flex-wrap items-center gap-4 md:mt-11 md:pl-3 lg:mt-12 lg:pl-5">
+          <Reveal slideFromLeft={32} delay={0.14} className="mt-9 flex flex-wrap items-center gap-3 md:mt-11 md:pl-3 lg:mt-12 lg:pl-5">
+            {/* Primary CTA — solid teal pill with double-bezel icon pocket */}
             <Link
               href={home.hero.ctaPrimary.href}
-              className="group inline-flex min-h-[44px] items-center gap-3 rounded-full bg-teal-900 px-6 py-3 text-sm font-semibold tracking-tight text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_10px_28px_-12px_rgba(19,78,74,0.22)] ring-1 ring-teal-950/40 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-teal-950 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_12px_32px_-12px_rgba(19,78,74,0.26)] active:translate-y-px active:scale-[0.99] dark:bg-teal-600 dark:text-teal-950 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_10px_28px_-12px_rgba(45,212,191,0.14)] dark:ring-teal-800/50 dark:hover:bg-teal-400"
+              className="group relative inline-flex min-h-[52px] items-center gap-0 overflow-hidden rounded-full bg-teal-900 pl-6 pr-1.5 py-1.5 text-sm font-semibold tracking-tight text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_14px_40px_-14px_rgba(19,78,74,0.38)] ring-1 ring-teal-950/50 transition-[box-shadow,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-teal-950 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_46px_-14px_rgba(19,78,74,0.36)] motion-reduce:transition-none active:scale-[0.99] dark:bg-teal-600 dark:text-white dark:ring-teal-500/40 dark:hover:bg-teal-500"
             >
-              {home.hero.ctaPrimary.label}
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105 dark:border-teal-950/25 dark:bg-teal-950/15 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+              <span className="relative z-[1] pr-4">{home.hero.ctaPrimary.label}</span>
+              {/* Button-in-button icon pocket */}
+              <span className="relative z-[1] flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/[0.11] text-inherit shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:scale-[1.02] group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_2px_6px_-2px_rgba(0,0,0,0.12)] motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:scale-100 dark:border-white/20 dark:bg-white/10">
                 <ArrowIcon className="h-3.5 w-3.5" />
               </span>
             </Link>
+
+            {/* Secondary CTA — teal / black border, hover black / white border */}
             <Link
               href={home.hero.ctaSecondary.href}
-              className="group/secondary inline-flex min-h-[44px] items-center gap-2 rounded-full border border-stone-400/65 bg-white/55 px-5 py-2.5 text-sm font-semibold tracking-tight text-stone-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-teal-800/40 hover:bg-white/85 hover:text-teal-900 active:translate-y-px active:scale-[0.99] dark:border-zinc-500/45 dark:bg-zinc-900/45 dark:text-zinc-100 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:hover:border-zinc-300/60 dark:hover:bg-zinc-100 dark:hover:text-zinc-950"
+              className="group/sec relative inline-flex min-h-[52px] items-center gap-0 overflow-hidden rounded-full border border-zinc-950 bg-white/75 pl-5 pr-1.5 py-1.5 text-sm font-semibold tracking-tight text-teal-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_2px_6px_-2px_rgba(24,24,27,0.06)] transition-[box-shadow,background-color,border-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-white hover:bg-zinc-100 hover:text-zinc-950 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_6px_16px_-6px_rgba(24,24,27,0.1)] motion-reduce:transition-none active:scale-[0.99] dark:border-zinc-800 dark:bg-zinc-950/70 dark:text-teal-400 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_2px_8px_-2px_rgba(0,0,0,0.35)] dark:hover:border-white dark:hover:bg-white dark:hover:text-zinc-950 dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_8px_22px_-8px_rgba(0,0,0,0.25)]"
             >
-              {home.hero.ctaSecondary.label}
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-stone-300/70 bg-stone-50/90 text-stone-800 transition-[transform,background-color,border-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/secondary:border-teal-800/35 group-hover/secondary:bg-white group-hover/secondary:text-teal-900 dark:border-zinc-500/70 dark:bg-zinc-800/70 dark:text-zinc-100 dark:group-hover/secondary:border-zinc-300/80 dark:group-hover/secondary:bg-zinc-50 dark:group-hover/secondary:text-zinc-950">
-                <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/secondary:translate-x-0.5 group-hover/secondary:-translate-y-px" />
+              <span className="relative z-[1] pr-3">{home.hero.ctaSecondary.label}</span>
+              <span className="relative z-[1] flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-zinc-950 bg-white/90 text-teal-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)] transition-[transform,background-color,border-color,color,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/sec:translate-x-0.5 group-hover/sec:scale-[1.02] group-hover/sec:border-white group-hover/sec:bg-white group-hover/sec:text-zinc-950 motion-reduce:transition-none motion-reduce:group-hover/sec:translate-x-0 motion-reduce:group-hover/sec:scale-100 dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-teal-400 dark:group-hover/sec:border-white dark:group-hover/sec:bg-white dark:group-hover/sec:text-zinc-950">
+                <ArrowIcon className="h-3.5 w-3.5" />
               </span>
             </Link>
           </Reveal>
@@ -187,9 +192,12 @@ function ProductEditorialRow({
   signal,
   href,
   imageSeed,
+  imageSrc,
   imageGrayscale,
   imageSizes,
   imageClassName = "object-cover",
+  /** Ảnh dashboard 16:9 — khung `aspect-video` + `object-contain` để không cắt mép. */
+  preserveWideDashboard,
   reverse,
 }: {
   indexLabel: string;
@@ -198,12 +206,20 @@ function ProductEditorialRow({
   desc: string;
   signal?: string;
   href: string;
+  /** Dùng khi có ảnh tĩnh trong `public/` (ưu tiên hơn picsum). */
+  imageSrc?: string;
   imageSeed: string;
   imageGrayscale?: boolean;
   imageSizes: string;
   imageClassName?: string;
+  preserveWideDashboard?: boolean;
   reverse?: boolean;
 }) {
+  const imgSrc =
+    imageSrc ??
+    picsum(imageSeed, 960, 720, {
+      grayscale: imageGrayscale,
+    });
   const textCol = reverse
     ? "md:col-span-5 md:col-start-8 md:order-2"
     : "md:col-span-5 md:order-1";
@@ -251,15 +267,20 @@ function ProductEditorialRow({
             aria-label={`${name}: xem chi tiết`}
           >
             <div className="rounded-[1.65rem] bg-zinc-200/45 p-1.5 ring-1 ring-zinc-200/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] dark:bg-zinc-800/35 dark:ring-white/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[calc(1.65rem-6px)] border border-zinc-200/90 bg-zinc-100/60 shadow-[inset_0_1px_0_rgba(0,0,0,0.04)] md:aspect-[5/4] dark:border-white/[0.08] dark:bg-zinc-900/40 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+              <div
+                className={
+                  preserveWideDashboard
+                    ? "relative aspect-video w-full overflow-hidden rounded-[calc(1.65rem-6px)] border border-zinc-200/90 bg-zinc-100/75 shadow-[inset_0_1px_0_rgba(0,0,0,0.04)] dark:border-white/[0.08] dark:bg-zinc-900/55 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                    : "relative aspect-[16/11] w-full overflow-hidden rounded-[calc(1.65rem-6px)] border border-zinc-200/90 bg-zinc-100/60 shadow-[inset_0_1px_0_rgba(0,0,0,0.04)] md:aspect-[5/4] dark:border-white/[0.08] dark:bg-zinc-900/40 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                }
+              >
                 <Image
-                  src={picsum(imageSeed, 960, 720, {
-                    grayscale: imageGrayscale,
-                  })}
-                  alt=""
+                  src={imgSrc}
+                  alt={imageSrc ? `${name} — minh họa` : ""}
                   fill
-                  className={`${imageClassName} scale-100`}
+                  className={`${preserveWideDashboard ? "object-contain object-center" : imageClassName} scale-100`}
                   sizes={imageSizes}
+                  priority={!!imageSrc && indexLabel === "01"}
                 />
               </div>
             </div>
@@ -277,10 +298,16 @@ export function HomeProductsBento() {
   return (
     <SectionShell className="bg-white dark:bg-transparent">
       <Reveal>
-        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-500">
-          {ps.eyebrow}
-        </p>
-        <h2 className="mt-3 max-w-[22ch] text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:max-w-3xl md:text-3xl md:leading-tight">
+        <div className="mb-3 flex items-center gap-3">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-teal-800/20 bg-teal-800/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-teal-900 dark:border-teal-400/30 dark:bg-teal-400/15 dark:text-teal-200">
+            <Package className="h-3.5 w-3.5" weight="duotone" aria-hidden />
+            Sản phẩm
+          </span>
+          <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-500">
+            {ps.eyebrow}
+          </span>
+        </div>
+        <h2 className="max-w-[22ch] text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:max-w-3xl md:text-3xl md:leading-tight">
           {ps.title}
         </h2>
         <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-zinc-500">
@@ -296,8 +323,10 @@ export function HomeProductsBento() {
           desc={soc.desc}
           signal={soc.signal}
           href={soc.href}
+          imageSrc="/images/home/product-ai-soc.jpg"
           imageSeed="ics-product-ai-soc"
           imageSizes="(max-width: 768px) 100vw, 50vw"
+          preserveWideDashboard
           reverse={false}
         />
         <ProductEditorialRow
@@ -307,6 +336,7 @@ export function HomeProductsBento() {
           desc={agent.desc}
           signal={agent.signal}
           href={agent.href}
+          imageSrc="/images/home/v-agent.jpg"
           imageSeed={`ics-product-${agent.slug}`}
           imageSizes="(max-width: 768px) 100vw, 50vw"
           reverse
@@ -331,8 +361,14 @@ export function HomeProductsBento() {
 export function HomeSolutionsZigzag() {
   const rows = home.solutionsWide.items;
   return (
-    <SectionShell className="border-t border-zinc-200/80 dark:border-white/[0.06]">
+    <SectionShell className="border-t border-zinc-200/80 dark:border-white/6">
       <Reveal>
+        <div className="mb-3 flex items-center gap-3">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-400/40 bg-zinc-100/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-700 dark:border-zinc-600/50 dark:bg-zinc-800/50 dark:text-zinc-300">
+            <Buildings className="h-3.5 w-3.5" weight="duotone" aria-hidden />
+            Giải pháp theo ngành
+          </span>
+        </div>
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-3xl">
           {home.solutionsWide.title}
         </h2>
@@ -559,6 +595,64 @@ export function HomeNewsTeaser() {
         ))}
       </div>
     </SectionShell>
+  );
+}
+
+export function HomeCredentialBand() {
+  const { credentialBand } = home;
+  return (
+    <div
+      className="relative z-1 w-full border-y border-zinc-200/80 bg-white/95 dark:border-white/7 dark:bg-zinc-950/95"
+      role="region"
+      aria-label="Chứng nhận và đối tác ICS"
+    >
+      <div className="mx-auto max-w-[1400px] px-4 py-4 md:px-8 md:py-3">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-0 lg:divide-x lg:divide-zinc-200/70 dark:lg:divide-white/10">
+          <div className="shrink-0 lg:flex lg:w-[min(100%,10.5rem)] lg:items-center lg:pr-6">
+            <p className="text-[9px] font-semibold uppercase leading-snug tracking-[0.2em] text-zinc-600 dark:text-zinc-400">
+              {credentialBand.eyebrow}
+            </p>
+          </div>
+          <ul className="grid min-w-0 flex-1 list-none grid-cols-1 divide-y divide-zinc-200/70 dark:divide-white/10 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-5 sm:divide-y-0 lg:grid-cols-4 lg:gap-0">
+            {credentialBand.items.map((item, idx) => (
+              <li
+                key={item.label}
+                className={`flex min-h-[44px] items-start gap-2.5 py-3.5 sm:min-h-0 sm:py-0 lg:min-h-[48px] lg:items-center lg:px-4 lg:py-2 ${
+                  idx > 0
+                    ? "lg:border-l lg:border-zinc-200/70 lg:pl-5 dark:lg:border-white/10"
+                    : ""
+                }`}
+              >
+                {item.highlight ? (
+                  <span className="relative mt-0.5 flex h-2 w-2 shrink-0" aria-hidden>
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-500" />
+                  </span>
+                ) : (
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500" aria-hidden />
+                )}
+                <div className="min-w-0 flex-1">
+                  <span
+                    className={`block text-[11px] font-semibold leading-snug tracking-tight ${
+                      item.highlight
+                        ? "text-teal-800 dark:text-teal-300"
+                        : "text-zinc-900 dark:text-zinc-200"
+                    }`}
+                  >
+                    {item.label}
+                  </span>
+                  {item.note ? (
+                    <span className="mt-0.5 block text-[10px] leading-snug text-zinc-600 dark:text-zinc-400">
+                      {item.note}
+                    </span>
+                  ) : null}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -16,10 +16,10 @@ export function CareersOpenRolesIntro({
   const n = String(count).padStart(2, "0");
 
   return (
-    <div className="rounded-[2rem] bg-zinc-300/55 p-1.5 ring-1 ring-zinc-400/95 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:bg-zinc-800/50 dark:ring-white/10 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
-      <div className="relative overflow-hidden rounded-[calc(2rem-6px)] border border-zinc-300 bg-white px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,1),0_16px_48px_-36px_rgba(15,118,110,0.18)] md:px-10 md:py-10 dark:border-white/10 dark:bg-zinc-950/92 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_28px_64px_-48px_rgba(0,0,0,0.45)]">
+    <div className="rounded-[1.65rem] bg-zinc-300/55 p-1.5 ring-1 ring-zinc-400/95 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:bg-zinc-800/50 dark:ring-white/10 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] md:rounded-[2rem]">
+      <div className="relative overflow-hidden rounded-[calc(1.65rem-6px)] border border-zinc-300 bg-white px-5 py-7 shadow-[inset_0_1px_0_rgba(255,255,255,1),0_16px_48px_-36px_rgba(15,118,110,0.16)] sm:px-7 sm:py-8 md:rounded-[calc(2rem-6px)] md:px-10 md:py-10 dark:border-white/10 dark:bg-zinc-950/94 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_28px_64px_-48px_rgba(0,0,0,0.45)]">
         <div
-          className="pointer-events-none absolute -right-12 top-1/2 hidden h-48 w-48 -translate-y-1/2 rounded-full bg-cyan-400/8 blur-2xl dark:block"
+          className="pointer-events-none absolute -right-10 top-1/2 h-40 w-40 -translate-y-1/2 rounded-full bg-teal-600/10 blur-2xl dark:bg-cyan-400/10 sm:h-48 sm:w-48"
           aria-hidden
         />
         <div

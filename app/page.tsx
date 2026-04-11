@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   HomeCommitments,
+  HomeCredentialBand,
   HomeHero,
   HomeNewsTeaser,
   HomeProductsBento,
@@ -54,6 +55,7 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
+      <HomeCredentialBand />
       <HomeStats />
       <HomeProductsBento />
       <HomeSolutionsZigzag />
