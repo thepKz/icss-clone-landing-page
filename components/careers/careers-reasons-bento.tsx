@@ -191,7 +191,7 @@ export function CareersReasonsBento({ reasons }: { reasons: Reason[] }) {
                       </span>
                       <h3
                         className={`mt-4 font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 ${
-                          large ? "text-xl md:text-2xl lg:text-[1.65rem]" : "text-lg md:text-xl"
+                          large ? "text-2xl md:text-3xl lg:text-[1.9rem]" : "text-xl md:text-2xl"
                         }`}
                       >
                         {reason.title}
@@ -199,8 +199,8 @@ export function CareersReasonsBento({ reasons }: { reasons: Reason[] }) {
                     </div>
                   </div>
                   <p
-                    className={`relative mt-6 max-w-[52ch] leading-relaxed text-zinc-600 max-md:text-[0.9375rem] dark:text-zinc-300 sm:mt-8 ${
-                      large ? "text-base md:text-[1.05rem]" : "text-sm md:text-base"
+                    className={`relative mt-6 max-w-[52ch] leading-relaxed text-zinc-600 dark:text-zinc-300 sm:mt-8 ${
+                      large ? "text-lg md:text-xl" : "text-base md:text-lg"
                     }`}
                   >
                     {reason.body}

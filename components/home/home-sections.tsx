@@ -8,9 +8,9 @@ import { Reveal } from "@/components/reveal";
 import { SectionShell } from "@/components/section-shell";
 import { ComplianceTicker } from "./compliance-ticker";
 import { HomeStatsBento } from "./home-stats-bento";
-import { HeroMediaRotator } from "./hero-media-rotator";
 import { HeroThreatPanel } from "./hero-threat-panel";
 import { HeroVisualStack } from "./hero-visual-stack";
+import { HeroSplineCanvas } from "./hero-spline-canvas";
 import SilkBackground from "@/components/ui/silk-background-animation";
 
 function ArrowIcon({ className = "h-4 w-4" }: { className?: string }) {
@@ -141,7 +141,7 @@ export function HomeHero() {
               <div className="w-full md:w-[min(100%,calc(100%+1.25rem))] md:max-w-none md:self-end lg:w-[min(100%,calc(100%+2.25rem))]">
                 <div className="rounded-[1.65rem] bg-stone-200/30 p-1.5 ring-1 ring-stone-300/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.42)] dark:bg-zinc-800/45 dark:ring-white/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
                   <div className="overflow-hidden rounded-[calc(1.65rem-6px)] border border-stone-200/85 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_16px_48px_-36px_rgba(28,25,23,0.18)] dark:border-white/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_52px_-38px_rgba(0,0,0,0.45)]">
-                    <HeroMediaRotator alt="SOC, giám sát an ninh mạng và vận hành hệ thống" />
+                    <HeroSplineCanvas />
                   </div>
                 </div>
               </div>
@@ -348,9 +348,10 @@ export function HomeProductsBento() {
           desc={endpoint.desc}
           signal={endpoint.signal}
           href={endpoint.href}
+          imageSrc="/images/home/csa.png"
           imageSeed={`ics-product-${endpoint.slug}`}
-          imageGrayscale
           imageSizes="(max-width: 768px) 100vw, 50vw"
+          preserveWideDashboard
           reverse={false}
         />
       </div>
@@ -393,10 +394,22 @@ export function HomeSolutionsZigzag() {
                 <div className="rounded-[2rem] bg-zinc-200/40 p-1.5 ring-1 ring-zinc-200/85 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] dark:bg-zinc-800/30 dark:ring-white/[0.08] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-[calc(2rem-6px)] border border-zinc-200/90 bg-zinc-100/40 shadow-[inset_0_1px_0_rgba(0,0,0,0.04)] dark:border-white/[0.07] dark:bg-zinc-900/35 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                     <Image
-                      src={picsum(`ics-sol-${idx}`, 800, 600, { blur: 1 })}
-                      alt=""
+                      src={
+                        row.href === "https://csa.icss.com.vn/"
+                          ? "/images/home/csa.png"
+                          : row.href === "/nha-may-thong-minh"
+                            ? "/images/home/nhamaythongminh.webp"
+                          : row.href === "/toa-nha-thong-minh"
+                            ? "/images/home/toanhathongminh.jpg"
+                          : picsum(`ics-sol-${idx}`, 800, 600, { blur: 1 })
+                      }
+                      alt={row.name}
                       fill
-                      className="object-cover scale-100"
+                      className={
+                        row.href === "https://csa.icss.com.vn/"
+                          ? "object-contain object-center scale-100"
+                          : "object-cover scale-100"
+                      }
                       sizes="(max-width: 768px) 100vw, 45vw"
                     />
                     <div

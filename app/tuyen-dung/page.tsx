@@ -90,19 +90,19 @@ export default function CareersPage() {
           <div className="grid grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12 lg:gap-y-16">
             <div className="order-2 lg:order-1 lg:col-span-6 lg:col-start-1">
               <Reveal slideFromLeft={18}>
-                <span className="inline-flex rounded-full border border-zinc-300/90 bg-white/80 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-white/12 dark:bg-zinc-900/55 dark:text-zinc-400 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                <span className="inline-flex rounded-full border border-zinc-300/90 bg-white/80 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-white/12 dark:bg-zinc-900/55 dark:text-zinc-400 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
                   {careers.heroEyebrow}
                 </span>
-                <h1 className="mt-5 max-w-[22rem] text-balance text-[clamp(1.85rem,5.5vw,3.35rem)] font-semibold leading-[1.08] tracking-tight text-zinc-900 sm:max-w-[28rem] dark:text-zinc-50">
+                <h1 className="mt-5 max-w-[24rem] text-balance text-[clamp(2.1rem,6.2vw,3.5rem)] font-semibold leading-[1.06] tracking-tight text-zinc-900 sm:max-w-[30rem] dark:text-zinc-50">
                   {careers.headline}
                 </h1>
-                <p className="mt-5 max-w-[54ch] text-base leading-relaxed text-zinc-600 sm:mt-6 md:text-[1.05rem] dark:text-zinc-400">
+                <p className="mt-5 max-w-[54ch] text-[1.05rem] leading-relaxed text-zinc-600 sm:mt-6 md:text-[1.1rem] dark:text-zinc-400">
                   {careers.heroSub}
                 </p>
                 <div className="mt-8 flex w-full max-w-md flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center">
                   <Link
                     href="/lien-he"
-                    className={`group inline-flex w-full items-center justify-center gap-3 rounded-full border border-teal-800/50 bg-teal-800/[0.14] px-6 py-3.5 text-sm font-semibold text-teal-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] transition-[transform,border-color,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-teal-700/60 active:scale-[0.98] dark:border-cyan-400/40 dark:bg-cyan-400/12 dark:text-cyan-50 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:hover:border-cyan-300/55 sm:w-auto sm:justify-start`}
+                    className={`group inline-flex w-full items-center justify-center gap-3 rounded-full border border-teal-800/50 bg-teal-800/[0.14] px-6 py-3.5 text-base font-semibold text-teal-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] transition-[transform,border-color,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-teal-700/60 active:scale-[0.98] dark:border-cyan-400/40 dark:bg-cyan-400/12 dark:text-cyan-50 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:hover:border-cyan-300/55 sm:w-auto sm:justify-start`}
                   >
                     Gửi CV
                     <span className="flex h-8 w-8 items-center justify-center rounded-full border border-teal-900/20 bg-white/60 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 dark:border-white/15 dark:bg-white/10">
@@ -113,7 +113,7 @@ export default function CareersPage() {
                   </Link>
                   <Link
                     href="/gioi-thieu"
-                    className={`inline-flex w-full justify-center rounded-full px-5 py-3.5 text-sm font-medium sm:w-auto ${ps.ghostOutline}`}
+                    className={`inline-flex w-full justify-center rounded-full px-5 py-3.5 text-base font-medium sm:w-auto ${ps.ghostOutline}`}
                   >
                     Về ICS
                   </Link>
@@ -153,10 +153,10 @@ export default function CareersPage() {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
             Vì sao là ICS
           </p>
-          <h2 className="mt-3 max-w-2xl text-xl font-semibold tracking-tight text-foreground sm:mt-4 sm:text-2xl md:text-3xl">
+          <h2 className="mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-foreground sm:mt-4 sm:text-3xl md:text-4xl">
             Ba trụ — công nghệ, nghề nghiệp, con người
           </h2>
-          <p className="mt-3 max-w-[56ch] text-sm leading-relaxed text-muted sm:mt-4 md:text-base">
+          <p className="mt-3 max-w-[56ch] text-base leading-relaxed text-muted sm:mt-4 md:text-lg">
             Bố cục dưới đây không xếp hạng ưu tiên: mỗi ô là một mặt của cùng một môi trường làm việc.
           </p>
         </Reveal>

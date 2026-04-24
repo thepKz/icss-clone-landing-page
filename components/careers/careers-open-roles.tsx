@@ -15,7 +15,7 @@ type DeptFilter = "all" | "Marketing" | "Kinh doanh" | "Kỹ thuật";
 
 function MetaPill({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex rounded-full border border-zinc-300/90 bg-zinc-100/85 px-2.5 py-1 text-[11px] font-medium text-zinc-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] dark:border-white/14 dark:bg-zinc-900/70 dark:text-zinc-200 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+    <span className="inline-flex rounded-full border border-zinc-300/90 bg-zinc-100/85 px-3 py-1.5 text-xs font-semibold text-zinc-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] dark:border-white/14 dark:bg-zinc-900/70 dark:text-zinc-200 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
       {children}
     </span>
   );
@@ -73,10 +73,10 @@ function DetailList({
 }) {
   return (
     <section className="space-y-2">
-      <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-500">
+      <h4 className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-500">
         {title}
       </h4>
-      <ul className="list-inside list-disc space-y-1.5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+      <ul className="list-inside list-disc space-y-1.5 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
         {items.map((item) => (
           <li key={item} className="pl-0.5 marker:text-teal-700 dark:marker:text-cyan-400/80">
             {item}
@@ -126,7 +126,7 @@ export function CareersOpenRoles({ positions }: { positions: CareerPosition[] })
   return (
     <>
       <div
-        className="mb-8 flex flex-wrap gap-2"
+        className="mb-8 flex flex-wrap gap-2.5"
         role="tablist"
         aria-label="Lọc vị trí theo phòng ban"
       >
@@ -140,7 +140,7 @@ export function CareersOpenRoles({ positions }: { positions: CareerPosition[] })
               role="tab"
               aria-selected={active}
               onClick={() => setFilter(chip.id)}
-              className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-2 text-xs font-semibold transition-[transform,border-color,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] ${
+              className={`inline-flex min-h-11 items-center gap-1.5 rounded-full border px-4 py-2.5 text-sm font-semibold transition-[transform,border-color,background-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] ${
                 active
                   ? "border-teal-800/45 bg-teal-800/12 text-teal-950 dark:border-cyan-400/40 dark:bg-cyan-400/12 dark:text-cyan-50"
                   : "border-zinc-300/90 bg-white/70 text-zinc-700 hover:border-zinc-400/95 dark:border-white/12 dark:bg-zinc-900/45 dark:text-zinc-300 dark:hover:border-white/18"
@@ -191,9 +191,9 @@ export function CareersOpenRoles({ positions }: { positions: CareerPosition[] })
                 }`}
               >
                 <div className={`pointer-events-none absolute inset-y-3 left-0 w-px ${bar}`} aria-hidden />
-                <div className="border-l border-transparent py-5 pl-4 pr-4 sm:py-6 sm:pl-5 sm:pr-5 md:py-8 md:pl-8 md:pr-8">
+                <div className="border-l border-transparent py-6 pl-4 pr-4 sm:py-7 sm:pl-5 sm:pr-5 md:py-8 md:pl-8 md:pr-8">
                   <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-[minmax(0,1fr)_min(17.5rem,36%)] md:gap-x-8 md:gap-y-4 md:items-start">
-                    <h3 className="text-[1.05rem] font-semibold leading-snug tracking-tight text-zinc-900 sm:text-lg md:col-start-1 md:row-start-1 md:text-xl dark:text-zinc-50">
+                    <h3 className="text-[1.2rem] font-semibold leading-snug tracking-tight text-zinc-900 sm:text-xl md:col-start-1 md:row-start-1 md:text-2xl dark:text-zinc-50">
                       {p.title}
                     </h3>
                     <div className="flex flex-wrap gap-2 md:col-start-1 md:row-start-2">
@@ -201,24 +201,24 @@ export function CareersOpenRoles({ positions }: { positions: CareerPosition[] })
                       <MetaPill>{p.level}</MetaPill>
                       <MetaPill>{p.type}</MetaPill>
                     </div>
-                    <p className="text-sm leading-relaxed text-zinc-600 md:col-start-1 md:row-start-3 dark:text-zinc-400">
+                    <p className="text-base leading-relaxed text-zinc-600 md:col-start-1 md:row-start-3 dark:text-zinc-400">
                       <span className="font-medium text-zinc-800 dark:text-zinc-200">
                         Địa điểm ·{" "}
                       </span>
                       {d.location}
                     </p>
                     <SalaryHighlight salary={p.salary} />
-                    <p className="max-w-[62ch] text-sm leading-relaxed text-zinc-600 md:col-start-1 md:row-start-4 md:text-base dark:text-zinc-400">
+                    <p className="max-w-[62ch] text-base leading-relaxed text-zinc-600 md:col-start-1 md:row-start-4 md:text-lg dark:text-zinc-400">
                       {p.brief}
                     </p>
 
                     {isOpen ? (
                       <div className="space-y-5 border-t border-zinc-200/90 pt-5 md:col-span-2 dark:border-white/[0.08]">
                         <section className="space-y-2">
-                          <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-500">
+                          <h4 className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-500">
                             Sứ mệnh của bạn
                           </h4>
-                          <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                          <p className="text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
                             {d.mission}
                           </p>
                         </section>

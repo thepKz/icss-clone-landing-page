@@ -8,6 +8,7 @@ import { SectionShell } from "@/components/section-shell";
 import { about, company } from "@/content/site";
 import { pageSurface as ps } from "@/lib/page-surface";
 import { picsum } from "@/lib/picsum";
+import TeamSection from "@/components/ui/team";
 
 export const metadata: Metadata = {
   title: "Giới thiệu",
@@ -28,6 +29,19 @@ export default function AboutPage() {
   const legalBreak = legal.lastIndexOf(" – ");
   const legalLead = legalBreak >= 0 ? legal.slice(0, legalBreak).trim() : legal;
   const legalAccent = legalBreak >= 0 ? legal.slice(legalBreak).trim() : "";
+  const leadershipAvatarByName: Record<string, string> = {
+    "TS. Võ Trung Âu": "/images/introduction/anhau.jpg",
+    "Ths. Trần Hồng Thắng": "/images/introduction/anhthang.jpg",
+    "Đỗ Thanh Toàn": "/images/introduction/anhtoan.jpg",
+    "Ths. Vũ Tam Hanh": "/images/introduction/anhhanh.jpg",
+    "Ths. Vũ Thị Hải Yến": "/images/introduction/chiyen.jpeg",
+    "Nguyễn Đức Dương": "/images/introduction/duong.jpg",
+  };
+  const leadershipMembers = about.leadership.map((person) => ({
+    name: person.name,
+    role: person.role,
+    avatar: leadershipAvatarByName[person.name] ?? picsum(`ics-lead-${person.role}-${person.name}`, 640, 640),
+  }));
 
   return (
     <div className="overflow-x-clip bg-white dark:bg-zinc-950">
@@ -240,32 +254,7 @@ export default function AboutPage() {
             {about.leadershipSection.title}
           </h2>
         </Reveal>
-        <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-x-12 md:gap-y-16 lg:max-w-5xl">
-          {about.leadership.map((person, idx) => (
-            <Reveal
-              key={person.name + person.role}
-              delay={0.07 * idx}
-              className={idx % 2 === 1 ? "md:translate-y-10" : ""}
-            >
-              <article className="group overflow-hidden rounded-[1.75rem] border border-zinc-200/90 bg-white/90 shadow-[0_24px_60px_-40px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] dark:border-white/[0.07] dark:bg-zinc-900/35 dark:shadow-[0_28px_70px_-44px_rgba(0,0,0,0.55)] md:hover:-translate-y-1">
-                <div className="relative aspect-[4/5] max-h-[420px]">
-                  <Image
-                    src={picsum(`ics-lead-${person.role}-${person.name}`, 560, 700)}
-                    alt={person.name}
-                    fill
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02]"
-                    sizes="(max-width: 768px) 100vw, 45vw"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-zinc-950/85 via-zinc-950/25 to-transparent p-5 pt-16">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-300/90">{person.role}</p>
-                    <p className="mt-1 text-lg font-semibold text-white">{person.name}</p>
-                    <p className="mt-1 text-xs text-zinc-300">{person.note}</p>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        <TeamSection members={leadershipMembers} className="mt-14 mx-auto max-w-7xl" />
       </SectionShell>
 
       {/* Giải pháp — một dòng nổi bật + hai ô */}

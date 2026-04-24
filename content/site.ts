@@ -16,6 +16,7 @@ export const company = {
   youtube: "https://www.youtube.com/channel/UCpOn4kxyTtzmUldsDZoxLHg",
   zaloUrl: "https://zalo.me/1993095583245735763",
   smartDashboard: "https://smartdashboard.vn",
+  csaEndpoint: "https://csa.icss.com.vn/",
 };
 
 export type NavItem = { href: string; label: string; external?: boolean };
@@ -25,7 +26,7 @@ export const navFooterProducts: NavItem[] = [
   { href: "/products/v-ai-agent", label: "V AI Agent" },
   { href: "/products/vietguard", label: "VietGuard" },
   { href: "/products/ai-soc", label: "AI SOC" },
-  { href: "/products/csa-endpoint", label: "CSA Endpoint" },
+  { href: company.csaEndpoint, label: "CSA Endpoint", external: true },
   { href: "https://oraclecloud.vn/", label: "Oracle Cloud", external: true },
   { href: company.smartDashboard, label: "Smart Dashboard", external: true },
 ];
@@ -66,7 +67,7 @@ export const navSolutions: NavItem[] = [
 export const navProducts: NavItem[] = [
   { href: "/products/v-ai-agent", label: "V AI Agent" },
   { href: "/products/ai-soc", label: "AI SOC" },
-  { href: "/products/csa-endpoint", label: "CSA Endpoint" },
+  { href: company.csaEndpoint, label: "CSA Endpoint", external: true },
   { href: "/products/vietguard", label: "VietGuard" },
 ];
 
@@ -88,11 +89,6 @@ export const navMegaAbout: NavMegaItem[] = [
     href: "/khach-hang",
     label: "Khách hàng",
     description: "Lĩnh vực phục vụ và phạm vi triển khai",
-  },
-  {
-    href: "/hoat-dong-xa-hoi",
-    label: "Hoạt động xã hội",
-    description: "Chia sẻ tri thức và đồng hành cộng đồng an toàn số",
   },
   {
     href: "/chinh-sach-bao-mat",
@@ -146,9 +142,10 @@ export const navMegaProducts: NavMegaItem[] = [
     description: "Giải pháp phân tích và giám sát an ninh mạng",
   },
   {
-    href: "/products/csa-endpoint",
+    href: company.csaEndpoint,
     label: "CSA Endpoint",
     description: "Bảo mật điểm cuối và ngăn ngừa mất mát dữ liệu",
+    external: true,
   },
   {
     href: "/lien-he",
@@ -315,7 +312,7 @@ export const home = {
         slug: "csa-endpoint",
         name: "CSA Endpoint",
         desc: "Giải pháp bảo mật điểm cuối và ngăn chặn mất mát dữ liệu",
-        href: "/products/csa-endpoint",
+        href: company.csaEndpoint,
         signal:
           "Một lớp agent cho nhiều mối đe dọa trên laptop, server và máy trạm — chính sách thống nhất, triển khai theo phạm vi rõ.",
       },
@@ -329,7 +326,7 @@ export const home = {
       {
         name: "CSA Endpoint Security",
         desc: "Bảo vệ máy 4-trong-1, phát hiện virus, ransomware, trojan với AI",
-        href: "/products/csa-endpoint",
+        href: company.csaEndpoint,
         signal:
           "Bước đầu tiên khi bạn cần thu hẹp cửa sổ lây nhiễm trên endpoint trước khi mở rộng SOC.",
       },
@@ -338,7 +335,7 @@ export const home = {
         desc: "Bảo mật nhà máy thông minh với giám sát OT/IT tích hợp",
         href: "/nha-may-thong-minh",
         signal:
-          "Dành cho nhà máy FDI/OEM: tách ranh giới OT/IT, log và cảnh báo đổ về một điểm quan sát.",
+          "Dành cho nhà máy FDI/OEM: Tách ranh giới OT/IT, log và cảnh báo đổ về một điểm quan sát.",
       },
       {
         name: "Smart Building Security",
@@ -512,6 +509,11 @@ export const about = {
       note: "Tổng Giám đốc",
     },
     {
+      role: "Vice CEO",
+      name: "Ths. Trần Hồng Thắng",
+      note: "Phó Tổng Giám đốc",
+    },
+    {
       role: "COO",
       name: "Đỗ Thanh Toàn",
       note: "Điều hành vận hành",
@@ -522,9 +524,14 @@ export const about = {
       note: "Công nghệ và kiến trúc giải pháp",
     },
     {
-      role: "CMO",
-      name: "Ths. Đặng Lê Trung",
-      note: "Thương hiệu và phát triển thị trường",
+      role: "CHRO",
+      name: "Ths. Vũ Thị Hải Yến",
+      note: "Nhân sự và phát triển đội ngũ",
+    },
+    {
+      role: "CLO",
+      name: "Nguyễn Đức Dương",
+      note: "Pháp chế và tuân thủ",
     },
   ],
   solutionsSection: {
@@ -1726,7 +1733,7 @@ export const productAiSoc = {
       "Công nghệ đã được chứng minh trên quy mô bảo vệ toàn cầu — tham chiếu các tổ chức Fortune 500 và doanh nghiệp lớn.",
     relatedProduct: {
       label: "Bảo vệ điểm cuối cùng CSA Endpoint",
-      href: "/products/csa-endpoint",
+      href: company.csaEndpoint,
     },
   },
   faq: [
