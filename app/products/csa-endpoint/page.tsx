@@ -20,7 +20,7 @@ export default function CsaEndpointPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-5">
               <Reveal>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">
+                <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                   Sản phẩm
                 </p>
                 <h1 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">

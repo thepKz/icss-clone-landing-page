@@ -17,7 +17,7 @@ import {
 const ease = "transition-[color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]";
 
 const linkMuted =
-  `${ease} text-stone-600 hover:text-teal-900 active:scale-[0.99] dark:text-zinc-400 dark:hover:text-cyan-300`;
+  `${ease} text-stone-600 hover:text-teal-900 active:scale-[0.99] dark:text-zinc-300 dark:hover:text-cyan-300`;
 
 function FooterNavLink({ item, className }: { item: NavItem; className: string }) {
   if (item.external) {
@@ -56,13 +56,13 @@ export function SiteFooter() {
                   ICS
                 </div>
                 <div className="min-w-0 space-y-3">
-                  <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-stone-500 dark:text-zinc-500">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-stone-500 dark:text-zinc-400">
                     {company.intlName}
                   </p>
                   <p className="text-base font-semibold leading-snug tracking-tight text-stone-900 dark:text-zinc-50">
                     {company.legalName}
                   </p>
-                  <p className="max-w-md text-sm leading-relaxed text-stone-600 dark:text-zinc-400">
+                  <p className="max-w-md text-sm leading-relaxed text-stone-600 dark:text-zinc-300">
                     Đăng ký nhận thông tin về an ninh mạng và các giải pháp công nghệ phù hợp doanh nghiệp.
                   </p>
                 </div>
@@ -114,13 +114,13 @@ export function SiteFooter() {
             </div>
 
             <div className="space-y-2 border-l-2 border-teal-800/35 pl-4 dark:border-cyan-500/35">
-              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-stone-500 dark:text-zinc-500">
+              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-stone-500 dark:text-zinc-400">
                 Văn phòng
               </p>
               <p className="text-sm leading-relaxed text-stone-700 dark:text-zinc-300">
                 {company.office}
               </p>
-              <p className="font-mono text-xs tabular-nums text-stone-500 dark:text-zinc-500">
+              <p className="font-mono text-xs tabular-nums text-stone-500 dark:text-zinc-400">
                 MST {company.mst}
               </p>
             </div>
@@ -128,7 +128,7 @@ export function SiteFooter() {
 
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-2 lg:gap-x-12">
             <div>
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-stone-500 dark:text-zinc-500">
+              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-stone-500 dark:text-zinc-400">
                 Sản phẩm
               </h2>
               <ul className="mt-5 space-y-3 text-sm">
@@ -140,7 +140,7 @@ export function SiteFooter() {
               </ul>
             </div>
             <div>
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-stone-500 dark:text-zinc-500">
+              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-stone-500 dark:text-zinc-400">
                 Tư vấn
               </h2>
               <ul className="mt-5 space-y-3 text-sm">
@@ -157,10 +157,10 @@ export function SiteFooter() {
         <div className="mt-16 border-t border-stone-400/40 pt-12 dark:border-white/[0.08]">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-xl space-y-2">
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-stone-500 dark:text-zinc-500">
+              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-stone-500 dark:text-zinc-400">
                 Newsletter
               </h2>
-              <p className="text-sm leading-relaxed text-stone-600 dark:text-zinc-400">
+              <p className="text-sm leading-relaxed text-stone-600 dark:text-zinc-300">
                 Nhận bản tin kỹ thuật và cập nhật tuân thủ — không spam, có thể hủy đăng ký bất cứ lúc nào.
               </p>
             </div>
@@ -173,7 +173,7 @@ export function SiteFooter() {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-2 border-t border-dashed border-stone-400/50 pt-10 dark:border-zinc-700/80">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 dark:text-zinc-500">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500 dark:text-zinc-400">
               Chứng nhận và đối tác
             </span>
             <span
@@ -193,7 +193,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 border-t border-stone-400/40 pt-10 text-xs text-stone-600 dark:border-white/[0.06] dark:text-zinc-500 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-6 border-t border-stone-400/40 pt-10 text-xs text-stone-600 dark:border-white/[0.06] dark:text-zinc-400 md:flex-row md:items-center md:justify-between">
           <p className="max-w-prose leading-relaxed">
             © {new Date().getFullYear()} {company.legalName}. Địa chỉ đăng ký: {company.regAddress}
           </p>

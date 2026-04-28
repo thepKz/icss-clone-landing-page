@@ -185,7 +185,7 @@ export function CareersReasonsBento({ reasons }: { reasons: Reason[] }) {
                     </div>
                     <div className="min-w-0 flex-1 pt-0.5">
                       <span
-                        className={`inline-flex rounded-full border px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400 ${th.indexPill}`}
+                        className={`inline-flex rounded-full border px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-300 ${th.indexPill}`}
                       >
                         {String(idx + 1).padStart(2, "0")}
                       </span>

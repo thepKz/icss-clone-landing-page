@@ -18,7 +18,7 @@ export default function CommunityPage() {
       <section className={`${ps.edgeBottom} pt-28 pb-12 md:pt-32 md:pb-16`}>
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">ICS và cộng đồng</p>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">ICS và cộng đồng</p>
             <h1 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
               {corporateHoatDongXaHoi.title}
             </h1>
@@ -40,7 +40,7 @@ export default function CommunityPage() {
                         : ""
                     }
                   >
-                    <p className="font-mono text-xs tabular-nums text-zinc-500">
+                    <p className="font-mono text-xs tabular-nums text-zinc-500 dark:text-zinc-400">
                       {String(idx + 1).padStart(2, "0")}
                     </p>
                     <h2 className="mt-2 text-xl font-semibold tracking-tight text-foreground">{item.title}</h2>
@@ -50,7 +50,7 @@ export default function CommunityPage() {
               ))}
             </ul>
             <Reveal delay={0.2}>
-              <p className="mt-10 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-10 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                 {corporateHoatDongXaHoi.note}
               </p>
               <Link href="/lien-he" className={`mt-8 inline-flex ${ps.ctaPill}`}>

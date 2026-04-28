@@ -17,7 +17,7 @@ export function SplineSceneBasicBackup() {
           <h1 className="bg-linear-to-b from-neutral-50 to-neutral-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
             Interactive 3D
           </h1>
-          <p className="mt-4 max-w-lg text-neutral-300">
+          <p className="mt-4 max-w-lg text-zinc-200">
             Bring your UI to life with beautiful 3D scenes. Create immersive experiences
             that capture attention and enhance your design.
           </p>

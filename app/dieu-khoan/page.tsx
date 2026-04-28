@@ -16,7 +16,7 @@ export default function TermsPage() {
       <section className={`${ps.edgeBottom} pt-28 pb-12 md:pt-32 md:pb-16`}>
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
               Pháp lý và minh bạch
             </p>
             <h1 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
@@ -25,7 +25,7 @@ export default function TermsPage() {
             <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-muted">
               {legalTerms.description}
             </p>
-            <p className="mt-3 font-mono text-xs tabular-nums text-zinc-500">{legalTerms.updated}</p>
+            <p className="mt-3 font-mono text-xs tabular-nums text-zinc-500 dark:text-zinc-400">{legalTerms.updated}</p>
           </Reveal>
         </div>
       </section>

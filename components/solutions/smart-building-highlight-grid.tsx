@@ -80,7 +80,7 @@ export function SmartBuildingHighlightGrid({
                 <h3 className="text-2xl font-semibold leading-snug tracking-tight text-zinc-950 md:text-[1.65rem] md:leading-tight lg:text-3xl dark:text-zinc-50">
                   {f.title}
                 </h3>
-                <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">
+                <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
                   Cách hoạt động
                 </p>
                 <div className="mt-5 max-w-[68ch]">

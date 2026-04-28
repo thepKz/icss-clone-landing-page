@@ -118,7 +118,7 @@ export default function PartnersPage() {
                           <p
                             className={
                               isPlatinum
-                                ? "font-mono text-[11px] font-medium tabular-nums uppercase tracking-wider text-zinc-500 dark:text-zinc-400"
+                                ? "font-mono text-[11px] font-medium tabular-nums uppercase tracking-wider text-zinc-500 dark:text-zinc-300"
                                 : "font-mono text-[11px] font-semibold tabular-nums uppercase tracking-wider text-yellow-800 dark:text-yellow-400/90"
                             }
                           >
@@ -152,7 +152,7 @@ export default function PartnersPage() {
                               <Check
                                 className={
                                   isPlatinum
-                                    ? "mt-0.5 h-5 w-5 shrink-0 text-zinc-500 dark:text-zinc-400"
+                                    ? "mt-0.5 h-5 w-5 shrink-0 text-zinc-500 dark:text-zinc-300"
                                     : "mt-0.5 h-5 w-5 shrink-0 text-yellow-600 dark:text-yellow-400"
                                 }
                                 weight="bold"
@@ -170,7 +170,7 @@ export default function PartnersPage() {
             </div>
 
             <Reveal delay={0.12} className="mt-10">
-              <p className="text-center text-xs leading-relaxed text-zinc-600 dark:text-zinc-500">
+              <p className="text-center text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                 Chi tiết rebate, SLA hỗ trợ và lộ trình đào tạo được chốt trong hợp đồng đối tác —{" "}
                 <Link
                   href={corporateDoiTac.cta.primary.href}
@@ -221,7 +221,7 @@ export default function PartnersPage() {
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:items-start lg:gap-16">
           <Reveal className="lg:col-span-4">
             <div className="h-px w-11 rounded-full bg-zinc-300 dark:bg-zinc-600" aria-hidden />
-            <p className="mt-6 text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+            <p className="mt-6 text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-300">
               {corporateDoiTac.business.eyebrow}
             </p>
             <h2 className="mt-4 max-w-[18ch] text-2xl font-semibold tracking-tight text-foreground sm:max-w-none md:text-[2rem] md:leading-[1.12]">
@@ -269,7 +269,7 @@ export default function PartnersPage() {
         </div>
         <Reveal delay={0.08}>
           <div className="mx-auto mt-16 max-w-3xl border-t border-dashed border-zinc-300/90 pt-10 dark:border-zinc-600/80">
-            <p className="text-center font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+            <p className="text-center font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
               Chứng nhận và đối tác chiến lược
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-2.5">

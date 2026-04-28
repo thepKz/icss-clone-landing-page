@@ -33,12 +33,12 @@ export function CareersOpenRolesIntro({
               <span className="rounded-full bg-teal-800 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white dark:bg-cyan-400/15 dark:text-cyan-100">
                 Open roles
               </span>
-              <span className="font-mono text-[11px] tabular-nums tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
-                <span className="text-zinc-400 dark:text-zinc-500">·</span>
+              <span className="font-mono text-[11px] tabular-nums tracking-[0.14em] text-zinc-600 dark:text-zinc-300">
+                <span className="text-zinc-400 dark:text-zinc-400">·</span>
                 <span className="ml-2 text-base font-semibold tracking-tight text-teal-800 dark:text-cyan-300">
                   {n}
                 </span>
-                <span className="ml-1.5 text-[10px] font-medium uppercase text-zinc-500 dark:text-zinc-500">
+                <span className="ml-1.5 text-[10px] font-medium uppercase text-zinc-500 dark:text-zinc-400">
                   vị trí
                 </span>
               </span>
@@ -46,7 +46,7 @@ export function CareersOpenRolesIntro({
             <h2 className="mt-6 text-[clamp(1.5rem,3.5vw,2.25rem)] font-semibold leading-[1.12] tracking-tight text-zinc-900 dark:text-zinc-50">
               {title}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-zinc-600 md:text-[1.05rem] dark:text-zinc-400">
+            <p className="mt-4 text-base leading-relaxed text-zinc-600 md:text-[1.05rem] dark:text-zinc-300">
               {description}
             </p>
           </div>
@@ -54,7 +54,7 @@ export function CareersOpenRolesIntro({
           <div className="shrink-0 lg:max-w-[12rem] lg:text-right">
             <div className="rounded-2xl border border-teal-800/35 bg-teal-800/10 p-1 ring-1 ring-teal-800/30 dark:border-white/10 dark:bg-zinc-900/55 dark:ring-white/8">
               <div className="rounded-[calc(1rem-3px)] border border-teal-800/25 bg-teal-50 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-white/8 dark:bg-zinc-950/90 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-                <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-teal-900 dark:text-zinc-400">
+                <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-teal-900 dark:text-zinc-300">
                   Tổng mở
                 </p>
                 <p className="mt-1 font-mono text-3xl font-semibold tabular-nums tracking-tight text-teal-950 dark:text-cyan-200">

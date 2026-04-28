@@ -116,7 +116,7 @@ export function LanguageSwitcher({
             >
               <span className="text-zinc-900 dark:text-zinc-100">
                 <span className="font-semibold tabular-nums">{row.region}</span>
-                <span className="text-zinc-400 dark:text-zinc-500"> </span>
+                <span className="text-zinc-400 dark:text-zinc-400"> </span>
                 <span className="font-normal text-zinc-700 dark:text-zinc-300">
                   {row.label}
                 </span>
@@ -141,7 +141,7 @@ export function LanguageSwitcher({
   if (variant === "sheet") {
     return (
       <div ref={rootRef} className="w-full">
-        <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500">
+        <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
           Ngôn ngữ
         </p>
         <button
@@ -155,12 +155,12 @@ export function LanguageSwitcher({
             <span className="font-semibold tabular-nums">
               {LOCALES.find((l) => l.code === locale)?.region}
             </span>
-            <span className="text-zinc-400 dark:text-zinc-500"> </span>
+            <span className="text-zinc-400 dark:text-zinc-400"> </span>
             <span className="font-normal text-zinc-600 dark:text-zinc-300">
               {LOCALES.find((l) => l.code === locale)?.label}
             </span>
           </span>
-          <Globe size={20} weight="regular" className="text-zinc-500 dark:text-zinc-400" aria-hidden />
+          <Globe size={20} weight="regular" className="text-zinc-500 dark:text-zinc-300" aria-hidden />
         </button>
         <AnimatePresence>
           {open ? (

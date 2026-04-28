@@ -35,7 +35,7 @@ export const pageSurface = {
 
   tableWrap: "overflow-x-auto rounded-2xl border border-zinc-200/90 dark:border-white/[0.07]",
   tableHead:
-    "border-b border-zinc-200/90 bg-white text-xs uppercase tracking-wider text-zinc-600 dark:border-white/10 dark:bg-zinc-900/50 dark:text-zinc-500",
+    "border-b border-zinc-200/90 bg-white text-xs uppercase tracking-wider text-zinc-600 dark:border-white/10 dark:bg-zinc-900/50 dark:text-zinc-400",
   tableBodyDivide: "divide-y divide-zinc-200/90 dark:divide-white/[0.06]",
 
   timelineLine: "border-l border-zinc-300 dark:border-white/10",

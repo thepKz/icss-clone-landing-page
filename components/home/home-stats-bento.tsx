@@ -77,7 +77,7 @@ const cardShell =
   "border border-zinc-200/90 bg-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] shadow-sm dark:border-white/[0.07] dark:bg-zinc-900/25 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] dark:shadow-none";
 
 const iconShell =
-  "flex shrink-0 items-center justify-center rounded-lg border border-zinc-300/80 bg-zinc-100/80 text-zinc-500 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-400";
+  "flex shrink-0 items-center justify-center rounded-lg border border-zinc-300/80 bg-zinc-100/80 text-zinc-500 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300";
 
 const valueColor =
   "font-mono font-semibold leading-none text-zinc-900 tabular-nums dark:text-white";
@@ -137,7 +137,7 @@ function StatTile({
             variants={fadeChild}
             className="relative flex items-start justify-between gap-2"
           >
-            <p className="line-clamp-3 text-[8px] font-semibold uppercase leading-snug tracking-[0.14em] text-zinc-500 sm:text-[8.5px] sm:tracking-[0.15em] dark:text-zinc-400">
+            <p className="line-clamp-3 text-[8px] font-semibold uppercase leading-snug tracking-[0.14em] text-zinc-500 sm:text-[8.5px] sm:tracking-[0.15em] dark:text-zinc-300">
               {item.label}
             </p>
             <span
@@ -149,7 +149,7 @@ function StatTile({
           </motion.div>
           <motion.div variants={fadeChild} className="relative mt-4">
             <p className={`${valueColor} ${vSize} ${track}`}>{item.value}</p>
-            <p className="mt-3 max-w-[40ch] text-[10px] font-medium leading-[1.55] text-zinc-600 sm:text-[11px] sm:leading-relaxed dark:text-zinc-400">
+            <p className="mt-3 max-w-[40ch] text-[10px] font-medium leading-[1.55] text-zinc-600 sm:text-[11px] sm:leading-relaxed dark:text-zinc-300">
               {item.hint}
             </p>
           </motion.div>
@@ -188,7 +188,7 @@ function StatTile({
           variants={fadeChild}
           className="relative flex items-start justify-between gap-3"
         >
-          <p className="max-w-[20ch] text-[9px] font-semibold uppercase leading-snug tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
+          <p className="max-w-[20ch] text-[9px] font-semibold uppercase leading-snug tracking-[0.16em] text-zinc-500 dark:text-zinc-300">
             {item.label}
           </p>
           <span className={`${iconShell} h-7 w-7`} aria-hidden>
@@ -198,7 +198,7 @@ function StatTile({
 
         <motion.div variants={fadeChild} className="relative mt-5 md:mt-5">
           <p className={`${valueColor} ${vSize} ${track}`}>{item.value}</p>
-          <p className="mt-3 max-w-[34ch] text-xs font-medium leading-[1.55] text-zinc-600 md:text-[0.8125rem] md:leading-[1.6] dark:text-zinc-400">
+          <p className="mt-3 max-w-[34ch] text-xs font-medium leading-[1.55] text-zinc-600 md:text-[0.8125rem] md:leading-[1.6] dark:text-zinc-300">
             {item.hint}
           </p>
         </motion.div>

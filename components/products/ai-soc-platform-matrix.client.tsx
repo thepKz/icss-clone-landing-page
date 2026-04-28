@@ -103,7 +103,7 @@ const tableShell =
   "overflow-x-auto rounded-2xl border border-zinc-200/90 bg-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] dark:border-white/8 dark:bg-zinc-950/50 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]";
 
 const thBase =
-  "px-4 py-3.5 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400";
+  "px-4 py-3.5 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-300";
 
 const tdFeature =
   "px-4 py-4 align-middle text-sm font-semibold leading-snug text-zinc-900 dark:text-zinc-100";

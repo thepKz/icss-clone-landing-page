@@ -126,7 +126,7 @@ export default function SmartFactoryPage() {
               </div>
             ))}
           </div>
-          <p className="mx-auto mt-6 max-w-[72ch] text-center text-sm leading-relaxed text-zinc-700 dark:text-zinc-500">
+          <p className="mx-auto mt-6 max-w-[72ch] text-center text-sm leading-relaxed text-zinc-700 dark:text-zinc-400">
             {sf.statsDisclaimer}
           </p>
         </div>

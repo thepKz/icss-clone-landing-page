@@ -73,7 +73,7 @@ function DetailList({
 }) {
   return (
     <section className="space-y-2">
-      <h4 className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-500">
+      <h4 className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
         {title}
       </h4>
       <ul className="list-inside list-disc space-y-1.5 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
@@ -201,21 +201,21 @@ export function CareersOpenRoles({ positions }: { positions: CareerPosition[] })
                       <MetaPill>{p.level}</MetaPill>
                       <MetaPill>{p.type}</MetaPill>
                     </div>
-                    <p className="text-base leading-relaxed text-zinc-600 md:col-start-1 md:row-start-3 dark:text-zinc-400">
+                    <p className="text-base leading-relaxed text-zinc-600 md:col-start-1 md:row-start-3 dark:text-zinc-300">
                       <span className="font-medium text-zinc-800 dark:text-zinc-200">
                         Địa điểm ·{" "}
                       </span>
                       {d.location}
                     </p>
                     <SalaryHighlight salary={p.salary} />
-                    <p className="max-w-[62ch] text-base leading-relaxed text-zinc-600 md:col-start-1 md:row-start-4 md:text-lg dark:text-zinc-400">
+                    <p className="max-w-[62ch] text-base leading-relaxed text-zinc-600 md:col-start-1 md:row-start-4 md:text-lg dark:text-zinc-300">
                       {p.brief}
                     </p>
 
                     {isOpen ? (
                       <div className="space-y-5 border-t border-zinc-200/90 pt-5 md:col-span-2 dark:border-white/[0.08]">
                         <section className="space-y-2">
-                          <h4 className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-500">
+                          <h4 className="text-sm font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
                             Sứ mệnh của bạn
                           </h4>
                           <p className="text-base leading-relaxed text-zinc-700 dark:text-zinc-300">

@@ -18,7 +18,7 @@ export default function VietguardPage() {
       <section className={`${ps.edgeBottom} pt-28 pb-12 md:pt-32 md:pb-16`}>
         <div className="mx-auto grid max-w-[1400px] gap-10 px-4 md:grid-cols-2 md:gap-16 md:px-8">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
               Sản phẩm
             </p>
             <h1 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">

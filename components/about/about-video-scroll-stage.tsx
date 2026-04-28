@@ -166,7 +166,7 @@ function AboutVideoScrollStatic({
             </div>
           </div>
           <div className="border-t border-white/[0.08] pt-8 lg:col-span-12 lg:border-t-0 lg:pt-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Văn phòng</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-300">Văn phòng</p>
             <p className="mt-2 max-w-[40ch] text-sm leading-relaxed text-zinc-300">{office}</p>
             <p className="mt-2 font-mono text-sm text-zinc-100">{phone}</p>
             <div className="mt-6">

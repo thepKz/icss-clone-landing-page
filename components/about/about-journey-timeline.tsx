@@ -86,13 +86,13 @@ export function AboutJourneyTimeline({ eyebrow, title, items }: AboutJourneyTime
         </Reveal>
         <Reveal delay={0.05} className="hidden lg:block lg:col-span-4 lg:pb-2">
           <aside className="ml-auto flex max-w-44 flex-col rounded-2xl border border-zinc-200/80 bg-white/75 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)] dark:border-white/10 dark:bg-zinc-950/75 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-500">
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
               Quy mô câu chuyện
             </p>
             <p className="mt-2 text-2xl font-semibold tabular-nums tracking-tight text-teal-900 dark:text-cyan-200/95">
               {items.length}
             </p>
-            <p className="mt-1 text-xs leading-snug text-zinc-600 dark:text-zinc-400">
+            <p className="mt-1 text-xs leading-snug text-zinc-600 dark:text-zinc-300">
               mốc đã công bố, sắp xếp theo thời gian
             </p>
           </aside>

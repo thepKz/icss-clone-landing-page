@@ -62,7 +62,7 @@ function MegaLink({
   const body = (
     <>
       <span className="block font-semibold text-zinc-900 dark:text-zinc-50">{item.label}</span>
-      <span className="mt-0.5 block text-[13px] leading-snug text-zinc-500 dark:text-zinc-400">
+      <span className="mt-0.5 block text-[13px] leading-snug text-zinc-500 dark:text-zinc-300">
         {item.description}
       </span>
     </>
@@ -301,7 +301,7 @@ export function SiteHeader() {
           <span className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-white">
             {company.brand}
           </span>
-          <span className="hidden text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 xl:inline">
+          <span className="hidden text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400 xl:inline">
             Security
           </span>
         </Link>
@@ -409,7 +409,7 @@ export function SiteHeader() {
                 </motion.div>
 
                 <div className="mt-6 border-t border-zinc-200/80 pt-6 dark:border-white/10">
-                  <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                     Về chúng tôi
                   </p>
                   <ul className="mt-3 space-y-1">
@@ -440,7 +440,7 @@ export function SiteHeader() {
                 </motion.div>
 
                 <div className="mt-6 border-t border-zinc-200/80 pt-6 dark:border-white/10">
-                  <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                     Tư vấn
                   </p>
                   <ul className="mt-3 space-y-1">
@@ -457,7 +457,7 @@ export function SiteHeader() {
                 </div>
 
                 <div className="mt-6 border-t border-zinc-200/80 pt-6 dark:border-white/10">
-                  <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                     Sản phẩm
                   </p>
                   <ul className="mt-3 space-y-1">

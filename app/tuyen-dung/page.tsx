@@ -90,13 +90,13 @@ export default function CareersPage() {
           <div className="grid grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12 lg:gap-y-16">
             <div className="order-2 lg:order-1 lg:col-span-6 lg:col-start-1">
               <Reveal slideFromLeft={18}>
-                <span className="inline-flex rounded-full border border-zinc-300/90 bg-white/80 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-white/12 dark:bg-zinc-900/55 dark:text-zinc-400 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                <span className="inline-flex rounded-full border border-zinc-300/90 bg-white/80 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-white/12 dark:bg-zinc-900/55 dark:text-zinc-300 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
                   {careers.heroEyebrow}
                 </span>
                 <h1 className="mt-5 max-w-[24rem] text-balance text-[clamp(2.1rem,6.2vw,3.5rem)] font-semibold leading-[1.06] tracking-tight text-zinc-900 sm:max-w-[30rem] dark:text-zinc-50">
                   {careers.headline}
                 </h1>
-                <p className="mt-5 max-w-[54ch] text-[1.05rem] leading-relaxed text-zinc-600 sm:mt-6 md:text-[1.1rem] dark:text-zinc-400">
+                <p className="mt-5 max-w-[54ch] text-[1.05rem] leading-relaxed text-zinc-600 sm:mt-6 md:text-[1.1rem] dark:text-zinc-300">
                   {careers.heroSub}
                 </p>
                 <div className="mt-8 flex w-full max-w-md flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center">
@@ -150,7 +150,7 @@ export default function CareersPage() {
         containerClassName="max-w-[1400px] mx-auto px-4 sm:px-5 md:px-8"
       >
         <Reveal>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
             Vì sao là ICS
           </p>
           <h2 className="mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-foreground sm:mt-4 sm:text-3xl md:text-4xl">

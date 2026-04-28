@@ -138,7 +138,7 @@ export default async function ArticlePage({ params }: Props) {
                 <Reveal delay={0.08}>
                   {related.length > 0 ? (
                     <>
-                      <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500">
+                      <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                         Đọc thêm
                       </p>
                       <ul className="mt-4 space-y-4">

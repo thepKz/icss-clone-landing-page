@@ -121,7 +121,7 @@ export function ContactForm({ initialMessage = "", initialLoai = "" }: ContactFo
             placeholder="0707 806 860"
             autoComplete="tel"
           />
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          <p className="text-xs text-zinc-500 dark:text-zinc-300">
             Tuỳ chọn — giúp ICS phản hồi nhanh hơn.
           </p>
         </div>
@@ -143,7 +143,7 @@ export function ContactForm({ initialMessage = "", initialLoai = "" }: ContactFo
               </option>
             ))}
           </select>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          <p className="text-xs text-zinc-500 dark:text-zinc-300">
             Giúp đội ICS chuẩn bị thông tin phù hợp trước khi liên hệ lại.
           </p>
         </div>
@@ -182,7 +182,7 @@ export function ContactForm({ initialMessage = "", initialLoai = "" }: ContactFo
       >
         {status === "loading" ? "Đang gửi…" : "Gửi liên hệ"}
       </button>
-      <p className="mt-6 text-center text-xs leading-relaxed text-zinc-500 dark:text-zinc-400 md:text-left">
+      <p className="mt-6 text-center text-xs leading-relaxed text-zinc-500 dark:text-zinc-300 md:text-left">
         Gửi biểu mẫu đồng nghĩa bạn đã xem{" "}
         <Link href="/chinh-sach-bao-mat" className="font-medium text-teal-800 underline-offset-2 hover:underline dark:text-cyan-300">
           chính sách xử lý dữ liệu

@@ -35,14 +35,14 @@ const thumbInner =
 
 function PageBreadcrumb() {
   const sep = (
-    <li className="text-zinc-300 dark:text-zinc-600" aria-hidden>
+    <li className="text-zinc-300 dark:text-zinc-500" aria-hidden>
       /
     </li>
   );
 
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
-      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-500 dark:text-zinc-400">
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-500 dark:text-zinc-300">
         <li>
           <Link
             href="/"
@@ -100,7 +100,7 @@ export default function CustomersPage() {
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <Reveal>
             <PageBreadcrumb />
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-300">
               Về ICS
             </p>
             <h1 className="mt-4 max-w-[40ch] text-pretty text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
@@ -139,7 +139,7 @@ export default function CustomersPage() {
                             <h2 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
                               {item.title}
                             </h2>
-                            <p className="mt-3 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+                            <p className="mt-3 text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
                               {item.body}
                             </p>
                           </div>

@@ -25,7 +25,7 @@ export default function ArticlesIndexPage() {
       <section className={`${ps.edgeBottom} pt-28 pb-14 md:pt-36 md:pb-20`}>
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <Reveal slideFromLeft={18} delay={0}>
-            <p className="inline-flex rounded-full border border-zinc-200/90 bg-white/80 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-600 dark:border-white/8 dark:bg-zinc-900/40 dark:text-zinc-400">
+            <p className="inline-flex rounded-full border border-zinc-200/90 bg-white/80 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-600 dark:border-white/8 dark:bg-zinc-900/40 dark:text-zinc-300">
               Tin ICS
             </p>
             <h1 className="mt-6 max-w-[18ch] text-4xl font-semibold tracking-tighter text-foreground md:text-5xl lg:text-[3.25rem] lg:leading-[1.05]">

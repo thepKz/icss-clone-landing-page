@@ -115,7 +115,7 @@ export function CareersCvModal({
               <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                 Tiêu đề email gợi ý
               </p>
-              <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                 {subjectLine}
               </p>
               <button
@@ -150,7 +150,7 @@ export function CareersCvModal({
                 <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                   Hồ sơ gồm
                 </p>
-                <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+                <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-zinc-600 dark:text-zinc-300">
                   {documents.map((d) => (
                     <li key={d} className="pl-0.5">
                       {d}
@@ -160,7 +160,7 @@ export function CareersCvModal({
               </div>
             ) : null}
 
-            <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
+            <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
               Vui lòng gửi CV qua email theo địa chỉ trên. Trình duyệt sẽ không mở sẵn hộp thư — bạn chủ động dán địa chỉ khi soạn thư.
             </p>
 

@@ -43,7 +43,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
       <section className={`${ps.edgeBottom} pt-28 pb-12 md:pt-32 md:pb-16`}>
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-300">
               {company.brand}
             </p>
             <h1 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
@@ -77,7 +77,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                         <MapPin className="h-5 w-5" weight="regular" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-300">
                           Văn phòng
                         </p>
                         <p className="mt-1 text-sm leading-relaxed text-foreground">
@@ -91,7 +91,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                         <Phone className="h-5 w-5" weight="regular" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-300">
                           Hotline
                         </p>
                         <p className="mt-1 text-sm">
@@ -110,7 +110,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                         <Envelope className="h-5 w-5" weight="regular" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-300">
                           Email
                         </p>
                         <p className="mt-1 text-sm break-all">
@@ -129,7 +129,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                         <ChatCircle className="h-5 w-5" weight="regular" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-300">
                           Zalo
                         </p>
                         <p className="mt-1 text-sm text-foreground">
@@ -143,7 +143,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                         <Globe className="h-5 w-5" weight="regular" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-300">
                           Website
                         </p>
                         <p className="mt-1 text-sm break-all">
@@ -167,7 +167,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                         />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-300">
                           MST
                         </p>
                         <p className="mt-1 font-mono text-sm tabular-nums text-foreground">
@@ -178,10 +178,10 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   </div>
 
                   <div className="mt-8 rounded-2xl border border-dashed border-zinc-300/90 bg-zinc-50/80 px-4 py-5 dark:border-white/[0.1] dark:bg-zinc-950/40">
-                    <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                    <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-300">
                       Bản đồ
                     </p>
-                    <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">
                       Khối nhúng bản đồ có thể bổ sung khi có API key và tọa độ
                       chính xác.
                     </p>

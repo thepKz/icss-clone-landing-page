@@ -84,7 +84,7 @@ export default function AiSocPage() {
         <div className="mx-auto max-w-[1400px] px-4 pb-16 pt-28 md:px-8 md:pb-24 md:pt-32">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start lg:gap-16">
             <Reveal slideFromLeft={28} className="max-w-xl">
-              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                 Sản phẩm
               </p>
               <h1 className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl lg:text-[2.35rem] lg:leading-[1.12]">
@@ -93,16 +93,16 @@ export default function AiSocPage() {
               <p className="mt-5 text-base font-medium leading-snug text-zinc-800 dark:text-zinc-200">
                 {p.hero.tagline}
               </p>
-              <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
                 {p.definition}
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-500">
+              <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 {p.audience}
               </p>
               <p className="mt-5 rounded-2xl border border-teal-800/20 bg-teal-900/[0.04] px-4 py-3 text-sm font-medium leading-relaxed text-teal-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:border-cyan-400/20 dark:bg-cyan-400/[0.06] dark:text-cyan-100/95 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                 {p.hero.positioningLine}
               </p>
-              <p className="mt-6 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-6 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                 {p.hero.lead}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -118,7 +118,7 @@ export default function AiSocPage() {
             </Reveal>
 
             <Reveal delay={0.06} x={20} className="min-w-0">
-              <p className="mb-3 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-500">
+              <p className="mb-3 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
                 {p.dashboard.caption}
               </p>
               {/* Outer shell */}
@@ -151,13 +151,13 @@ export default function AiSocPage() {
                 <p className="font-mono text-2xl font-semibold tabular-nums text-teal-800 dark:text-cyan-300/90">
                   {k.value}
                 </p>
-                <p className="mt-2 text-sm leading-snug text-zinc-600 dark:text-zinc-400">
+                <p className="mt-2 text-sm leading-snug text-zinc-600 dark:text-zinc-300">
                   {k.label}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-3 max-w-[70ch] text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
+          <p className="mt-3 max-w-[70ch] text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
             {p.kpiDisclaimer}
           </p>
 
@@ -178,7 +178,7 @@ export default function AiSocPage() {
                 <p className="font-mono text-lg font-semibold tabular-nums text-zinc-900 dark:text-zinc-100">
                   {s.value}
                 </p>
-                <p className="text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+                <p className="text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                   {s.label}
                 </p>
               </div>
@@ -190,7 +190,7 @@ export default function AiSocPage() {
       <SectionShell>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
               {p.reveal.eyebrow}
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
@@ -275,16 +275,16 @@ export default function AiSocPage() {
                 className="pointer-events-none absolute -right-6 top-1/2 h-40 w-40 -translate-y-1/2 rounded-full bg-rose-500/[0.08] dark:bg-rose-500/[0.1]"
                 aria-hidden
               />
-              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                 {p.socVsAi.responseTimeHighlight.traditionalCaption}
               </p>
               <p className="mt-4 font-mono text-5xl font-semibold tabular-nums tracking-tight text-zinc-900 dark:text-zinc-100 md:text-6xl">
                 {p.socVsAi.responseTimeHighlight.hours}
-                <span className="ml-1 text-2xl font-medium text-zinc-500 dark:text-zinc-500 md:text-3xl">
+                <span className="ml-1 text-2xl font-medium text-zinc-500 dark:text-zinc-400 md:text-3xl">
                   {p.socVsAi.responseTimeHighlight.hoursLabel}
                 </span>
               </p>
-              <p className="mt-4 max-w-[40ch] text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
+              <p className="mt-4 max-w-[40ch] text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
                 {p.socVsAi.responseTimeHighlight.note}
               </p>
             </div>
@@ -318,7 +318,7 @@ export default function AiSocPage() {
 
       <SectionShell>
         <Reveal>
-          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
+          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
             {p.gartner.eyebrow}
           </p>
           <h2 className="mt-3 text-xl font-semibold text-foreground md:text-2xl">{p.gartner.title}</h2>
@@ -332,7 +332,7 @@ export default function AiSocPage() {
                 <p className="font-mono text-lg font-semibold text-teal-800 dark:text-cyan-300/90">
                   {s.value}
                 </p>
-                <p className="mt-1 text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+                <p className="mt-1 text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                   {s.label}
                 </p>
               </div>
@@ -342,7 +342,7 @@ export default function AiSocPage() {
             <p className="text-sm italic leading-relaxed text-zinc-700 dark:text-zinc-300">
               &ldquo;{p.gartner.quote}&rdquo;
             </p>
-            <footer className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">{p.gartner.quoteSource}</footer>
+            <footer className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">{p.gartner.quoteSource}</footer>
           </blockquote>
           <a
             href={p.gartner.linkHref}
@@ -416,7 +416,7 @@ export default function AiSocPage() {
               <Reveal key={item.n} delay={i * 0.05}>
                 <div className="grid gap-6 border-t border-zinc-200/80 pt-10 first:border-t-0 first:pt-0 dark:border-white/[0.06] md:grid-cols-[minmax(0,1fr)_180px] md:items-start">
                   <div>
-                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-500">
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
                       {item.n}
                     </p>
                     <h3 className="mt-2 text-lg font-semibold text-foreground">{item.title}</h3>
@@ -459,7 +459,7 @@ export default function AiSocPage() {
                   aria-hidden
                 />
                 <div className="flex flex-wrap items-baseline gap-3">
-                  <span className="font-mono text-xs text-zinc-500 dark:text-zinc-500">{step.n}</span>
+                  <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">{step.n}</span>
                   <h3 className="text-base font-semibold text-foreground">{step.title}</h3>
                   <span className="rounded-full border border-teal-800/30 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-teal-900 dark:border-cyan-400/30 dark:text-cyan-200/90">
                     {step.badge}
@@ -607,7 +607,7 @@ export default function AiSocPage() {
         <Reveal>
           <h2 className="text-xl font-semibold text-foreground">{p.gurucul.title}</h2>
           <p className="mt-4 max-w-[70ch] text-sm leading-relaxed text-muted">{p.gurucul.body}</p>
-          <p className="mt-4 text-xs leading-relaxed text-zinc-500 dark:text-zinc-600">{p.gurucul.disclaimer}</p>
+          <p className="mt-4 text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">{p.gurucul.disclaimer}</p>
         </Reveal>
       </SectionShell>
     </>

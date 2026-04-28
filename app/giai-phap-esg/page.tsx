@@ -46,7 +46,7 @@ export default function EsgSolutionPage() {
                 <h1 className="mt-4 max-w-[18ch] text-4xl font-semibold tracking-tight text-zinc-950 sm:max-w-none md:text-5xl md:leading-[1.06] dark:text-zinc-50">
                   {esg.title}
                 </h1>
-                <p className="mt-3 max-w-[52ch] text-base font-medium text-zinc-700 dark:text-zinc-400 md:text-lg">
+                <p className="mt-3 max-w-[52ch] text-base font-medium text-zinc-700 dark:text-zinc-300 md:text-lg">
                   {esg.tagline}
                 </p>
                 <p className="mt-8 max-w-[58ch] text-lg leading-[1.65] text-zinc-800 md:text-xl md:leading-[1.62] dark:text-zinc-300">
@@ -66,7 +66,7 @@ export default function EsgSolutionPage() {
                     Liên hệ chung
                   </Link>
                 </div>
-                <p className="mt-8 text-sm text-zinc-600 dark:text-zinc-500">
+                <p className="mt-8 text-sm text-zinc-600 dark:text-zinc-400">
                   Tham chiếu:{" "}
                   <a
                     href="https://icss.com.vn/giai-phap-esg"
@@ -145,7 +145,7 @@ export default function EsgSolutionPage() {
               </div>
             ))}
           </div>
-          <p className="mx-auto mt-6 max-w-[72ch] text-center text-sm leading-relaxed text-zinc-700 dark:text-zinc-500">
+          <p className="mx-auto mt-6 max-w-[72ch] text-center text-sm leading-relaxed text-zinc-700 dark:text-zinc-400">
             {esg.statsDisclaimer}
           </p>
         </div>

@@ -65,7 +65,7 @@ function BlockView({ block }: { block: ArticleBodyBlock }) {
           aria-label="Ghi chú"
         >
           {block.title ? (
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-300">
               {block.title}
             </p>
           ) : null}

@@ -76,7 +76,7 @@ export default function AboutPage() {
                 </h1>
               </Reveal>
               <Reveal y={18} delay={0.1} className="mt-8">
-                <p className="mx-auto max-w-[68ch] text-pretty text-base leading-relaxed text-zinc-600 md:text-lg md:leading-relaxed dark:text-zinc-400">
+                <p className="mx-auto max-w-[68ch] text-pretty text-base leading-relaxed text-zinc-600 md:text-lg md:leading-relaxed dark:text-zinc-300">
                   {about.narrative.body}
                 </p>
               </Reveal>
@@ -105,11 +105,11 @@ export default function AboutPage() {
 
           <Reveal y={14} delay={0.18} className="mt-14 w-full md:mt-20">
             <div className="mx-auto max-w-[min(100%,56rem)] border-t border-zinc-300/45 pt-9 dark:border-white/10 md:pt-10">
-              <div className="flex flex-wrap items-baseline justify-center gap-x-2 gap-y-2 text-[15px] leading-snug text-zinc-600 dark:text-zinc-400">
+              <div className="flex flex-wrap items-baseline justify-center gap-x-2 gap-y-2 text-[15px] leading-snug text-zinc-600 dark:text-zinc-300">
                 {about.stats.map((s, i) => (
                   <span key={s.label} className="inline-flex items-baseline gap-2">
                     {i > 0 ? (
-                      <span className="select-none text-zinc-300 dark:text-zinc-600" aria-hidden>
+                      <span className="select-none text-zinc-300 dark:text-zinc-500" aria-hidden>
                         ·
                       </span>
                     ) : null}
@@ -126,7 +126,7 @@ export default function AboutPage() {
                   {about.teamBand.title}
                 </p>
                 <div className="mx-auto mt-3 max-w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] md:overflow-x-visible [&::-webkit-scrollbar]:hidden">
-                  <p className="inline-block whitespace-nowrap px-2 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  <p className="inline-block whitespace-nowrap px-2 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300">
                     {about.teamBand.body}
                   </p>
                 </div>
@@ -165,13 +165,13 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={0.05} className="hidden lg:flex lg:col-span-4 lg:justify-end lg:pb-3">
               <aside className="flex h-28 w-full max-w-44 flex-col justify-end rounded-2xl border border-zinc-200/80 bg-white/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)] dark:border-white/10 dark:bg-zinc-950/80 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-500">
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
                   Khung vận hành
                 </p>
                 <p className="mt-2 text-2xl font-semibold tabular-nums tracking-tight text-teal-900 dark:text-cyan-200/95">
                   6
                 </p>
-                <p className="mt-1 text-xs leading-snug text-zinc-600 dark:text-zinc-400">
+                <p className="mt-1 text-xs leading-snug text-zinc-600 dark:text-zinc-300">
                   quy chiếu xuyên suốt tư vấn, triển khai và hỗ trợ
                 </p>
               </aside>
@@ -324,7 +324,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <Reveal>
             <h2 className="max-w-xl text-2xl font-semibold tracking-tight md:text-3xl">{about.closingCta.title}</h2>
-            <p className="mt-4 max-w-[54ch] text-sm leading-relaxed text-zinc-400 md:text-base">
+            <p className="mt-4 max-w-[54ch] text-sm leading-relaxed text-zinc-300 md:text-base">
               {about.closingCta.body}
             </p>
             <div className="mt-10 flex flex-wrap gap-3">

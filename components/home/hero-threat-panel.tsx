@@ -30,7 +30,7 @@ const detailStaggerChild = {
 
 /** Nút prev/next — phẳng, cùng nền với card */
 const threatNavArrowClass =
-  "flex h-8 w-8 max-md:min-h-[44px] max-md:min-w-[44px] shrink-0 items-center justify-center rounded-md text-stone-600 transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-100/90 hover:text-stone-900 active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-zinc-400 dark:hover:bg-zinc-800/90 dark:hover:text-white dark:focus-visible:ring-teal-500/35 dark:focus-visible:ring-offset-zinc-950";
+  "flex h-8 w-8 max-md:min-h-[44px] max-md:min-w-[44px] shrink-0 items-center justify-center rounded-md text-stone-600 transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-stone-100/90 hover:text-stone-900 active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:text-zinc-300 dark:hover:bg-zinc-800/90 dark:hover:text-white dark:focus-visible:ring-teal-500/35 dark:focus-visible:ring-offset-zinc-950";
 
 function defaultAlertIndex(alerts: typeof home.heroSecurityAlerts) {
   const idx = alerts.findIndex((a) => a.source.includes("GitLab"));
@@ -103,12 +103,12 @@ function ThreatDetailBlocks({
             <motion.div variants={detailStaggerChild} className="flex flex-wrap items-center gap-2 py-2 first:pt-0">
               <span className="h-4 w-0.5 shrink-0 rounded-full bg-red-600 dark:bg-red-400" aria-hidden />
               <span className="text-[8px] font-bold uppercase tracking-[0.16em] text-red-800 dark:text-red-200">Tin mới</span>
-              <span className="font-mono text-[9px] tabular-nums text-stone-600 dark:text-zinc-400">{a.date}</span>
+              <span className="font-mono text-[9px] tabular-nums text-stone-600 dark:text-zinc-300">{a.date}</span>
             </motion.div>
           ) : null}
 
           <motion.div variants={detailStaggerChild} className="py-2">
-            <p className="break-words text-[9px] font-medium uppercase leading-snug tracking-[0.08em] text-stone-500 dark:text-zinc-400">
+            <p className="break-words text-[9px] font-medium uppercase leading-snug tracking-[0.08em] text-stone-500 dark:text-zinc-300">
               Nguồn
             </p>
             <p className="mt-1 break-words text-[12px] font-medium leading-snug text-stone-800 dark:text-zinc-200">{a.source}</p>
@@ -134,7 +134,7 @@ function ThreatDetailBlocks({
           ) : null}
 
           <motion.div variants={detailStaggerChild} className="py-2">
-            <p className="text-[8px] font-semibold uppercase tracking-[0.14em] text-stone-500 dark:text-zinc-500">Ảnh hưởng</p>
+            <p className="text-[8px] font-semibold uppercase tracking-[0.14em] text-stone-500 dark:text-zinc-400">Ảnh hưởng</p>
             <p className="mt-1.5 break-words text-[12px] font-medium leading-relaxed text-stone-900 dark:text-zinc-100">{a.impact}</p>
           </motion.div>
 
@@ -191,11 +191,11 @@ function ThreatNavRows({
             <CaretLeft className="h-3.5 w-3.5" weight="bold" aria-hidden />
           </button>
           <span
-            className="min-w-[2.75rem] shrink-0 px-1 text-center font-mono text-[9px] font-medium tabular-nums tracking-tight text-stone-500 dark:text-zinc-400"
+            className="min-w-[2.75rem] shrink-0 px-1 text-center font-mono text-[9px] font-medium tabular-nums tracking-tight text-stone-500 dark:text-zinc-300"
             aria-live="polite"
           >
             <span className="text-stone-800 dark:text-zinc-200">{i + 1}</span>
-            <span className="mx-0.5 text-stone-300 dark:text-zinc-600" aria-hidden>
+            <span className="mx-0.5 text-stone-300 dark:text-zinc-500" aria-hidden>
               /
             </span>
             <span>{n}</span>
@@ -310,7 +310,7 @@ export function HeroThreatPanel() {
                 ICS Live Monitor
               </span>
             </span>
-            <span className="font-mono text-[8px] font-medium uppercase tracking-[0.12em] text-stone-400 dark:text-zinc-500">
+            <span className="font-mono text-[8px] font-medium uppercase tracking-[0.12em] text-stone-400 dark:text-zinc-400">
               Realtime
             </span>
           </div>
@@ -325,7 +325,7 @@ export function HeroThreatPanel() {
                 transition={reduceMotion ? { duration: 0.08 } : springSlide}
               >
                 <div className="flex min-h-[2.85rem] flex-wrap content-center items-center gap-x-1.5 gap-y-1 md:min-h-[2.65rem] md:gap-x-2">
-                  <span className="flex min-w-0 max-w-full items-center gap-1 text-[8px] font-bold uppercase tracking-[0.12em] text-stone-500 dark:text-zinc-400 md:text-[9px] md:tracking-[0.14em]">
+                  <span className="flex min-w-0 max-w-full items-center gap-1 text-[8px] font-bold uppercase tracking-[0.12em] text-stone-500 dark:text-zinc-300 md:text-[9px] md:tracking-[0.14em]">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400 ring-2 ring-amber-400/35" aria-hidden />
                     <span className="truncate">Cảnh báo bảo mật</span>
                   </span>
@@ -333,7 +333,7 @@ export function HeroThreatPanel() {
                   <SeverityBadge severity={a.severity} label={a.severityLabel} />
                   <span className="shrink-0 font-mono tabular-nums text-[9px] font-semibold text-stone-700 dark:text-zinc-200 md:text-[10px]">{a.date}</span>
                 </div>
-                <p className="mt-1 flex min-h-[1rem] flex-wrap items-baseline gap-x-1.5 text-[9px] font-mono leading-snug tracking-tight text-stone-500 dark:text-zinc-400">
+                <p className="mt-1 flex min-h-[1rem] flex-wrap items-baseline gap-x-1.5 text-[9px] font-mono leading-snug tracking-tight text-stone-500 dark:text-zinc-300">
                   <span className="sr-only">Nguồn: </span>
                   <span className="min-w-0 max-w-full truncate text-stone-700 dark:text-zinc-200">{a.source}</span>
                 </p>
@@ -347,7 +347,7 @@ export function HeroThreatPanel() {
             </AnimatePresence>
             <div className="hidden shrink-0 md:block">
               <span
-                className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-stone-200/60 bg-stone-50/90 text-stone-500 dark:border-zinc-600/50 dark:bg-zinc-900/75 dark:text-zinc-400"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-stone-200/60 bg-stone-50/90 text-stone-500 dark:border-zinc-600/50 dark:bg-zinc-900/75 dark:text-zinc-300"
                 title="Di chuột vào vùng tin để xem tóm tắt và phân tích đầy đủ"
               >
                 <Scan className="h-3.5 w-3.5" weight="bold" aria-hidden />

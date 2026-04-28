@@ -9,8 +9,6 @@ import { SectionShell } from "@/components/section-shell";
 import { ComplianceTicker } from "./compliance-ticker";
 import { HomeStatsBento } from "./home-stats-bento";
 import { HeroThreatPanel } from "./hero-threat-panel";
-import { HeroVisualStack } from "./hero-visual-stack";
-import { HeroSplineCanvas } from "./hero-spline-canvas";
 import SilkBackground from "@/components/ui/silk-background-animation";
 
 function ArrowIcon({ className = "h-4 w-4" }: { className?: string }) {
@@ -28,136 +26,104 @@ function ArrowIcon({ className = "h-4 w-4" }: { className?: string }) {
 
 export function HomeHero() {
   return (
-    <section className="relative flex min-h-[min(92dvh,860px)]  flex-col gap-4 overflow-x-hidden overflow-y-visible bg-white pt-24 dark:bg-zinc-950 md:gap-5 md:pt-28 lg:gap-6">
-      <SilkBackground opacity={0.11} />
-      <div
-        className="pointer-events-none absolute inset-0 z-0 bg-white/42 dark:bg-transparent"
-        aria-hidden
-      />
-      <div className="relative z-[1] flex min-h-0 min-w-0 flex-1 flex-col">
-        <div className="mx-auto grid min-h-0 w-full max-w-[1400px] flex-1 grid-cols-1 content-center gap-10 px-4 pb-8 md:grid-cols-12 md:items-stretch md:gap-x-8 md:gap-y-10 md:px-6 md:pb-12 lg:gap-x-10 lg:px-8 lg:pb-14">
-        <p
-          className="pointer-events-none absolute bottom-[18%] right-[4%] z-0 hidden select-none font-light leading-none tracking-[-0.04em] text-stone-400/[0.09] dark:text-white/[0.035] md:block md:text-[clamp(4rem,12vw,9rem)]"
-          aria-hidden
-        >
-          ICS
-        </p>
-        <div className="relative z-[2] order-2 min-w-0 md:order-none md:col-span-5 md:pr-6 lg:pr-8 lg:pt-1">
-          <span
-            className="pointer-events-none absolute top-[14%] right-0 z-0 hidden h-[58%] w-px bg-gradient-to-b from-transparent via-stone-300/75 to-transparent dark:via-zinc-600/70 md:block"
-            aria-hidden
-          />
-          <div className="min-w-0 md:max-w-[min(100%,54ch)]">
-          <Reveal slideFromLeft={32}>
-            <div className="flex flex-wrap items-end gap-x-4 gap-y-2 border-b border-stone-400/55 pb-5 dark:border-zinc-600/80 md:mr-10 md:w-[min(100%,42ch)] md:-translate-x-1 lg:mr-16 lg:-translate-x-2">
-              <span className="rounded-sm bg-teal-900/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white dark:bg-teal-600/90 dark:text-teal-950">
-                {home.hero.featuredPill}
-              </span>
-              <span className="hidden h-4 w-px bg-stone-300 sm:block dark:bg-zinc-600" aria-hidden />
-              <span className="min-w-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-stone-700 dark:text-zinc-300">
-                {home.hero.eyebrow}
-              </span>
-            </div>
-          </Reveal>
-          <Reveal slideFromLeft={32} delay={0.05} className="mt-7 md:mt-10">
-            <h1 className="max-w-[min(100%,22rem)] text-pretty font-bold tracking-tight text-stone-900 dark:text-white sm:max-w-none">
-              <span className="block text-[2.35rem] leading-[1.08] sm:text-[2.85rem] md:pl-6 md:text-[3.25rem] md:leading-[1.04] lg:pl-9 lg:text-[3.75rem] lg:leading-[1.02]">
-                {home.hero.titleLead}
-              </span>
-              <span className="mt-2 block text-[1.85rem] font-semibold leading-[1.1] text-teal-800 sm:text-[2.25rem] md:mt-3 md:pl-14 md:text-[2.6rem] lg:pl-[4.75rem] lg:text-[3rem] dark:text-teal-400">
-                {home.hero.titleAccent}
-              </span>
-            </h1>
-          </Reveal>
-          <Reveal slideFromLeft={32} delay={0.1} className="mt-6 md:mt-8">
-            <p className="max-w-[min(48ch,100%)] border-l-[3px] border-teal-800/85 py-0.5 pl-4 text-pretty text-base font-medium leading-[1.65] text-stone-800 dark:border-teal-500/70 dark:font-medium dark:text-zinc-200 md:ml-7 md:pl-5 md:text-lg md:leading-relaxed lg:ml-10 lg:max-w-[min(46ch,100%)]">
-              {home.hero.tagline}
-            </p>
-          </Reveal>
-          <Reveal slideFromLeft={32} delay={0.14} className="mt-9 flex flex-wrap items-center gap-3 md:mt-11 md:pl-3 lg:mt-12 lg:pl-5">
-            {/* Primary CTA — solid teal pill with double-bezel icon pocket */}
-            <Link
-              href={home.hero.ctaPrimary.href}
-              className="group relative inline-flex min-h-[52px] items-center gap-0 overflow-hidden rounded-full bg-teal-900 pl-6 pr-1.5 py-1.5 text-sm font-semibold tracking-tight text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_14px_40px_-14px_rgba(19,78,74,0.38)] ring-1 ring-teal-950/50 transition-[box-shadow,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-teal-950 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_18px_46px_-14px_rgba(19,78,74,0.36)] motion-reduce:transition-none active:scale-[0.99] dark:bg-teal-600 dark:text-white dark:ring-teal-500/40 dark:hover:bg-teal-500"
-            >
-              <span className="relative z-[1] pr-4">{home.hero.ctaPrimary.label}</span>
-              {/* Button-in-button icon pocket */}
-              <span className="relative z-[1] flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/[0.11] text-inherit shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:scale-[1.02] group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_2px_6px_-2px_rgba(0,0,0,0.12)] motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:scale-100 dark:border-white/20 dark:bg-white/10">
-                <ArrowIcon className="h-3.5 w-3.5" />
-              </span>
-            </Link>
+    <section className="relative flex min-h-[min(92dvh,860px)] flex-col overflow-x-hidden overflow-y-visible bg-white pt-24 dark:bg-zinc-950 md:pt-28">
+      <SilkBackground opacity={0.15} />
 
-            {/* Secondary CTA — teal / black border, hover black / white border */}
-            <Link
-              href={home.hero.ctaSecondary.href}
-              className="group/sec relative inline-flex min-h-[52px] items-center gap-0 overflow-hidden rounded-full border border-zinc-950 bg-white/75 pl-5 pr-1.5 py-1.5 text-sm font-semibold tracking-tight text-teal-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_2px_6px_-2px_rgba(24,24,27,0.06)] transition-[box-shadow,background-color,border-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-white hover:bg-zinc-100 hover:text-zinc-950 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_6px_16px_-6px_rgba(24,24,27,0.1)] motion-reduce:transition-none active:scale-[0.99] dark:border-zinc-800 dark:bg-zinc-950/70 dark:text-teal-400 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_2px_8px_-2px_rgba(0,0,0,0.35)] dark:hover:border-white dark:hover:bg-white dark:hover:text-zinc-950 dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_8px_22px_-8px_rgba(0,0,0,0.25)]"
-            >
-              <span className="relative z-[1] pr-3">{home.hero.ctaSecondary.label}</span>
-              <span className="relative z-[1] flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-zinc-950 bg-white/90 text-teal-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)] transition-[transform,background-color,border-color,color,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/sec:translate-x-0.5 group-hover/sec:scale-[1.02] group-hover/sec:border-white group-hover/sec:bg-white group-hover/sec:text-zinc-950 motion-reduce:transition-none motion-reduce:group-hover/sec:translate-x-0 motion-reduce:group-hover/sec:scale-100 dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-teal-400 dark:group-hover/sec:border-white dark:group-hover/sec:bg-white dark:group-hover/sec:text-zinc-950">
-                <ArrowIcon className="h-3.5 w-3.5" />
-              </span>
-            </Link>
-          </Reveal>
-          <Reveal slideFromLeft={32} delay={0.18} className="mt-10 border-t border-stone-300/90 pt-6 dark:border-zinc-700/90 md:mt-12 md:border-t-0 md:pt-0 lg:mt-14">
-            <div className="md:border-t md:border-stone-300/90 md:pt-7 md:dark:border-zinc-700/90 md:pl-2 lg:pl-4">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-600 dark:text-zinc-400 md:pl-5 lg:pl-7">
-              Cam kết vận hành
-            </p>
-            <ul
-              className="mt-4 grid grid-cols-1 gap-4 sm:gap-y-5 md:mt-5 md:grid-cols-3 md:gap-x-0 md:gap-y-0"
-              aria-label="Thông tin cam kết ICS"
-            >
-              {home.hero.trustChips.map((chip, idx) => (
-                <li
-                  key={chip.label}
-                  className={
-                    idx === 0
-                      ? "md:min-w-0 md:pr-6 lg:pr-8"
-                      : "md:min-w-0 md:border-l md:border-stone-300/75 md:pl-8 md:pr-3 md:dark:border-zinc-600/70 lg:pl-9 lg:pr-4"
-                  }
-                >
-                  <p
-                    className={`font-mono text-lg font-semibold tabular-nums tracking-tight text-teal-900 sm:text-xl dark:text-teal-400 ${idx === 2 ? "md:whitespace-nowrap" : ""}`}
-                  >
-                    {chip.value}
-                  </p>
-                  <p className="mt-1 max-w-[20ch] text-[13px] leading-snug text-stone-700 dark:text-zinc-300">
-                    {chip.label}
-                  </p>
-                  {idx < home.hero.trustChips.length - 1 ? (
-                    <span className="mt-3 block h-px w-full bg-stone-200/90 md:hidden dark:bg-zinc-700/80" aria-hidden />
-                  ) : null}
-                </li>
-              ))}
-            </ul>
-            </div>
-          </Reveal>
-          </div>
-        </div>
-        <div className="relative z-[1] order-1 hidden min-h-0 min-w-0 overflow-visible md:order-none md:col-span-7 md:col-start-6 md:flex md:pt-1 lg:pt-2">
-          <HeroVisualStack
-            className="relative flex w-full min-w-0 flex-col gap-0 overflow-visible md:gap-2 md:pl-3 lg:pl-5"
-            media={
-              <div className="w-full md:w-[min(100%,calc(100%+1.25rem))] md:max-w-none md:self-end lg:w-[min(100%,calc(100%+2.25rem))]">
-                <div className="rounded-[1.65rem] bg-stone-200/30 p-1.5 ring-1 ring-stone-300/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.42)] dark:bg-zinc-800/45 dark:ring-white/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
-                  <div className="overflow-hidden rounded-[calc(1.65rem-6px)] border border-stone-200/85 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_16px_48px_-36px_rgba(28,25,23,0.18)] dark:border-white/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_20px_52px_-38px_rgba(0,0,0,0.45)]">
-                    <HeroSplineCanvas />
-                  </div>
-                </div>
+      <div className="relative z-1 flex min-h-0 min-w-0 flex-1 flex-col">
+        <div className="mx-auto grid w-full max-w-[1400px] flex-1 grid-cols-1 content-center gap-10 px-4 pb-8 md:grid-cols-12 md:items-center md:gap-x-10 md:px-8 md:pb-12 lg:gap-x-14 lg:px-10 lg:pb-14">
+
+          {/* ── Left column: text ── */}
+          <div className="order-2 md:order-0 md:col-span-5">
+            <Reveal>
+              <div className="flex items-center gap-3">
+                <span className="h-px flex-1 max-w-8 bg-teal-600 dark:bg-teal-500" aria-hidden />
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-stone-700 dark:text-zinc-200">
+                  {home.hero.eyebrow}
+                </p>
               </div>
-            }
-            metaLine={
-              <p className="mt-3 hidden pr-8 text-right font-mono text-[9px] tracking-[0.22em] text-zinc-950 uppercase md:block dark:text-zinc-200">
-                Giám sát · SOC · Vận hành
+            </Reveal>
+
+            <Reveal delay={0.04} className="mt-5 md:mt-6">
+              <h1 className="text-pretty font-bold tracking-tight text-stone-900 dark:text-white">
+                <span className="block text-[2.6rem] leading-[1.06] sm:text-[3.15rem] md:text-[3.5rem] md:leading-[1.04] lg:text-[4rem] lg:leading-[1.02]">
+                  {home.hero.titleLead}
+                </span>
+                <span className="mt-1 block text-[2.6rem] font-bold leading-[1.06] text-teal-700 sm:text-[3.15rem] md:mt-1.5 md:text-[3.5rem] md:leading-[1.04] lg:text-[4rem] lg:leading-[1.02] dark:text-teal-400">
+                  {home.hero.titleAccent}
+                </span>
+              </h1>
+            </Reveal>
+
+            <Reveal delay={0.08} className="mt-4 md:mt-5">
+              <p className="max-w-[44ch] text-pretty text-[15px] leading-relaxed text-stone-500 dark:text-zinc-300 md:text-base">
+                {home.hero.tagline}
               </p>
-            }
-            panel={
-              <div className="relative z-[2] mt-5 w-full md:mt-8 md:w-full md:max-w-none md:self-stretch md:pl-0 md:pr-2 lg:mt-9 lg:pr-4">
-                <HeroThreatPanel />
+            </Reveal>
+
+            <Reveal delay={0.12} className="mt-7 flex flex-wrap items-center gap-3 md:mt-8">
+              <Link
+                href={home.hero.ctaPrimary.href}
+                className="inline-flex h-[50px] items-center gap-2.5 rounded-lg bg-teal-600 px-7 text-sm font-semibold text-white transition-all duration-200 hover:bg-teal-700 active:scale-[0.99] dark:bg-teal-500 dark:text-zinc-950 dark:hover:bg-teal-400"
+              >
+                {home.hero.ctaPrimary.label}
+                <ArrowIcon className="h-4 w-4" />
+              </Link>
+              <Link
+                href={home.hero.ctaSecondary.href}
+                className="inline-flex h-[50px] items-center gap-2.5 rounded-lg border border-stone-300 px-7 text-sm font-semibold text-stone-700 transition-colors duration-200 hover:bg-stone-50 active:scale-[0.99] dark:border-zinc-600 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:bg-zinc-800/60"
+              >
+                {home.hero.ctaSecondary.label}
+                <ArrowIcon className="h-4 w-4" />
+              </Link>
+            </Reveal>
+
+            <Reveal delay={0.16} className="mt-8 md:mt-10">
+              <ul
+                className="flex flex-wrap items-center gap-6 border-t border-stone-200/80 pt-5 dark:border-zinc-800 md:gap-8"
+                aria-label="Thông tin cam kết ICS"
+              >
+                {home.hero.trustChips.map((chip, idx) => (
+                  <li
+                    key={chip.label}
+                    className={
+                      idx > 0
+                        ? "border-l border-stone-200/80 pl-6 dark:border-zinc-700 md:pl-8"
+                        : ""
+                    }
+                  >
+                    <p className="font-mono text-xl font-semibold tabular-nums tracking-tight text-stone-900 dark:text-white">
+                      {chip.value}
+                    </p>
+                    <p className="mt-0.5 text-[13px] text-stone-500 dark:text-zinc-300">
+                      {chip.label}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          {/* ── Right column: product visual + threat panel ── */}
+          <div className="order-1 md:order-0 md:col-span-7">
+            <Reveal x={12} className="w-full">
+              <div className="overflow-hidden rounded-xl border border-stone-200/40 ring-1 ring-stone-900/5 shadow-2xl dark:border-zinc-700/30 dark:ring-white/5 dark:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)]">
+                <Image
+                  src="/images/home/product-ai-soc.jpg"
+                  alt="AI SOC Dashboard — Trung tâm điều hành an ninh mạng ICS"
+                  width={960}
+                  height={540}
+                  className="block w-full object-cover"
+                  sizes="(max-width: 768px) 100vw, 55vw"
+                  priority
+                />
               </div>
-            }
-          />
-        </div>
+            </Reveal>
+
+            <Reveal x={12} delay={0.08} className="mt-5 w-full md:mt-6">
+              <HeroThreatPanel />
+            </Reveal>
+          </div>
+
         </div>
       </div>
       <ComplianceTicker />
@@ -234,13 +200,13 @@ function ProductEditorialRow({
           <p className="font-mono text-[11px] tabular-nums tracking-wider text-zinc-600">
             {indexLabel}
           </p>
-          <p className="mt-3 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">
+          <p className="mt-3 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-600">
             {eyebrow}
           </p>
           <h3 className="mt-4 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-3xl md:leading-tight">
             {name}
           </h3>
-          <p className="mt-4 max-w-[52ch] text-base leading-relaxed text-zinc-500">{desc}</p>
+          <p className="mt-4 max-w-[52ch] text-base leading-relaxed text-zinc-600">{desc}</p>
           {signal ? (
             <p className="mt-5 max-w-[52ch] border-l-2 border-accent/45 bg-accent-muted/70 py-2.5 pl-4 text-sm font-medium leading-relaxed text-zinc-700 dark:border-accent/35 dark:bg-accent-muted/40 dark:text-zinc-200">
               {signal}
@@ -303,14 +269,14 @@ export function HomeProductsBento() {
             <Package className="h-3.5 w-3.5" weight="duotone" aria-hidden />
             Sản phẩm
           </span>
-          <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-500">
+          <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-600">
             {ps.eyebrow}
           </span>
         </div>
         <h2 className="max-w-[22ch] text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:max-w-3xl md:text-3xl md:leading-tight">
           {ps.title}
         </h2>
-        <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-zinc-500">
+        <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-zinc-600">
           {ps.subtitle}
         </p>
       </Reveal>
@@ -373,7 +339,7 @@ export function HomeSolutionsZigzag() {
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-3xl">
           {home.solutionsWide.title}
         </h2>
-        <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-zinc-500">
+        <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-zinc-600">
           {home.solutionsWide.subtitle}
         </p>
       </Reveal>
@@ -426,13 +392,13 @@ export function HomeSolutionsZigzag() {
               </Link>
             </Reveal>
             <Reveal delay={0.06} x={idx % 2 === 0 ? 12 : -12}>
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-600">
                 {String(idx + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
                 {row.name}
               </h3>
-              <p className="mt-4 max-w-[55ch] text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-4 max-w-[55ch] text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
                 {row.desc}
               </p>
               {row.signal ? (
@@ -464,13 +430,13 @@ export function HomeCommitments() {
       <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
           <Reveal>
-            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-500">
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-600">
               {c.eyebrow}
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-3xl md:leading-tight">
               {c.title}
             </h2>
-            <p className="mt-4 max-w-[42ch] text-sm leading-relaxed text-zinc-500 md:text-base">
+            <p className="mt-4 max-w-[42ch] text-sm leading-relaxed text-zinc-600 md:text-base">
               {c.subtitle}
             </p>
           </Reveal>
@@ -486,7 +452,7 @@ export function HomeCommitments() {
                 <article className="grid gap-6 border-l-2 border-transparent pl-5 transition-[border-color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-accent/45 md:grid-cols-12 md:items-start md:gap-8 md:pl-6">
                   <div className="md:col-span-5">
                     <div className="flex items-baseline gap-3 md:block">
-                      <span className="font-mono text-[11px] tabular-nums tracking-wider text-zinc-500 transition-colors duration-300 group-hover:text-accent dark:text-zinc-500 dark:group-hover:text-accent">
+                      <span className="font-mono text-[11px] tabular-nums tracking-wider text-zinc-600 transition-colors duration-300 group-hover:text-accent dark:text-zinc-400 dark:group-hover:text-accent">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-white md:mt-2 md:text-xl">
@@ -494,7 +460,7 @@ export function HomeCommitments() {
                       </h3>
                     </div>
                   </div>
-                  <p className="text-base leading-relaxed text-zinc-500 md:col-span-7">
+                  <p className="text-base leading-relaxed text-zinc-600 md:col-span-7">
                     {item.body}
                   </p>
                 </article>
@@ -517,7 +483,7 @@ export function HomeNewsTeaser() {
           <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white md:text-3xl">
             {nt.title}
           </h2>
-          <p className="mt-3 max-w-[55ch] text-base leading-relaxed text-zinc-500">
+          <p className="mt-3 max-w-[55ch] text-base leading-relaxed text-zinc-600">
             {nt.subtitle}
           </p>
         </Reveal>
@@ -576,10 +542,10 @@ export function HomeNewsTeaser() {
                 }`}
               >
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <time className="font-mono text-xs tabular-nums text-zinc-500">
+                  <time className="font-mono text-xs tabular-nums text-zinc-600">
                     {a.date}
                   </time>
-                  <span className="font-mono text-[11px] tabular-nums text-zinc-400">
+                  <span className="font-mono text-[11px] tabular-nums text-zinc-400 dark:text-zinc-400">
                     · {a.readMinutes} phút đọc
                   </span>
                 </div>
@@ -593,7 +559,7 @@ export function HomeNewsTeaser() {
                   {a.title}
                 </h3>
                 <p
-                  className={`mt-2 flex-1 leading-relaxed text-zinc-500 ${
+                  className={`mt-2 flex-1 leading-relaxed text-zinc-600 ${
                     idx === 0 ? "line-clamp-3 text-sm md:text-base" : "text-sm"
                   }`}
                 >
@@ -622,7 +588,7 @@ export function HomeCredentialBand() {
       <div className="mx-auto max-w-[1400px] px-4 py-4 md:px-8 md:py-3">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-0 lg:divide-x lg:divide-zinc-200/70 dark:lg:divide-white/10">
           <div className="shrink-0 lg:flex lg:w-[min(100%,10.5rem)] lg:items-center lg:pr-6">
-            <p className="text-[9px] font-semibold uppercase leading-snug tracking-[0.2em] text-zinc-600 dark:text-zinc-400">
+            <p className="text-[9px] font-semibold uppercase leading-snug tracking-[0.2em] text-zinc-600 dark:text-zinc-300">
               {credentialBand.eyebrow}
             </p>
           </div>
@@ -655,7 +621,7 @@ export function HomeCredentialBand() {
                     {item.label}
                   </span>
                   {item.note ? (
-                    <span className="mt-0.5 block text-[10px] leading-snug text-zinc-600 dark:text-zinc-400">
+                    <span className="mt-0.5 block text-[10px] leading-snug text-zinc-600 dark:text-zinc-300">
                       {item.note}
                     </span>
                   ) : null}

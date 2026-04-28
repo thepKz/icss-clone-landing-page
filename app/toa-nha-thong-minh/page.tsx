@@ -32,7 +32,7 @@ export default function SmartBuildingPage() {
           <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
               <Reveal slideFromLeft={24}>
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-500">
+                <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                   {sb.heroEyebrow}
                 </p>
                 <h1 className="mt-4 max-w-[18ch] text-4xl font-semibold tracking-tight text-foreground md:text-5xl md:leading-[1.05]">
@@ -48,7 +48,7 @@ export default function SmartBuildingPage() {
                   >
                     {sb.ctaLabel}
                   </Link>
-                  <span className="hidden items-center px-2 text-xs uppercase tracking-[0.18em] text-zinc-400 sm:inline dark:text-zinc-600">
+                  <span className="hidden items-center px-2 text-xs uppercase tracking-[0.18em] text-zinc-400 sm:inline dark:text-zinc-500">
                     Smart Building
                   </span>
                 </div>
@@ -110,7 +110,7 @@ export default function SmartBuildingPage() {
             >
               {sb.featuresSectionTitle}
             </h2>
-            <p className="mt-6 max-w-[52ch] text-lg leading-[1.65] text-zinc-700 md:mt-7 md:text-xl dark:text-zinc-400">
+            <p className="mt-6 max-w-[52ch] text-lg leading-[1.65] text-zinc-700 md:mt-7 md:text-xl dark:text-zinc-300">
               {sb.featuresSectionLede}
             </p>
           </Reveal>
@@ -149,7 +149,7 @@ export default function SmartBuildingPage() {
               </div>
             ))}
           </div>
-          <p className="mx-auto mt-6 max-w-[62ch] px-2 text-center text-sm leading-relaxed text-zinc-600 dark:text-zinc-500">
+          <p className="mx-auto mt-6 max-w-[62ch] px-2 text-center text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
             {sb.statsContext}
           </p>
         </div>

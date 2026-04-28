@@ -105,7 +105,7 @@ export default function VAiAgentPage() {
                 <p className="mt-5 text-base font-medium leading-snug text-zinc-800 dark:text-zinc-200">
                   {p.hero.headline}
                 </p>
-                <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+                <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
                   {p.hero.lead}
                 </p>
               </div>
@@ -132,13 +132,13 @@ export default function VAiAgentPage() {
                   />
                 ))}
               </div>
-              <p className="mt-4 max-w-[65ch] text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
+              <p className="mt-4 max-w-[65ch] text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
                 {p.statsDisclaimer}
               </p>
             </Reveal>
 
             <Reveal delay={0.06} x={20} className="min-w-0">
-              <p className="mb-3 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-500">
+              <p className="mb-3 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
                 {p.dashboard.caption}
               </p>
               <div className="rounded-[2rem] border border-teal-800/20 bg-zinc-200/55 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] ring-1 ring-teal-800/12 dark:border-cyan-400/20 dark:bg-white/6 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:ring-cyan-400/15">
@@ -204,7 +204,7 @@ export default function VAiAgentPage() {
                 <h3 className="mt-3 text-lg font-semibold text-foreground">{p.pain.items[2].title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{p.pain.items[2].body}</p>
               </div>
-              <p className="mt-8 text-xs uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-500">
+              <p className="mt-8 text-xs uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
                 {p.solution.eyebrow}
               </p>
             </article>
